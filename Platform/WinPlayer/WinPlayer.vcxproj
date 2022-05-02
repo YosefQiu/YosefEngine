@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{78178f06-1f40-4d23-bc69-52885ef80207}</ProjectGuid>
+    <RootNamespace>WinPlayer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>YOSEF_WIN_PLAYER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\External\Debug;</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp" />
+    <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
+    <ClCompile Include="..\..\Runtime\Base\Object.cpp" />
+    <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
+    <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\FileItem.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp" />
+    <ClCompile Include="..\..\Runtime\String\StringUtils.cpp" />
+    <ClCompile Include="..\Win32Common\BaseWindow.cpp" />
+    <ClCompile Include="..\Win32Common\Control\ButtonControl\ImageButton.cpp" />
+    <ClCompile Include="..\Win32Common\Control\Control.cpp" />
+    <ClCompile Include="..\Win32Common\Control\ImageControl\ImageControl.cpp" />
+    <ClCompile Include="..\Win32Common\Control\ImageControl\ScaledImage.cpp" />
+    <ClCompile Include="..\Win32Common\Control\ImageControl\SelectableImageControl.cpp" />
+    <ClCompile Include="..\Win32Common\Control\TextControl\StaticText.cpp" />
+    <ClCompile Include="..\Win32Common\DoubleBufferedWindow.cpp" />
+    <ClCompile Include="..\Win32Common\MainWindow.cpp" />
+    <ClCompile Include="..\Win32Common\RenderContext.cpp" />
+    <ClCompile Include="..\Win32Common\RenderWindow.cpp" />
+    <ClCompile Include="..\Win32Common\SplitLine.cpp" />
+    <ClCompile Include="..\Win32Common\Utils\FolderSelecter.cpp" />
+    <ClCompile Include="..\Win32Common\WindowEventDispatcher.cpp" />
+    <ClCompile Include="EntryProxy.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="WinPlayerMainWindow.cpp" />
+    <ClCompile Include="WinPlayerView.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h" />
+    <ClInclude Include="..\..\Runtime\Allocator\MemoryLabel.h" />
+    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsf.h" />
+    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
+    <ClInclude Include="..\..\Runtime\Base\Object.h" />
+    <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
+    <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
+    <ClInclude Include="..\..\Runtime\IO\FileItem.h" />
+    <ClInclude Include="..\..\Runtime\IO\FileSystem.h" />
+    <ClInclude Include="..\..\Runtime\IO\YosefData.h" />
+    <ClInclude Include="..\..\Runtime\Render\YosefGL.h" />
+    <ClInclude Include="..\..\Runtime\RuntimePrefix.h" />
+    <ClInclude Include="..\..\Runtime\Scene\SceneManager.h" />
+    <ClInclude Include="..\..\Runtime\String\StringUtils.h" />
+    <ClInclude Include="..\..\Runtime\Utils\LinkedList.h" />
+    <ClInclude Include="..\..\Runtime\Utils\SmartPtr.h" />
+    <ClInclude Include="..\Win32Common\BaseWindow.h" />
+    <ClInclude Include="..\Win32Common\Control\ButtonControl\ImageButton.h" />
+    <ClInclude Include="..\Win32Common\Control\Control.h" />
+    <ClInclude Include="..\Win32Common\Control\ImageControl\ImageControl.h" />
+    <ClInclude Include="..\Win32Common\Control\ImageControl\ScaledImage.h" />
+    <ClInclude Include="..\Win32Common\Control\ImageControl\SelectableImageControl.h" />
+    <ClInclude Include="..\Win32Common\Control\TextControl\StaticText.h" />
+    <ClInclude Include="..\Win32Common\DoubleBufferedWindow.h" />
+    <ClInclude Include="..\Win32Common\MainWindow.h" />
+    <ClInclude Include="..\Win32Common\RenderContext.h" />
+    <ClInclude Include="..\Win32Common\RenderWindow.h" />
+    <ClInclude Include="..\Win32Common\SplitLine.h" />
+    <ClInclude Include="..\Win32Common\Utils\FolderSelecter.h" />
+    <ClInclude Include="..\Win32Common\WindowEventDispatcher.h" />
+    <ClInclude Include="WinPlayerMainWindow.h" />
+    <ClInclude Include="WinPlayerView.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

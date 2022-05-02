@@ -1,0 +1,6 @@
+External
+DerivedData
+Debug
+.vs
+**/*.DS_Store
+**/*.vscode

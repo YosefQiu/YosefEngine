@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Entry">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Runtime">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Runtime\Allocator">
+      <UniqueIdentifier>{4866a2ad-c4aa-4ec8-bb8c-50ed179d1958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Base">
+      <UniqueIdentifier>{6f047397-c40e-4d65-81fc-c034db404d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Utils">
+      <UniqueIdentifier>{67e7defe-fc89-49ca-a9eb-7c8b6b0af76a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Debugger">
+      <UniqueIdentifier>{5d95ac65-0759-4c43-b0dc-ea27ffc89028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Render">
+      <UniqueIdentifier>{19075eb9-ec8b-4efb-9708-c42f410aca6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Control">
+      <UniqueIdentifier>{e36634f9-ed42-4c75-a6ca-695b74a5c60f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Control\ButtonControl">
+      <UniqueIdentifier>{91033e76-7fb6-4e44-bf2e-419326f2212a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Control\ImageControl">
+      <UniqueIdentifier>{d38dfb79-87eb-4404-9767-455536bf95df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Control\TextControl">
+      <UniqueIdentifier>{a16d9ebe-9a28-47a9-ad5a-50c08c299862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Utils">
+      <UniqueIdentifier>{38514a52-46b4-4e6c-912a-3bd690add740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Allocator\tlsf">
+      <UniqueIdentifier>{8442d1c1-128a-4892-9fff-36eb342fc6b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\IO">
+      <UniqueIdentifier>{8b6103bd-b30f-4209-8b4d-e3c61d155663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Scene">
+      <UniqueIdentifier>{86c3999a-2573-4a3b-9e4e-325161d2b5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\String">
+      <UniqueIdentifier>{ba386fe6-1370-4fa3-a9f9-2555e623e8e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Base\Object.cpp">
+      <Filter>Runtime\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="EntryProxy.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Debugger\Log.cpp">
+      <Filter>Runtime\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\WindowEventDispatcher.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\BaseWindow.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\DoubleBufferedWindow.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\MainWindow.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\RenderContext.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\RenderWindow.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\SplitLine.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="WinPlayerMainWindow.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="WinPlayerView.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\Control.cpp">
+      <Filter>Common\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\ButtonControl\ImageButton.cpp">
+      <Filter>Common\Control\ButtonControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\ImageControl\ImageControl.cpp">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\ImageControl\ScaledImage.cpp">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\ImageControl\SelectableImageControl.cpp">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Control\TextControl\StaticText.cpp">
+      <Filter>Common\Control\TextControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Win32Common\Utils\FolderSelecter.cpp">
+      <Filter>Common\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c">
+      <Filter>Runtime\Allocator\tlsf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp">
+      <Filter>Runtime\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp">
+      <Filter>Runtime\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\FileItem.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\YosefData.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\String\StringUtils.cpp">
+      <Filter>Runtime\String</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Runtime\RuntimePrefix.h">
+      <Filter>Runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\Object.h">
+      <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Utils\LinkedList.h">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Debugger\Log.h">
+      <Filter>Runtime\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\WindowEventDispatcher.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\BaseWindow.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\DoubleBufferedWindow.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\MainWindow.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\RenderContext.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\RenderWindow.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\SplitLine.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\YosefGL.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="WinPlayerMainWindow.h">
+      <Filter>Entry</Filter>
+    </ClInclude>
+    <ClInclude Include="WinPlayerView.h">
+      <Filter>Entry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\Control.h">
+      <Filter>Common\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\ButtonControl\ImageButton.h">
+      <Filter>Common\Control\ButtonControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\ImageControl\ImageControl.h">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\ImageControl\ScaledImage.h">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\ImageControl\SelectableImageControl.h">
+      <Filter>Common\Control\ImageControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Control\TextControl\StaticText.h">
+      <Filter>Common\Control\TextControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Win32Common\Utils\FolderSelecter.h">
+      <Filter>Common\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsf.h">
+      <Filter>Runtime\Allocator\tlsf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h">
+      <Filter>Runtime\Allocator\tlsf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h">
+      <Filter>Runtime\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Allocator\MemoryLabel.h">
+      <Filter>Runtime\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\YosefGUID.h">
+      <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\FileItem.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\FileSystem.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\YosefData.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Scene\SceneManager.h">
+      <Filter>Runtime\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Utils\SmartPtr.h">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\String\StringUtils.h">
+      <Filter>Runtime\String</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
