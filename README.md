@@ -8,5 +8,5 @@
 5. 添加了Log.h / Log.cpp
 6. 添加了消息处理函数
 
-[Winodws端](./NOTE/Windows端.md) [窗口的派生逻辑](./窗口的派生逻辑.md) 
+[Winodws端](./NOTE/Windows端.md) [窗口的派生逻辑](./NOTE/窗口的派生逻辑.md) 
 
