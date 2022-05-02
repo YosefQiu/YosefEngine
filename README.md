@@ -1,7 +1,7 @@
 #### 2022.1.1
 
 -----
-1. 导入第三方库
+1. 导入[第三方库](./NOTE/External ----LIB 静态库.md)
 2. 创建了入口函数 Entry/main.cpp (extern c -->YosefGo)
 3. RuntimePfefix.h (TODO: 添加其他操作系统的适配）
 4. Utils/ LinkedList.h(添加了单链表和双向链表)
