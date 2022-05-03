@@ -10,3 +10,4 @@
 
 [Winodws端](./NOTE/Windows端.md) [窗口的派生逻辑](./NOTE/窗口的派生逻辑.md) 
 
+![img](./NOTE/scene1.PNG)
