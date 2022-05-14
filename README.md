@@ -10,4 +10,27 @@
 
 [Winodws端](./NOTE/Windows端.md) [窗口的派生逻辑](./NOTE/窗口的派生逻辑.md) 
 
+
+
+#### 2022.1.13
+
+---
+
+1. reading paper
+2. add memory pool
+
+[memory pool](./NOTE/内存池管理.md) 
+
+
+
+
+
+
+
+
+
+----
+
+#### Result
+
 ![img](./NOTE/scene1.PNG)

@@ -10,6 +10,19 @@
   - 加载初始化脚本包
   - 启动入口脚本
 
+### Layer
+
+```mermaid
+graph TD
+A[<font size=4>Application layer] --- B[use engine to make specific products, like games, scene render etc]
+A ==> C[<font size=4>API layer] --- D[Hide the underlying details and provide API interface]
+C ==> E[<font size=4>Logical package layer] --- F[like scene tree]
+E ==> G[<font size=4>Functional module layer] --- H[Encapsulate functional modules that have nothing to do with each other]
+G ==> L[<font size=4>Platform interface layer]
+```
+
+
+
 
 
 ### 窗口的创建
