@@ -17,11 +17,13 @@
 ---
 
 1. reading paper
+1. add TLSF
 2. add memory pool
+2. add test for memory pool
 
 [memory pool](./NOTE/内存池管理.md) 
 
-
+![img](./NOTE/testmemorypool.PNG)
 
 
 

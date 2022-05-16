@@ -1,5 +1,8 @@
 #include "DefaultAllocator.h"
 #include "tlsf/tlsf.h"
+
+#define USE_POOL 1
+
 //1024 1KB
 //1024x1024 1MB 1048576
 //1024x1024x1024 1GB 1073741824
@@ -7,9 +10,15 @@ static unsigned long sReservedTotalMemory = 50485760;
 static unsigned int mReservedSize = 504857600;//500MB
 static tlsf_t sTLSF = nullptr;
 static bool sbAppQuited = false;
-extern "C" void InitMemory() {
-	void*buffer = malloc(mReservedSize);
-	sTLSF = tlsf_create_with_pool(buffer, mReservedSize);
+extern "C" void InitMemory() 
+{
+#if USE_POOL
+	if (sTLSF == nullptr)
+	{
+		void* buffer = malloc(mReservedSize);
+		sTLSF = tlsf_create_with_pool(buffer, mReservedSize);
+	}
+#endif
 }
 extern "C" void OnQuitMemory() {
 	sbAppQuited = true;
