@@ -29,6 +29,8 @@
 
 #### 2022. 1. 20
 
+----
+
 - Added Object Base Class
 - Added my Smart Ptr Class
 
@@ -39,14 +41,30 @@
   - Image Control
   - Text Control
 
-[Object Base Class](./NOTE/Obejct基类.md)  [Smart Ptr Class](./NOTE/智能指针.md)  [GUID](./NOTE/GUID.md) 
+[Object Base Class](./NOTE/Object基类.md)  [Smart Ptr Class](./NOTE/智能指针.md)  [GUID](./NOTE/GUID.md) 
 
 ![img](./NOTE/testsmartptr.PNG)
 
 ![img](./NOTE/testguid.PNG)
 
+
+
+#### 2022. 2. 10
+
 ----
+
+- Added OpenGL Debugger
+- Updated statistics.pl
+
+- Added Plugin in Runtime/Plugins
+  - Fixed 
+    - _CRT_NONSTDC_NO_DEPRECATE
+    - _CRT_SECURE_NO_WARNINGS
+- Added my Fixed String Class
+
+
 
 #### Result
 
 ![img](./NOTE/scene1.PNG)
+

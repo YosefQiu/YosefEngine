@@ -46,14 +46,53 @@
     <Filter Include="Runtime\Allocator\tlsf">
       <UniqueIdentifier>{8442d1c1-128a-4892-9fff-36eb342fc6b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\IO">
-      <UniqueIdentifier>{8b6103bd-b30f-4209-8b4d-e3c61d155663}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Runtime\Scene">
       <UniqueIdentifier>{86c3999a-2573-4a3b-9e4e-325161d2b5b2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Runtime\String">
       <UniqueIdentifier>{ba386fe6-1370-4fa3-a9f9-2555e623e8e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\LuaEngine">
+      <UniqueIdentifier>{8d0c9142-0623-4351-9710-7cb3c1ab7619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\IO">
+      <UniqueIdentifier>{8b6103bd-b30f-4209-8b4d-e3c61d155663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins">
+      <UniqueIdentifier>{73c6583c-c553-4da1-8bea-91165a0b02c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\al">
+      <UniqueIdentifier>{02d19216-5b71-4c6d-971d-04693efaef19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\freeimage">
+      <UniqueIdentifier>{9dadcfa8-ee26-4a51-a018-f54e7d7588f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\id3">
+      <UniqueIdentifier>{f2918307-3136-4932-a5cb-98d775845c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\json">
+      <UniqueIdentifier>{a274beea-213c-4527-8d0a-b590817a2b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\libqrencode">
+      <UniqueIdentifier>{2265e6a5-56e9-452d-8a67-499c5c70d2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\Lua">
+      <UniqueIdentifier>{7fa5099e-74bc-4ab8-9dcf-04833261f7b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\md5">
+      <UniqueIdentifier>{0925a242-f5fe-43bb-9e0e-a97defba956d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\mpg123">
+      <UniqueIdentifier>{4f1c999b-84a9-4d98-b600-1810bb0e3fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\socket">
+      <UniqueIdentifier>{f9f68f87-b570-48b4-954f-f9d1e1af37f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\xml">
+      <UniqueIdentifier>{7d460f84-73a8-4291-a20d-d6979b28e097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Plugins\luazip">
+      <UniqueIdentifier>{3b46b3c3-f8df-404c-8163-bb01f3c89b60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +179,84 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\String\StringUtils.cpp">
       <Filter>Runtime\String</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp">
+      <Filter>Runtime\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\LuaEngine\LuaEngine.cpp">
+      <Filter>Runtime\LuaEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\id3\frame.c">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\id3\header.c">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\id3\id3v2lib.c">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\id3\types.c">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\id3\utils.c">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\json\fpconv.c">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\json\Json.c">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\json\lua_cjson.c">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\json\strbuf.c">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\bitstream.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\decode.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\identify.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\mask.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrencode.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrinput.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrspec.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\quirc.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\rscode.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\split.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\version_db.c">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\md5\md5.c">
+      <Filter>Runtime\Plugins\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\md5\md5lib.c">
+      <Filter>Runtime\Plugins\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\xml\luaxml.c">
+      <Filter>Runtime\Plugins\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c">
+      <Filter>Runtime\Plugins\luazip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,5 +356,109 @@
     <ClInclude Include="..\..\Runtime\String\StringUtils.h">
       <Filter>Runtime\String</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Runtime\Debugger\Debugger.h">
+      <Filter>Runtime\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\LuaEngine\LuaEngine.h">
+      <Filter>Runtime\LuaEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\al.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\alc.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\alext.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx-creative.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx-presets.h">
+      <Filter>Runtime\Plugins\al</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\freeimage\FreeImage.h">
+      <Filter>Runtime\Plugins\freeimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\constants.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\frame.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\header.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\id3v2lib.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\types.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\id3\utils.h">
+      <Filter>Runtime\Plugins\id3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\json\fpconv.h">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\json\Json.h">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\json\strbuf.h">
+      <Filter>Runtime\Plugins\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\bitstream.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\mask.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrencode.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrinput.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrspec.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\quirc.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\quirc_internal.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\rscode.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\split.h">
+      <Filter>Runtime\Plugins\libqrencode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\Lua\lua.hpp">
+      <Filter>Runtime\Plugins\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\md5\md5.h">
+      <Filter>Runtime\Plugins\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\mpg123\mpg123.h">
+      <Filter>Runtime\Plugins\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\socket\luasocket.h">
+      <Filter>Runtime\Plugins\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Plugins\socket\mime.h">
+      <Filter>Runtime\Plugins\socket</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinPlayer.rc">
+      <Filter>Runtime</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ sub GetLineCountOfCore{
 	my $lineCount=0;
 	map{
 		my $file=$_;
-		$lineCount+=GetLineCountOfCore($file) unless not -d $file and ((not ($file=~/.+\.h.*/ or $file=~/.+\.c.*/)) or $lineCount+=LineCountOfFile($file));
+		$lineCount+=GetLineCountOfCore($file) unless not -d $file and ((not ($file=~/.+\.h.*/ or $file=~/.+\.c.*/ or $file=~/.+\.java/ or $file=~/.+\.mm/)) or $lineCount+=LineCountOfFile($file));
 	}@files;
 	print "$dir $lineCount\n";
 	return $lineCount;
@@ -45,10 +45,15 @@ sub GetLineCountOf{
 	print "$dir $lineCount\n";
 	return $lineCount;
 }
+my $PlatformAppCount=GetLineCountOfCore("Platform/WinPlayer");
+$PlatformAppCount+=GetLineCountOfCore("Platform/Win32Common");
+$PlatformAppCount+=GetLineCountOfCore("Platform/OSXPlayer");
+$PlatformAppCount+=GetLineCountOfCore("Platform/iPhonePlayer");
+$PlatformAppCount+=GetLineCountOfCore("Platform/AndroidPlayer");
 my $RuntimeLineCount=GetLineCountOfCore("Runtime");
 my $LuaCodeLineCount=GetLineCountOf("Platform/AliceEdu2/EduDebug/Assets","lua");
 open F,">>code_lines.txt" or die"%@";
 my $time=GetTime("yyyy-mm-dd hh:mi:ss");
-print F "$time lua:$LuaCodeLineCount runtime:$RuntimeLineCount\n";
+print F "$time Platform:$PlatformAppCount runtime:$RuntimeLineCount\n";
 close F;
 <STDIN>;

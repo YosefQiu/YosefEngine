@@ -86,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>YOSEF_WIN_PLAYER;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>YOSEF_WIN_PLAYER;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\;../../;</AdditionalIncludeDirectories>
       <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
@@ -148,10 +148,36 @@
     <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
     <ClCompile Include="..\..\Runtime\Base\Object.cpp" />
     <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
+    <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileItem.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp" />
     <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
+    <ClCompile Include="..\..\Runtime\LuaEngine\LuaEngine.cpp" />
+    <ClCompile Include="..\..\Runtime\Plugins\id3\frame.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\id3\header.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\id3\id3v2lib.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\id3\types.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\id3\utils.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\json\fpconv.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\json\Json.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\json\lua_cjson.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\json\strbuf.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\bitstream.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\decode.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\identify.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\mask.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrencode.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrinput.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\qrspec.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\quirc.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\rscode.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\split.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\libqrencode\version_db.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\md5\md5.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\md5\md5lib.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\xml\luaxml.c" />
+    <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c" />
     <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp" />
     <ClCompile Include="..\..\Runtime\String\StringUtils.cpp" />
     <ClCompile Include="..\Win32Common\BaseWindow.cpp" />
@@ -180,10 +206,42 @@
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
     <ClInclude Include="..\..\Runtime\Base\Object.h" />
     <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
+    <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
     <ClInclude Include="..\..\Runtime\IO\FileItem.h" />
     <ClInclude Include="..\..\Runtime\IO\FileSystem.h" />
     <ClInclude Include="..\..\Runtime\IO\YosefData.h" />
+    <ClInclude Include="..\..\Runtime\LuaEngine\LuaEngine.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\al.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\alc.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\alext.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx-creative.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx-presets.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\al\efx.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\freeimage\FreeImage.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\constants.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\frame.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\header.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\id3v2lib.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\types.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\id3\utils.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\json\fpconv.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\json\Json.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\json\strbuf.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\bitstream.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\mask.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrencode.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrinput.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\qrspec.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\quirc.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\quirc_internal.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\rscode.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\libqrencode\split.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\Lua\lua.hpp" />
+    <ClInclude Include="..\..\Runtime\Plugins\md5\md5.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\mpg123\mpg123.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\socket\luasocket.h" />
+    <ClInclude Include="..\..\Runtime\Plugins\socket\mime.h" />
     <ClInclude Include="..\..\Runtime\Render\YosefGL.h" />
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h" />
     <ClInclude Include="..\..\Runtime\Scene\SceneManager.h" />
@@ -204,8 +262,12 @@
     <ClInclude Include="..\Win32Common\SplitLine.h" />
     <ClInclude Include="..\Win32Common\Utils\FolderSelecter.h" />
     <ClInclude Include="..\Win32Common\WindowEventDispatcher.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="WinPlayerMainWindow.h" />
     <ClInclude Include="WinPlayerView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinPlayer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

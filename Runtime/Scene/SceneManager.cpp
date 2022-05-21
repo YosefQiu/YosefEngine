@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "Runtime/Render/YOSEFGL.h"
 #include "Runtime/Debugger/Log.h"
+#include "Runtime/Debugger/Debugger.h"
 #include "External/LibCurl/include/curl/curl.h"
 extern "C" void InitMemory();
 static YOSEF::SceneManager *sSceneManager;
@@ -27,8 +28,8 @@ namespace YOSEF
 		mbIsPlaying = false;
 	}
 	void SceneManager::Render() {
-		glClearColor(0.1f, 0.4f, 0.6f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		OGL_CALL(glClearColor(0.0f, 0.34f, 0.57f, 1.0f));
+		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
 	}
 	void SceneManager::GetCanvasSize(int&width, int&height) {
 		width = mFullResolutionWidth;
