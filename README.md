@@ -1,7 +1,7 @@
 #### 2022.1.1 
 
 -----
-1. Imported [Third-Party libraries](./NOTE/External.md)
+1. Imported [Third-Party libraries](./NOTE/ThirdLib.md)
 2. The entry function has been created -> Entry/main.cpp (extern c -->YosefGo)
 3. RuntimePfefix.h (TODO: Add adaptations to other operating systems）
 4. Utils/ LinkedList.h(Added single linked list and two-way linked list)
