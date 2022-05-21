@@ -1,6 +1,5 @@
 #include <windows.h>
-#include "Runtime/Base/Object.h"
-#include "Runtime/Utils/LinkedList.h"
+
 
 #if _DEBUG
 #pragma comment( linker, "/subsystem:\"console\" /entry:\"WinMainCRTStartup\"")

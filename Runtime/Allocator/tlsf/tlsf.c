@@ -83,12 +83,12 @@ enum tlsf_private
 	typedef char _tlsf_glue(static_assert, __LINE__) [(exp) ? 1 : -1]
 
 /* This code has been tested on 32- and 64-bit (LP/LLP) architectures. */
-tlsf_static_assert(sizeof(int) * CHAR_BIT == 32);
-tlsf_static_assert(sizeof(size_t) * CHAR_BIT >= 32);
-tlsf_static_assert(sizeof(size_t) * CHAR_BIT <= 64);
+tlsf_static_assert(sizeof(int)* CHAR_BIT == 32);
+tlsf_static_assert(sizeof(size_t)* CHAR_BIT >= 32);
+tlsf_static_assert(sizeof(size_t)* CHAR_BIT <= 64);
 
 /* SL_INDEX_COUNT must be <= number of bits in sl_bitmap's storage type. */
-tlsf_static_assert(sizeof(unsigned int) * CHAR_BIT >= SL_INDEX_COUNT);
+tlsf_static_assert(sizeof(unsigned int)* CHAR_BIT >= SL_INDEX_COUNT);
 
 /* Ensure we've properly tuned our sizes. */
 tlsf_static_assert(ALIGN_SIZE == SMALL_BLOCK_SIZE / SL_INDEX_COUNT);
@@ -126,8 +126,8 @@ typedef struct block_header_t
 ** - bit 0: whether block is busy or free
 ** - bit 1: whether previous block is busy or free
 */
-static const size_t block_header_free_bit = 1 << 0;
-static const size_t block_header_prev_free_bit = 1 << 1;
+static const size_t block_header_free_bit = 1 << 0;//0
+static const size_t block_header_prev_free_bit = 1 << 1;//1
 
 /*
 ** The size of the block header exposed to used blocks is the size field.
@@ -137,15 +137,15 @@ static const size_t block_header_overhead = sizeof(size_t);
 
 /* User data starts directly after the size field in a used block. */
 static const size_t block_start_offset =
-	offsetof(block_header_t, size) + sizeof(size_t);
+offsetof(block_header_t, size) + sizeof(size_t);
 
 /*
 ** A free block must be large enough to store its header minus the size of
 ** the prev_phys_block field, and no larger than the number of addressable
 ** bits for FL_INDEX.
 */
-static const size_t block_size_min = 
-	sizeof(block_header_t) - sizeof(block_header_t*);
+static const size_t block_size_min =
+sizeof(block_header_t) - sizeof(block_header_t*);
 static const size_t block_size_max = tlsf_cast(size_t, 1) << FL_INDEX_MAX;
 
 
@@ -160,7 +160,7 @@ typedef struct control_t
 	unsigned int sl_bitmap[FL_INDEX_COUNT];
 
 	/* Head of free lists. */
-	block_header_t* blocks[FL_INDEX_COUNT][SL_INDEX_COUNT];
+	block_header_t* blocks[FL_INDEX_COUNT][SL_INDEX_COUNT];//segrageted lists
 } control_t;
 
 /* A type used for casting when doing pointer arithmetic. */
@@ -785,11 +785,11 @@ pool_t tlsf_add_pool(tlsf_t tlsf, void* mem, size_t bytes)
 	if (pool_bytes < block_size_min || pool_bytes > block_size_max)
 	{
 #if defined (TLSF_64BIT)
-		printf("tlsf_add_pool: Memory size must be between 0x%x and 0x%x00 bytes.\n", 
+		printf("tlsf_add_pool: Memory size must be between 0x%x and 0x%x00 bytes.\n",
 			(unsigned int)(pool_overhead + block_size_min),
 			(unsigned int)((pool_overhead + block_size_max) / 256));
 #else
-		printf("tlsf_add_pool: Memory size must be between %u and %u bytes.\n", 
+		printf("tlsf_add_pool: Memory size must be between %u and %u bytes.\n",
 			(unsigned int)(pool_overhead + block_size_min),
 			(unsigned int)(pool_overhead + block_size_max));
 #endif
@@ -801,7 +801,7 @@ pool_t tlsf_add_pool(tlsf_t tlsf, void* mem, size_t bytes)
 	** so that the prev_phys_block field falls outside of the pool -
 	** it will never be used.
 	*/
-	block = offset_to_block(mem, -(tlsfptr_t)block_header_overhead);
+	block = offset_to_block(mem, -(tlsfptr_t)block_header_overhead);//((char*)mem-4)
 	block_set_size(block, pool_bytes);
 	block_set_free(block);
 	block_set_prev_used(block);
@@ -840,8 +840,8 @@ int test_ffs_fls()
 {
 	/* Verify ffs/fls work properly. */
 	int rv = 0;
-	rv += (tlsf_ffs(0) == -1) ? 0 : 0x1;
-	rv += (tlsf_fls(0) == -1) ? 0 : 0x2;
+	rv += (tlsf_ffs(0) == -1) ? 0 : 0x1;//find first set
+	rv += (tlsf_fls(0) == -1) ? 0 : 0x2;//find last set
 	rv += (tlsf_ffs(1) == 0) ? 0 : 0x4;
 	rv += (tlsf_fls(1) == 0) ? 0 : 0x8;
 	rv += (tlsf_ffs(0x80000000) == 31) ? 0 : 0x10;
@@ -852,7 +852,7 @@ int test_ffs_fls()
 #if defined (TLSF_64BIT)
 	rv += (tlsf_fls_sizet(0x80000000) == 31) ? 0 : 0x100;
 	rv += (tlsf_fls_sizet(0x100000000) == 32) ? 0 : 0x200;
-	rv += (tlsf_fls_sizet(0xffffffffffffffff) == 63) ? 0 : 0x400; 
+	rv += (tlsf_fls_sizet(0xffffffffffffffff) == 63) ? 0 : 0x400;
 #endif
 
 	if (rv)
@@ -879,9 +879,9 @@ tlsf_t tlsf_create(void* mem)
 		return 0;
 	}
 
-	control_construct(tlsf_cast(control_t*, mem));
+	control_construct((control_t*)mem);
 
-	return tlsf_cast(tlsf_t, mem);
+	return (tlsf_t*)mem;
 }
 
 tlsf_t tlsf_create_with_pool(void* mem, size_t bytes)

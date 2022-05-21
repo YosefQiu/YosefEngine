@@ -43,7 +43,7 @@ typedef void* YOSEFAny;
 #define RELEASE (!_DEBUG)
 #if YOSEF_EDITOR || YOSEF_WIN_PLAYER
 #define YOSEF_PLATFORM_WIN 1
-//#include <WinSock2.h>
+#include <WinSock2.h>
 #include <windows.h>
 #include <dwmapi.h>
 #include <gdiplus.h>

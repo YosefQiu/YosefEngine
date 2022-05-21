@@ -94,6 +94,12 @@
     <Filter Include="Runtime\Plugins\luazip">
       <UniqueIdentifier>{3b46b3c3-f8df-404c-8163-bb01f3c89b60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\NetWork">
+      <UniqueIdentifier>{46c7c2f2-04a3-499c-9f32-8f6dfbbc97b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Graphics">
+      <UniqueIdentifier>{75945ed5-5730-40ab-912e-7d32b724b373}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -257,6 +263,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c">
       <Filter>Runtime\Plugins\luazip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\String\FixedString.cpp">
+      <Filter>Runtime\String</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\NetWork\SocketUtils.cpp">
+      <Filter>Runtime\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Utils\Timer.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Graphics\ImageUtils.cpp">
+      <Filter>Runtime\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +472,21 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Plugins\socket\mime.h">
       <Filter>Runtime\Plugins\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\String\FixedString.h">
+      <Filter>Runtime\String</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\NetWork\SocketUtils.h">
+      <Filter>Runtime\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Utils\Timer.h">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Graphics\ImageUtils.h">
+      <Filter>Runtime\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\ClassID.h">
+      <Filter>Runtime\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
