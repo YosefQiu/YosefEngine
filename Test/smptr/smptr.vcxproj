@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{78178f06-1f40-4d23-bc69-52885ef80207}</ProjectGuid>
-    <RootNamespace>WinPlayer</RootNamespace>
+    <ProjectGuid>{8580c1d7-e4ae-4802-a92b-9eb7481bb8fd}</ProjectGuid>
+    <RootNamespace>smptr</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -86,17 +86,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>YOSEF_WIN_PLAYER;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\;../../;</AdditionalIncludeDirectories>
-      <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
-      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\External\Debug;</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,68 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp" />
-    <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
-    <ClCompile Include="..\..\Runtime\Base\Object.cpp" />
-    <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
-    <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
-    <ClCompile Include="..\..\Runtime\IO\FileItem.cpp" />
-    <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp" />
-    <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
-    <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp" />
-    <ClCompile Include="..\..\Runtime\String\StringUtils.cpp" />
-    <ClCompile Include="..\Win32Common\BaseWindow.cpp" />
-    <ClCompile Include="..\Win32Common\Control\ButtonControl\ImageButton.cpp" />
-    <ClCompile Include="..\Win32Common\Control\Control.cpp" />
-    <ClCompile Include="..\Win32Common\Control\ImageControl\ImageControl.cpp" />
-    <ClCompile Include="..\Win32Common\Control\ImageControl\ScaledImage.cpp" />
-    <ClCompile Include="..\Win32Common\Control\ImageControl\SelectableImageControl.cpp" />
-    <ClCompile Include="..\Win32Common\Control\TextControl\StaticText.cpp" />
-    <ClCompile Include="..\Win32Common\DoubleBufferedWindow.cpp" />
-    <ClCompile Include="..\Win32Common\MainWindow.cpp" />
-    <ClCompile Include="..\Win32Common\RenderContext.cpp" />
-    <ClCompile Include="..\Win32Common\RenderWindow.cpp" />
-    <ClCompile Include="..\Win32Common\SplitLine.cpp" />
-    <ClCompile Include="..\Win32Common\Utils\FolderSelecter.cpp" />
-    <ClCompile Include="..\Win32Common\WindowEventDispatcher.cpp" />
-    <ClCompile Include="EntryProxy.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="WinPlayerMainWindow.cpp" />
-    <ClCompile Include="WinPlayerView.cpp" />
+    <ClInclude Include="smartptr.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h" />
-    <ClInclude Include="..\..\Runtime\Allocator\MemoryLabel.h" />
-    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsf.h" />
-    <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
-    <ClInclude Include="..\..\Runtime\Base\Object.h" />
-    <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
-    <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
-    <ClInclude Include="..\..\Runtime\IO\FileItem.h" />
-    <ClInclude Include="..\..\Runtime\IO\FileSystem.h" />
-    <ClInclude Include="..\..\Runtime\IO\YosefData.h" />
-    <ClInclude Include="..\..\Runtime\Render\YosefGL.h" />
-    <ClInclude Include="..\..\Runtime\RuntimePrefix.h" />
-    <ClInclude Include="..\..\Runtime\Scene\SceneManager.h" />
-    <ClInclude Include="..\..\Runtime\String\StringUtils.h" />
-    <ClInclude Include="..\..\Runtime\Utils\LinkedList.h" />
-    <ClInclude Include="..\..\Runtime\Utils\SmartPtr.h" />
-    <ClInclude Include="..\Win32Common\BaseWindow.h" />
-    <ClInclude Include="..\Win32Common\Control\ButtonControl\ImageButton.h" />
-    <ClInclude Include="..\Win32Common\Control\Control.h" />
-    <ClInclude Include="..\Win32Common\Control\ImageControl\ImageControl.h" />
-    <ClInclude Include="..\Win32Common\Control\ImageControl\ScaledImage.h" />
-    <ClInclude Include="..\Win32Common\Control\ImageControl\SelectableImageControl.h" />
-    <ClInclude Include="..\Win32Common\Control\TextControl\StaticText.h" />
-    <ClInclude Include="..\Win32Common\DoubleBufferedWindow.h" />
-    <ClInclude Include="..\Win32Common\MainWindow.h" />
-    <ClInclude Include="..\Win32Common\RenderContext.h" />
-    <ClInclude Include="..\Win32Common\RenderWindow.h" />
-    <ClInclude Include="..\Win32Common\SplitLine.h" />
-    <ClInclude Include="..\Win32Common\Utils\FolderSelecter.h" />
-    <ClInclude Include="..\Win32Common\WindowEventDispatcher.h" />
-    <ClInclude Include="WinPlayerMainWindow.h" />
-    <ClInclude Include="WinPlayerView.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

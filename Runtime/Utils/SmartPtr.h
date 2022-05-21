@@ -3,13 +3,17 @@ template<typename T>
 class SmartPtr
 {
 public:
-	SmartPtr(T*ptr = nullptr) :mPtr(ptr) { 
-		if (nullptr != mPtr) {
+	SmartPtr(T*ptr = nullptr) :mPtr(ptr) 
+	{ 
+		if (nullptr != mPtr) 
+		{
 			mPtr->retain(); 
 		} 
 	}
-	~SmartPtr() { 
-		if (mPtr != nullptr) {
+	~SmartPtr()
+	{ 
+		if (mPtr != nullptr) 
+		{
 			mPtr->release();
 		} 
 	}
@@ -26,17 +30,22 @@ public:
 	bool operator==(T*ptr) { return mPtr == ptr; }
 	bool operator!=(T*ptr) { return mPtr != ptr; }
 	bool operator==(SmartPtr<T>&r) { return mPtr == r.mPtr; }
-	void operator=(SmartPtr<T>&r) {
-		if (r.mPtr != nullptr) {
+	void operator=(SmartPtr<T>&r)
+	{
+		if (r.mPtr != nullptr) 
+		{
 			r.mPtr->retain();
 		}
-		if (mPtr != nullptr) {
+		if (mPtr != nullptr) 
+		{
 			mPtr->release();
 		}
 		mPtr = r.mPtr;
 	}
-	void operator=(T*ptr) {
-		if (ptr != nullptr) {
+	void operator=(T*ptr)
+	{
+		if (ptr != nullptr)
+		{
 			ptr->retain();
 		}
 		if (mPtr != nullptr)

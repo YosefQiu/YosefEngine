@@ -16,37 +16,33 @@
 #define _00000000_00000000_01000000_00000000 16384
 #define _00000000_00000000_10000000_00000000 32768
 #define YOSEF_DEPRECATED __declspec(deprecated)
-typedef signed char						YOSEFSInt8;
-typedef unsigned char					YOSEFUInt8;
-typedef YOSEFUInt8						YOSEFUByte;
-typedef YOSEFSInt8						YOSEFByte;
-typedef signed short					YOSEFSInt16;
-typedef unsigned short					YOSEFUInt16;
-typedef int								YOSEFSInt32;
-typedef unsigned int					YOSEFUInt32;
-typedef unsigned long long				YOSEFUInt64;
-typedef signed long long				YOSEFSInt64;
-typedef YOSEFSInt32						LuaScriptHandle;
-typedef void*							YOSEFAny;
-
+typedef signed char YOSEFSInt8;
+typedef unsigned char YOSEFUInt8;
+typedef YOSEFUInt8 YOSEFUByte;
+typedef YOSEFSInt8 YOSEFByte;
+typedef signed short YOSEFSInt16;
+typedef unsigned short YOSEFUInt16;
+typedef int YOSEFSInt32;
+typedef unsigned int YOSEFUInt32;
+typedef unsigned long long YOSEFUInt64;
+typedef signed long long YOSEFSInt64;
+typedef YOSEFSInt32 LuaScriptHandle;
+typedef void* YOSEFAny;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <string>
 #include <vector>
 #include <map>
 #include <list>
 #include <fstream>
-
 #include <unordered_map>
 #include <unordered_set>
-
-#define YOSEF_MAX_PATH_LEN 256
+#define YOSEF_MAX_PATH_LEN 260
 #define RELEASE (!_DEBUG)
 #if YOSEF_EDITOR || YOSEF_WIN_PLAYER
 #define YOSEF_PLATFORM_WIN 1
-#include <WinSock2.h>
+//#include <WinSock2.h>
 #include <windows.h>
 #include <dwmapi.h>
 #include <gdiplus.h>
@@ -62,6 +58,9 @@ typedef void*							YOSEFAny;
 using namespace Gdiplus;
 #define NOMINMAX
 #include <time.h>
+#ifndef TCHAR
+#define WCHAR TCHAR
+#endif
 #elif YOSEF_IPHONE || YOSEF_ANDROID || YOSEF_OSX_PLAYER
 #define YOSEF_PLATFORM_UNIX 1
 #include <unistd.h>
@@ -79,16 +78,17 @@ using namespace Gdiplus;
 #include <fcntl.h>
 #ifdef YOSEF_IPHONE
 #include <ifaddrs.h>
-#endif // YOSEF_IPHONE
+#endif
 #ifdef YOSEF_ANDROID
+#include <jni.h>
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 #include <android/native_window_jni.h>
-#include <dirent.h>
-#include <sys/stat.h>
+#include <android/log.h>
+#define  LOG_TAG    "YOSEF"
 #define JAVA_API(return_type) extern "C" JNIEXPORT return_type JNICALL
-#define JFOO(CLS,METHOD) Java_com_YOSEF_battlefire_androidplayer_##CLS##_##METHOD
-#endif // YOSEF_ANDROID
+#define JFOO(CLS,METHOD) Java_cn_battlefire_androidplayer_##CLS##_##METHOD
+#endif
 typedef int64_t __int64;
 #endif
 #if YOSEF_PLATFORM_WIN
@@ -101,4 +101,3 @@ typedef int64_t __int64;
 #else
 #define OPT(return_type) return_type
 #endif
-

@@ -1,14 +1,14 @@
-#### 2022.1.1
+#### 2022.1.1 
 
 -----
-1. 导入[第三方库](./NOTE/External.md)
-2. 创建了入口函数 Entry/main.cpp (extern c -->YosefGo)
-3. RuntimePfefix.h (TODO: 添加其他操作系统的适配）
-4. Utils/ LinkedList.h(添加了单链表和双向链表)
-5. 添加了Log.h / Log.cpp
-6. 添加了消息处理函数
+1. Imported [Third-Party libraries](./NOTE/External.md)
+2. The entry function has been created -> Entry/main.cpp (extern c -->YosefGo)
+3. RuntimePfefix.h (TODO: Add adaptations to other operating systems）
+4. Utils/ LinkedList.h(Added single linked list and two-way linked list)
+5. Added Log.h / Log.cpp
+6. Added Msg handing function
 
-[Winodws端](./NOTE/Windows端.md) [窗口的派生逻辑](./NOTE/窗口的派生逻辑.md) 
+[Windows](./NOTE/Windows端.md) [Derived logic of window](./NOTE/窗口的派生逻辑.md) 
 
 
 
@@ -16,10 +16,10 @@
 
 ---
 
-1. reading paper
-1. add TLSF
-2. add memory pool
-2. add test for memory pool
+1. Read paper
+1. Added TLSF
+2. Added memory pool
+2. Added test for memory pool
 
 [memory pool](./NOTE/内存池管理.md) 
 
@@ -27,9 +27,23 @@
 
 
 
+#### 2022. 1. 20
 
+- Added Object Base Class
+- Added my Smart Ptr Class
 
+- Added my StringUtils Class
+- Added GUID
+- Added some Control
+  - Button Control
+  - Image Control
+  - Text Control
 
+[Object Base Class](./NOTE/Obejct基类.md)  [Smart Ptr Class](./NOTE/智能指针.md)  [GUID](./NOTE/GUID.md) 
+
+![img](./NOTE/testsmartptr.PNG)
+
+![img](./NOTE/testguid.PNG)
 
 ----
 
