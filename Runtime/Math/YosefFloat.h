@@ -5,6 +5,7 @@
 #define YOSEF_PI 3.14159265358979323846264338327950288419716939937510f
 #define YOSEF_PI_DIV_180 0.017453292519943f
 #define YOSEF_180_DIV_PI 57.295779513082f
+#define YOSEF_EPSILON 0.000001f
 #define YOSEF_DEG2RAD(x) ((x) * YOSEF_PI_DIV_180)
 #define YOSEF_RAD2DEG(x) ((x) * YOSEF_180_DIV_PI)
 #define YOSEF_SQUARE(x) (x*x)
@@ -25,29 +26,29 @@ namespace YOSEF {
 	float LinearInterpolate(float from, float to, float t);
 	float CopySignf(float x, float y);
 	template<typename T>
-	T Max(const T & l, const T&r) {
+	T Max(const T& l, const T& r) {
 		return l > r ? l : r;
 	}
 	template<typename T>
-	T Min(const T & l, const T&r) {
+	T Min(const T& l, const T& r) {
 		return l < r ? l : r;
 	}
 	template<typename T>
-	T Max(const T & a, const T&b, const T&c) {
+	T Max(const T& a, const T& b, const T& c) {
 		return ((a) > (b) ? ((a) > (c) ? (a) : (c)) : ((b) > (c) ? (b) : (c)));
 	}
 	template<typename T>
-	T Min(const T & a, const T&b, const T&c) {
+	T Min(const T& a, const T& b, const T& c) {
 		return ((a) < (b) ? ((a) < (c) ? (a) : (c)) : ((b) < (c) ? (b) : (c)));
 	}
 	template<typename T>
-	T Yosef_ABS(const T &a) {
+	T Yosef_ABS(const T& a) {
 		return a >= 0.0f ? a : -a;
 	}
-    inline bool IsNAN(float v){
-        return v!=v;
-    }
-    inline bool IsNAN(double v){
-        return v!=v;
-    }
+	inline bool IsNAN(float v) {
+		return v != v;
+	}
+	inline bool IsNAN(double v) {
+		return v != v;
+	}
 }

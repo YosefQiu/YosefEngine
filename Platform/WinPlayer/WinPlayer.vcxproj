@@ -96,7 +96,7 @@
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\External\Debug;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\External\Lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -161,6 +161,11 @@
     <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
     <ClCompile Include="..\..\Runtime\IO\YosefResource.cpp" />
     <ClCompile Include="..\..\Runtime\LuaEngine\LuaEngine.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\Color.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\ColorHSB.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\Vector2.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\Vector3.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\Vector4.cpp" />
     <ClCompile Include="..\..\Runtime\Math\YosefFloat.cpp" />
     <ClCompile Include="..\..\Runtime\NetWork\SocketUtils.cpp" />
     <ClCompile Include="..\..\Runtime\Plugins\id3\frame.c" />
@@ -251,6 +256,12 @@
     <ClInclude Include="..\..\Runtime\IO\YosefResource.h" />
     <ClInclude Include="..\..\Runtime\IO\YosefResourceType.h" />
     <ClInclude Include="..\..\Runtime\LuaEngine\LuaEngine.h" />
+    <ClInclude Include="..\..\Runtime\Math\Color.h" />
+    <ClInclude Include="..\..\Runtime\Math\ColorHSB.h" />
+    <ClInclude Include="..\..\Runtime\Math\Rect.h" />
+    <ClInclude Include="..\..\Runtime\Math\Vector2.h" />
+    <ClInclude Include="..\..\Runtime\Math\Vector3.h" />
+    <ClInclude Include="..\..\Runtime\Math\Vector4.h" />
     <ClInclude Include="..\..\Runtime\Math\YosefFloat.h" />
     <ClInclude Include="..\..\Runtime\NetWork\SocketUtils.h" />
     <ClInclude Include="..\..\Runtime\Plugins\al\al.h" />

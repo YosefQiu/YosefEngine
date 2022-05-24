@@ -357,6 +357,21 @@
     <ClCompile Include="..\..\Runtime\IO\YosefResource.cpp">
       <Filter>Runtime\IO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Color.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\ColorHSB.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Vector2.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Vector3.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Vector4.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h">
@@ -649,6 +664,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\IO\YosefResourceType.h">
       <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Color.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\ColorHSB.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Rect.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Vector2.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Vector3.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Vector4.h">
+      <Filter>Runtime\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
