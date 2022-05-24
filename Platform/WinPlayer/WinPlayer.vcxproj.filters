@@ -106,6 +106,9 @@
     <Filter Include="Runtime\Math">
       <UniqueIdentifier>{74edcd8b-0b2d-47c9-8e0d-7b5e6291d3a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Render\GL20">
+      <UniqueIdentifier>{19b7c262-c6cc-406d-a420-ddffbe869b78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -371,6 +374,60 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Math\Vector4.cpp">
       <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\BufferObject.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\EBO.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\FBO.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\GLSL.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\RBO.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\Texture2D.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\TextureCube.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\TextureUnit.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\GL20\VBO.cpp">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\Attribute.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\MaterialProperty.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\RenderMisc.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\RenderState.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\VertexData.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Matrix3x3.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\Quaternion.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\YosefMatrix4x4.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\ShaderResource.cpp">
+      <Filter>Runtime\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -682,6 +739,63 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Math\Vector4.h">
       <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\BufferObject.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\EBO.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\FBO.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\GLSL.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\RBO.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\ShaderProperties.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\Texture2D.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\TextureCube.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\TextureUnit.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\GL20\VBO.h">
+      <Filter>Runtime\Render\GL20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\Attribute.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\MaterialProperty.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\RenderMisc.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\RenderState.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\VertexData.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Matrix3x3.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\Quaternion.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\YosefMatrix4x4.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\ShaderResource.h">
+      <Filter>Runtime\IO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
