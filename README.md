@@ -55,7 +55,6 @@
 
 - Added OpenGL Debugger
 - Updated statistics.pl
-
 - Added Plugin in Runtime/Plugins
   - Fixed 
     - _CRT_NONSTDC_NO_DEPRECATE
@@ -66,6 +65,18 @@
 - Added Image Decoder Utils
 
 
+
+#### 2022. 2. 17
+
+----
+
+- Added Serialization
+
+  [Serialize](./NOTE/序列化以及反序列化的方案.md)
+
+  
+
+  ![img](./NOTE/testSerialize.PNG) 
 
 #### Result
 

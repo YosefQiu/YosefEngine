@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prefab.txt.serializer.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\coded_stream.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\common.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\extension_set.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\generated_message_util.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\message_lite.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\once.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\repeated_field.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\wire_format_lite.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream_impl.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream_impl_lite.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Prefab.txt.serializer.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\wire_format_lite_inl.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream_impl.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\zero_copy_stream_impl_lite.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\coded_stream.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\coded_stream_inl.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\common.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\config.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\extension_set.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\generated_message_util.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\hash.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\map-util.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\message_lite.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\once.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\repeated_field.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\stl_util-inl.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Documents\GRAPHIC\1\Engine\External\ProtoBuffer\LibProtoBufferLite\wire_format_lite.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

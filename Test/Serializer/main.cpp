@@ -1,19 +1,21 @@
-## Serialize
+#include <iostream>
+#include "Prefab.txt.serializer.h"
+using namespace std;
 
-## In C++
-
-- Simple serialization
-
-```c++
 class GameObject
 {
 public:
 	char mName[32];
 	int mLayer;
 };
-```
 
-```c++
+class BB
+{
+public:
+	char mName[32];
+	int mLayer;
+};
+
 void SaveToFile(const char* path, void* buffer, int size)
 {
 	FILE* file;
@@ -24,9 +26,7 @@ void SaveToFile(const char* path, void* buffer, int size)
 		fclose(file);
 	}
 }
-```
 
-```c++
 char* GetFileContent(const char* path, int& size)
 {
 	FILE* file;
@@ -46,9 +46,6 @@ char* GetFileContent(const char* path, int& size)
 	return NULL;
 }
 
-```
-
-```c++
 int main(int argc, char* argv[])
 {
 	cout << "Test for Serialize----------" << endl;
@@ -70,24 +67,8 @@ int main(int argc, char* argv[])
 	cout << "BB" << endl;
 	cout << a.mName << " " << a.mLayer << endl;
 	delete[]fileContent;
-	system("pause");
-	return 0;
-}
-```
 
-- proto buffer
-
-  ```txt
-  package XiaoHua;
-  option optimize_for=LITE_RUNTIME;
-  message Prefab{
-  	optional string name=1;
-  	optional int32 layer=2;
-  }
-  ```
-
-```c++
-cout << "Proto buffer-----------" << endl;
+	cout << "Proto buffer-----------" << endl;
 	GameObject aa;
 	memset(aa.mName, 0, 32);
 	strcpy_s(aa.mName, 32, "Yoseffffff");
@@ -95,24 +76,15 @@ cout << "Proto buffer-----------" << endl;
 	XiaoHua::Prefab prefab;
 	prefab.set_name(aa.mName);
 	prefab.set_layer(aa.mLayer);
-	char szBuffer[128] = { 0 };
-	prefab.SerializeToArray(szBuffer, 128);
+	char szBuffer1[128] = { 0};
+	prefab.SerializeToArray(szBuffer1, 128);
+	cout << "Prefabe size " << prefab.ByteSize() << endl;
+	SaveToFile("test1.prefab", szBuffer1, prefab.ByteSize());
 
 	int size1 = 0;
 	char* fileco = GetFileContent("test1.prefab", size);
 	prefab.ParseFromArray(fileco, size);
 	cout << prefab.name() << " " << prefab.layer() << endl;
-```
-
-| protobuf | c++             |
-| -------- | --------------- |
-| bool     | bool            |
-| double   | double          |
-| float    | float           |
-| int32    | int             |
-| uint32   | unsigned int    |
-| int64    | _int64          |
-| string   | std::string     |
-| bytes    | std::string     |
-| enum     | enum            |
-| message  | object of class |
+	system("pause");
+	return 0;
+}

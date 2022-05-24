@@ -4,8 +4,10 @@ WinPlayerMainWindow gMainWindow;
 WinPlayerView* cv;
 int WinPlayerViewWidth = 1280;
 int WinPlayerViewHeight = 720;
+
 extern "C" void InitEngineCore();
 extern "C" void OnQuitEngine();
+
 void ProcessingMessage(MSG& msg) 
 {
 	if (!TranslateAccelerator(msg.hwnd, gMainWindow.mAccel, &msg)) 

@@ -1,0 +1,6 @@
+package XiaoHua;
+option optimize_for=LITE_RUNTIME;
+message Prefab{
+	optional string name=1;
+	optional int32 layer=2;
+}
