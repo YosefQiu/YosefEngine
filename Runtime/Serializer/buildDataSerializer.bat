@@ -14,9 +14,7 @@ protoc --cpp_out=. WindowsPlayer.proto
 protoc --cpp_out=. TextureInfo.proto
 protoc --cpp_out=. Audio.proto
 protoc --cpp_out=. Physics.proto
-protoc --cpp_out=. Script.proto
 protoc --cpp_out=. Particle.proto
 protoc --cpp_out=. Mesh.proto
 protoc --cpp_out=. Avatar.proto
-protoc --cpp_out=. Video.proto
 @pause

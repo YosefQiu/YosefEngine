@@ -70,12 +70,32 @@
 
 ----
 
-- Added Serialization
+- Added Serialization （use Protobuf)
 
-  [Serialize](./NOTE/序列化以及反序列化的方案.md)
-
+  - Animation
+  - Assets
+  - Audio
+  - Avatar
+  - Camera
+  - Color
+  - GameObject
+  - GLSL
+  - ImageSprite
+  - Label
+  - Material
+  - Mesh
+  - Particle
+  - Physics
+  - Scripts
+  - TetureAltas
+  - TextureInfo
+  - Vector
+  - WindowsPlayer
   
-
+  [Serialize](./NOTE/序列化以及反序列化的方案.md)
+  
+  
+  
   ![img](./NOTE/testSerialize.PNG) 
 
 #### Result

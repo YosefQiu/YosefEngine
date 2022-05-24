@@ -1,0 +1,8 @@
+package Serializer;
+option optimize_for = LITE_RUNTIME;
+import "Vector.proto";
+import "Color.proto";
+//runtime file format
+message Curve{
+	repeated Vector4f KeyPoints=1;
+}

@@ -100,6 +100,9 @@
     <Filter Include="Runtime\Graphics">
       <UniqueIdentifier>{75945ed5-5730-40ab-912e-7d32b724b373}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Serializer">
+      <UniqueIdentifier>{36a3a3a7-5828-4bbd-9745-45799d2aca65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -275,6 +278,60 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Graphics\ImageUtils.cpp">
       <Filter>Runtime\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Animation.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Assets.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Audio.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Avatar.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Camera.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Color.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\GameObject.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\GLSL.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\ImageSprite.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Label.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Material.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Mesh.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Particle.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Physics.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\TextureAtlas.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\TextureInfo.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\Vector.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.cpp">
+      <Filter>Runtime\Serializer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -487,6 +544,60 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Base\ClassID.h">
       <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Animation.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Assets.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Audio.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Avatar.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Camera.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Color.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\GameObject.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\GLSL.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\ImageSprite.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Label.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Material.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Mesh.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Particle.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Physics.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\TextureAtlas.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\TextureInfo.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\Vector.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.h">
+      <Filter>Runtime\Serializer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

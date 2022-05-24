@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>YOSEF_WIN_PLAYER;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\;../../;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\;../../;../../External/ProtoBuffer/LibProtoBufferLite;</AdditionalIncludeDirectories>
       <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -181,6 +181,24 @@
     <ClCompile Include="..\..\Runtime\Plugins\xml\luaxml.c" />
     <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c" />
     <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Animation.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Assets.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Audio.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Avatar.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Camera.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Color.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\GameObject.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\GLSL.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\ImageSprite.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Label.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Material.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Mesh.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Particle.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Physics.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\TextureAtlas.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\TextureInfo.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\Vector.serializer.cpp" />
+    <ClCompile Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.cpp" />
     <ClCompile Include="..\..\Runtime\String\FixedString.cpp" />
     <ClCompile Include="..\..\Runtime\String\StringUtils.cpp" />
     <ClCompile Include="..\..\Runtime\Utils\Timer.cpp" />
@@ -252,6 +270,24 @@
     <ClInclude Include="..\..\Runtime\Render\YosefGL.h" />
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h" />
     <ClInclude Include="..\..\Runtime\Scene\SceneManager.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Animation.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Assets.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Audio.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Avatar.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Camera.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Color.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\GameObject.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\GLSL.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\ImageSprite.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Label.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Material.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Mesh.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Particle.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Physics.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\TextureAtlas.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\TextureInfo.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\Vector.serializer.h" />
+    <ClInclude Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.h" />
     <ClInclude Include="..\..\Runtime\String\FixedString.h" />
     <ClInclude Include="..\..\Runtime\String\StringUtils.h" />
     <ClInclude Include="..\..\Runtime\Utils\LinkedList.h" />

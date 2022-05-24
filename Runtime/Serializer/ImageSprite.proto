@@ -1,0 +1,26 @@
+package Serializer;
+option optimize_for = LITE_RUNTIME;
+import "Color.proto";
+message ImageSprite{
+	optional string image_path=1;//image_path
+	optional string sprite_name=2;//sprite_name if atlas mode
+	repeated float size=3;
+	repeated float color=4;
+	repeated float dark_color=5;
+	optional int32 blend_func_src=6;
+	optional int32 blend_func_dst=7;
+	optional string material=8;//guid
+	repeated float add_color=9;
+}
+message ImageSprite9{
+	optional string image_path=1;//image_path
+	optional string sprite_name=2;//sprite_name if atlas mode
+	repeated float size=3;
+	repeated float color=4;
+	repeated float dark_color=5;
+	optional int32 blend_func_src=6;
+	optional int32 blend_func_dst=7;
+	optional string material=8;//guid
+	repeated int32 split=9;
+	repeated float add_color=10;
+}
