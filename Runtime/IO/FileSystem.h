@@ -1,6 +1,7 @@
 #pragma once
 #include "Runtime/RuntimePrefix.h"
-#include "YOSEFData.h"
+#include "YosefData.h"
+#include "Runtime/Plugins/Lua/lua.hpp"
 namespace YOSEF
 {
 	struct FileItemNode
@@ -18,7 +19,7 @@ namespace YOSEF
 #if YOSEF_PLATFORM_WIN
 			wmemset(mName, 0, _MAX_PATH);
 #elif YOSEF_IPHONE
-            memset(mName,0, YOSEF_MAX_PATH_LEN);
+			memset(mName, 0, YOSEF_MAX_PATH_LEN);
 #endif
 			mbIsDir = false;
 		}
@@ -26,9 +27,9 @@ namespace YOSEF
 		{
 			if (mbIsDir)
 			{
-				for (std::list<FileItemNode*>::iterator iter=mChildren.begin();iter!=mChildren.end();iter++)
+				for (std::list<FileItemNode*>::iterator iter = mChildren.begin(); iter != mChildren.end(); iter++)
 				{
-					delete *iter;
+					delete* iter;
 				}
 			}
 		}
@@ -38,24 +39,25 @@ namespace YOSEF
 	{
 	public:
 #if YOSEF_PLATFORM_WIN
-		static void GetFiles(LPCTSTR path, LPCTSTR filter, FileItemNode&root);
-		static void GetFiles(LPCTSTR path, LPCTSTR relativeRootPath, LPCTSTR filter, FileItemNode&root);
+		static void GetFiles(LPCTSTR path, LPCTSTR filter, FileItemNode& root);
+		static void GetFiles(LPCTSTR path, LPCTSTR relativeRootPath, LPCTSTR filter, FileItemNode& root);
 		static bool DeleteDir(LPCTSTR path);
+		static void GetItemListInDirectory(lua_State* L, const char* path);
 #endif
-		static bool SaveData(const char*filePath,Data&data);
+		static bool SaveData(const char* filePath, Data& data);
 		static YOSEFUInt32 FileSizeOf(const char* path);
 		static bool CreateDir(std::string path);
 		static bool CreateFile(std::string path);
-		static bool MoveFile(const char*srcPath, const char*dstPath);
+		static bool MoveFile(const char* srcPath, const char* dstPath);
 		static bool DeleteDir(std::string path);
 		static bool DeleteFileWithPath(std::string path);
-		static bool CopyFile(const char*srcPath,const char*dstPath);
-		static bool MoveFileToTrash(const char*path);
+		static bool CopyFile(const char* srcPath, const char* dstPath);
+		static bool MoveFileToTrash(const char* path);
 		static bool isDirectoryExist(const std::string& dirPath);
-		static bool Exists(const char*path);
+		static bool Exists(const char* path);
 		static bool isAbsolutePath(const std::string& path);
-		static char* LoadFile(const char*path);
-		static void CopyDir(const char*src,const char* dst);
-		static bool LoadDataFromPath(const char*path,Data&data);
+		static char* LoadFile(const char* path);
+		static void CopyDir(const char* src, const char* dst);
+		static bool LoadDataFromPath(const char* path, Data& data);
 	};
 }

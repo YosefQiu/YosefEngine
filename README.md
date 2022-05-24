@@ -98,6 +98,32 @@
   
   ![img](./NOTE/testSerialize.PNG) 
 
+
+
+
+
+#### 2022. 3. 1
+
+-----
+
+- Added Resource Manger
+
+[Resource Manager](./NOTE/资源管理器.md) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Result
 
 ![img](./NOTE/scene1.PNG)

@@ -243,8 +243,7 @@ static block_header_t* block_prev(const block_header_t* block)
 /* Return location of next existing block. */
 static block_header_t* block_next(const block_header_t* block)
 {
-	block_header_t* next = offset_to_block(block_to_ptr(block),
-		block_size(block) - block_header_overhead);
+	block_header_t* next = offset_to_block(block_to_ptr(block), block_size(block) - block_header_overhead);
 	tlsf_assert(!block_is_last(block));
 	return next;
 }
@@ -323,7 +322,7 @@ static void mapping_insert(size_t size, int* fli, int* sli)
 	}
 	else
 	{
-		fl = tlsf_fls_sizet(size);
+		fl = tlsf_fls_sizet(size);//find last set
 		sl = tlsf_cast(int, size >> (fl - SL_INDEX_COUNT_LOG2)) ^ (1 << SL_INDEX_COUNT_LOG2);
 		fl -= (FL_INDEX_SHIFT - 1);
 	}
@@ -449,8 +448,7 @@ static int block_can_split(block_header_t* block, size_t size)
 static block_header_t* block_split(block_header_t* block, size_t size)
 {
 	/* Calculate the amount of space left in the remaining block. */
-	block_header_t* remaining =
-		offset_to_block(block_to_ptr(block), size - block_header_overhead);
+	block_header_t* remaining = offset_to_block(block_to_ptr(block), size - block_header_overhead);
 
 	const size_t remain_size = block_size(block) - (size + block_header_overhead);
 

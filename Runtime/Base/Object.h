@@ -1,6 +1,7 @@
 #pragma once
 #include "Runtime/RuntimePrefix.h"
 #include "Runtime/LuaEngine/LuaEngine.h"
+#include "Runtime/String/FixedString.h"
 #define DEFINE_TYPE_ID(T,ID) const int TYPEID_##T=ID;
 #define YOSEF_TYPE_ID(T) TYPEID_##T
 #include "ClassID.h"
@@ -54,12 +55,13 @@ ptr->mLuaData = luaL_ref(L, LUA_REGISTRYINDEX);\
 namespace YOSEF {
 	class Object {
 	public:
-		Object(int autorelease = 1);
+		Object(int autorelease = 1, int name_len = 64);
 		virtual ~Object();
 	public:
 		YOSEFSInt32 mReferenceCount;
 		int mLuaData;
 		int mObjectMask;
+		FixedString mName;
 	public:
 		void retain();
 		void release();

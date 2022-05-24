@@ -1,6 +1,10 @@
 #include "Object.h"
 namespace YOSEF {
-	Object::Object(int autorelease) :mReferenceCount(0), mObjectMask(autorelease) {
+	Object::Object(int autorelease, int name_len) :mReferenceCount(0), mObjectMask(autorelease) {
+		if (name_len > 0) {
+			mName.Resize(name_len);
+			mName = "Object";
+		}
 	}
 
 	Object::~Object() {

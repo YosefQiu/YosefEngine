@@ -151,10 +151,17 @@
     <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
     <ClCompile Include="..\..\Runtime\Graphics\ImageUtils.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\AndroidAssetReader.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\AudioResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileItem.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\ImageResource.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\ResourceManager.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\TextureResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\YosefResource.cpp" />
     <ClCompile Include="..\..\Runtime\LuaEngine\LuaEngine.cpp" />
+    <ClCompile Include="..\..\Runtime\Math\YosefFloat.cpp" />
     <ClCompile Include="..\..\Runtime\NetWork\SocketUtils.cpp" />
     <ClCompile Include="..\..\Runtime\Plugins\id3\frame.c" />
     <ClCompile Include="..\..\Runtime\Plugins\id3\header.c" />
@@ -232,10 +239,19 @@
     <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
     <ClInclude Include="..\..\Runtime\Graphics\ImageUtils.h" />
+    <ClInclude Include="..\..\Runtime\IO\AndroidAssetReader.h" />
+    <ClInclude Include="..\..\Runtime\IO\AudioResource.h" />
     <ClInclude Include="..\..\Runtime\IO\FileItem.h" />
     <ClInclude Include="..\..\Runtime\IO\FileSystem.h" />
+    <ClInclude Include="..\..\Runtime\IO\ImageResource.h" />
+    <ClInclude Include="..\..\Runtime\IO\IOSBundleManager.h" />
+    <ClInclude Include="..\..\Runtime\IO\ResourceManager.h" />
+    <ClInclude Include="..\..\Runtime\IO\TextureResource.h" />
     <ClInclude Include="..\..\Runtime\IO\YosefData.h" />
+    <ClInclude Include="..\..\Runtime\IO\YosefResource.h" />
+    <ClInclude Include="..\..\Runtime\IO\YosefResourceType.h" />
     <ClInclude Include="..\..\Runtime\LuaEngine\LuaEngine.h" />
+    <ClInclude Include="..\..\Runtime\Math\YosefFloat.h" />
     <ClInclude Include="..\..\Runtime\NetWork\SocketUtils.h" />
     <ClInclude Include="..\..\Runtime\Plugins\al\al.h" />
     <ClInclude Include="..\..\Runtime\Plugins\al\alc.h" />
@@ -313,6 +329,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinPlayer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Runtime\IO\IOSBundleManager.mm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

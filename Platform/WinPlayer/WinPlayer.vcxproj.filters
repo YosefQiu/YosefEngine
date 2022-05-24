@@ -103,6 +103,9 @@
     <Filter Include="Runtime\Serializer">
       <UniqueIdentifier>{36a3a3a7-5828-4bbd-9745-45799d2aca65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Math">
+      <UniqueIdentifier>{74edcd8b-0b2d-47c9-8e0d-7b5e6291d3a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -332,6 +335,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.cpp">
       <Filter>Runtime\Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Math\YosefFloat.cpp">
+      <Filter>Runtime\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\AndroidAssetReader.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\AudioResource.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\ImageResource.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\ResourceManager.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\TextureResource.cpp">
+      <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\YosefResource.cpp">
+      <Filter>Runtime\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -599,10 +623,42 @@
     <ClInclude Include="..\..\Runtime\Serializer\WindowsPlayer.serializer.h">
       <Filter>Runtime\Serializer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Runtime\Math\YosefFloat.h">
+      <Filter>Runtime\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\AndroidAssetReader.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\AudioResource.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\ImageResource.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\IOSBundleManager.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\ResourceManager.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\TextureResource.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\YosefResource.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\YosefResourceType.h">
+      <Filter>Runtime\IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinPlayer.rc">
       <Filter>Runtime</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Runtime\IO\IOSBundleManager.mm">
+      <Filter>Runtime\IO</Filter>
+    </None>
   </ItemGroup>
 </Project>

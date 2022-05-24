@@ -3,15 +3,15 @@
 #include "Runtime/Debugger/Log.h"
 namespace YOSEF
 {
-	bool FileSystem::SaveData(const char*filePath, Data&data)
+	bool FileSystem::SaveData(const char* filePath, Data& data)
 	{
 		//create dir if needed
 		//FileSystem::CreateFile(filePath);
-		FILE *pFile = NULL;
+		FILE* pFile = NULL;
 		pFile = fopen(filePath, "wb");
 		if (pFile != NULL)
 		{
-			if (data.mDataLen > 0){
+			if (data.mDataLen > 0) {
 				fwrite(data.mData, sizeof(char), data.mDataLen, pFile);
 			}
 			fclose(pFile);
@@ -19,43 +19,45 @@ namespace YOSEF
 		}
 		else
 		{
-			Error("fopen error %d: FileSystem::SaveData cannot open file %s",errno, filePath);
+			Error("fopen error %d: FileSystem::SaveData cannot open file %s", errno, filePath);
 			return false;
 		}
 		return false;
 	}
 
-	bool FileSystem::LoadDataFromPath(const char*path, Data&data){
-		if (Exists(path)){
-			FILE *pFile = fopen(path, "rb");
-			if (pFile){
+	bool FileSystem::LoadDataFromPath(const char* path, Data& data) {
+		if (Exists(path)) {
+			FILE* pFile = fopen(path, "rb");
+			if (pFile) {
 				fseek(pFile, 0, SEEK_END);
 				int file_size = ftell(pFile);
-				if (file_size > 0){
+				if (file_size > 0) {
 					rewind(pFile);
 					data.SetBufferSize(file_size + 1);
 					data.mDataLen = fread(data.mData, 1, file_size, pFile);
 					data.mData[file_size] = '\0';
 					fclose(pFile);
 					return true;
-				}else{
-					Error("fread error : FileSystem::LoadDataFromPath  file %s : data size %ld",path, file_size);
+				}
+				else {
+					Error("fread error : FileSystem::LoadDataFromPath  file %s : data size %ld", path, file_size);
 					data.mDataLen = 0;
 					fclose(pFile);
 					return false;
 				}
 				return true;
-			}else{
+			}
+			else {
 				return false;
 			}
 		}
 		return false;
 	}
 
-	char*	FileSystem::LoadFile(const char *filePath)
+	char* FileSystem::LoadFile(const char* filePath)
 	{
-		FILE *pFile = NULL;
-		char *pData = NULL;
+		FILE* pFile = NULL;
+		char* pData = NULL;
 		YOSEFSInt32 count = 0;
 		if (filePath != NULL)
 		{
@@ -67,7 +69,7 @@ namespace YOSEF
 				rewind(pFile);
 				if (count > 0)
 				{
-					pData = (char *)malloc(sizeof(char) * (count + 1));
+					pData = (char*)malloc(sizeof(char) * (count + 1));
 					count = fread(pData, sizeof(char), count, pFile);
 					pData[count] = '\0';
 				}
@@ -80,7 +82,7 @@ namespace YOSEF
 	YOSEFUInt32 FileSystem::FileSizeOf(const char* path)
 	{
 		YOSEFUInt32 fileLen = 0;
-		FILE *pFile = NULL;
+		FILE* pFile = NULL;
 		if (path != NULL)
 		{
 			pFile = fopen(path, "rb");
@@ -95,7 +97,7 @@ namespace YOSEF
 		return fileLen;
 	}
 #if YOSEF_PLATFORM_WIN
-	void FileSystem::GetFiles(LPCTSTR path, LPCTSTR relative, LPCTSTR filter, FileItemNode&root)
+	void FileSystem::GetFiles(LPCTSTR path, LPCTSTR relative, LPCTSTR filter, FileItemNode& root)
 	{
 		TCHAR targetPath[_MAX_PATH];
 		TCHAR relativeRootPath[_MAX_PATH];
@@ -130,9 +132,9 @@ namespace YOSEF
 					//lstrcat(filename, L"\\");
 					//lstrcat(filename, fileinfo.name);
 					//wprintf(L"find file %s", filename);
-					if (StringUtils::EndWith(fileinfo.name,L".meta")==false)
+					if (StringUtils::EndWith(fileinfo.name, L".meta") == false)
 					{
-						FileItemNode*item = new FileItemNode;
+						FileItemNode* item = new FileItemNode;
 						lstrcpy(item->mName, fileinfo.name);
 						item->mbIsDir = false;
 						item->mLastWriteTime = fileinfo.time_write;
@@ -158,8 +160,8 @@ namespace YOSEF
 				if ((fileinfo.attrib & _A_SUBDIR))
 				{
 					if (lstrcmp(fileinfo.name, L".") != 0 &&
-						lstrcmp(fileinfo.name, L"..") != 0&&
-						fileinfo.name[0]!='.')
+						lstrcmp(fileinfo.name, L"..") != 0 &&
+						fileinfo.name[0] != '.')
 					{
 						TCHAR subdir[_MAX_PATH];
 						wmemset(subdir, 0, _MAX_PATH);
@@ -171,7 +173,7 @@ namespace YOSEF
 						lstrcat(relativeRootPath, L"/");
 						lstrcat(relativeRootPath, fileinfo.name);
 
-						FileItemNode*item = new FileItemNode;
+						FileItemNode* item = new FileItemNode;
 						lstrcpy(item->mName, fileinfo.name);
 						item->mbIsDir = true;
 						item->mLastWriteTime = fileinfo.time_write;
@@ -185,7 +187,7 @@ namespace YOSEF
 		}
 	}
 
-	void FileSystem::GetFiles(LPCTSTR path, LPCTSTR filter, FileItemNode&root)
+	void FileSystem::GetFiles(LPCTSTR path, LPCTSTR filter, FileItemNode& root)
 	{
 		TCHAR targetPath[_MAX_PATH];
 		TCHAR originalWorkingDir[_MAX_PATH];
@@ -194,27 +196,57 @@ namespace YOSEF
 		if (path[1] != L':')
 		{
 			_wgetcwd(targetPath, _MAX_PATH);
-			lstrcpy(originalWorkingDir,targetPath);
+			lstrcpy(originalWorkingDir, targetPath);
 			lstrcat(targetPath, L"\\");
 			lstrcat(targetPath, path);
 		}
 		GetFiles(targetPath, path, filter, root);
 		//由于遍历的时候会改变当前的工作目录，所以遍历完了之后要回到原先的工作目录
 		_wchdir(originalWorkingDir);
+	}void FileSystem::GetItemListInDirectory(lua_State* L, const char* path) {
+		long hFile;
+		_finddata_t fileinfo;
+		int nIndex = 1;
+		char szTemp[256] = { 0 };
+		strcpy(szTemp, path);
+		if (StringUtils::EndWith(szTemp, "/")) {
+			strcat(szTemp, "*");
+		}
+		else {
+			strcat(szTemp, "/*");
+		}
+		if ((hFile = _findfirst(szTemp, &fileinfo)) != -1) {
+			do {
+				if (fileinfo.name[0] != '.') {
+					lua_pushinteger(L, nIndex++);
+					lua_newtable(L);
+					TCHAR unicode_temp[256] = { 0 };
+					char utf8_name[256] = { 0 };
+					StringUtils::ASCIIToUnicode(fileinfo.name, unicode_temp);
+					StringUtils::UnicodeToUTF8(unicode_temp, utf8_name);
+					lua_pushstring(L, utf8_name);
+					lua_setfield(L, -2, "name");
+					lua_pushboolean(L, (fileinfo.attrib & _A_SUBDIR) != 0);
+					lua_setfield(L, -2, "is_dir");
+					lua_settable(L, -3);
+				}
+			} while (_findnext(hFile, &fileinfo) == 0);
+			_findclose(hFile);
+		}
 	}
 #endif
 	bool FileSystem::isAbsolutePath(const std::string& path)
 	{
 #if YOSEF_PLATFORM_WIN
-		return (path[1]==':');
+		return (path[1] == ':');
 #elif YOSEF_PLATFORM_UNIX
 		return (path[0] == '/');
 #endif
 	}
 
-	bool FileSystem::Exists(const char*path)
+	bool FileSystem::Exists(const char* path)
 	{
-		if (path==nullptr)
+		if (path == nullptr)
 		{
 			return false;
 		}
@@ -232,11 +264,11 @@ namespace YOSEF
 	bool FileSystem::isDirectoryExist(const std::string& dirPath)
 	{
 #if YOSEF_PLATFORM_WIN
-		if (_access(dirPath.c_str(),0x00)!=0)
+		if (_access(dirPath.c_str(), 0x00) != 0)
 #elif YOSEF_IPHONE
-        if (access(dirPath.c_str(),0x00)!=0)
+		if (access(dirPath.c_str(), 0x00) != 0)
 #endif
-        {//not exist
+		{//not exist
 			return false;
 		}
 		return true;
@@ -246,7 +278,7 @@ namespace YOSEF
 	bool FileSystem::DeleteDir(LPCTSTR path)
 	{
 		SHFILEOPSTRUCT FileOp;
-		FileOp.fFlags = FOF_NOCONFIRMATION|FOF_ALLOWUNDO;
+		FileOp.fFlags = FOF_NOCONFIRMATION | FOF_ALLOWUNDO;
 		FileOp.hNameMappings = NULL;
 		FileOp.hwnd = NULL;
 		FileOp.lpszProgressTitle = NULL;
@@ -259,7 +291,7 @@ namespace YOSEF
 	}
 #endif
 
-	bool FileSystem::CopyFile(const char*srcPath, const char*dstPath)
+	bool FileSystem::CopyFile(const char* srcPath, const char* dstPath)
 	{
 #if YOSEF_PLATFORM_WIN
 		char srcTemp[256];
@@ -278,13 +310,13 @@ namespace YOSEF
 		op.fFlags = FOF_NOCONFIRMATION | FOF_NOERRORUI | FOF_SILENT | FOF_ALLOWUNDO;
 		op.hNameMappings = NULL;
 		op.lpszProgressTitle = NULL;
-		int ret=SHFileOperationA(&op);
+		int ret = SHFileOperationA(&op);
 		return ret == 0;
 #endif
 		return false;
 	}
 
-	bool FileSystem::MoveFile(const char*srcPath, const char*dstPath)
+	bool FileSystem::MoveFile(const char* srcPath, const char* dstPath)
 	{
 #if YOSEF_EDITOR
 		char srcTemp[256];
@@ -309,7 +341,7 @@ namespace YOSEF
 		return false;
 	}
 
-	bool FileSystem::MoveFileToTrash(const char*path)
+	bool FileSystem::MoveFileToTrash(const char* path)
 	{
 #if YOSEF_PLATFORM_WIN
 		SHFILEOPSTRUCTA op;
@@ -338,7 +370,7 @@ namespace YOSEF
 		op.wFunc = FO_DELETE;
 		op.pFrom = szBuffer;
 		op.pTo = NULL;
-		op.fFlags = FOF_NOCONFIRMATION | FOF_NOERRORUI | FOF_SILENT ;
+		op.fFlags = FOF_NOCONFIRMATION | FOF_NOERRORUI | FOF_SILENT;
 		op.hNameMappings = NULL;
 		op.lpszProgressTitle = NULL;
 		SHFileOperationA(&op);
@@ -374,11 +406,11 @@ namespace YOSEF
 		// Split the path
 		size_t found = path.find_last_of("/");
 		std::string subpath = path.substr(0, found);
-		if (isDirectoryExist(subpath)==false)
+		if (isDirectoryExist(subpath) == false)
 		{
 			CreateDir(subpath);
 		}
-		std::fstream file(path,std::ios::out);
+		std::fstream file(path, std::ios::out);
 		file.close();
 		return true;
 	}
@@ -433,21 +465,22 @@ namespace YOSEF
 		}
 		return true;
 #elif YOSEF_PLATFORM_UNIX
-		DIR *dir = NULL;
+		DIR* dir = NULL;
 		// Create path recursively
 		subpath = "";
-		for (int i = 0; i < dirs.size(); ++i){
+		for (int i = 0; i < dirs.size(); ++i) {
 			subpath += dirs[i];
 			dir = opendir(subpath.c_str());
-			if (!dir){
+			if (!dir) {
 				// directory doesn't exist, should create a new one
 				int ret = mkdir(subpath.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-				if (ret != 0 && (errno != EEXIST)){
+				if (ret != 0 && (errno != EEXIST)) {
 					// current directory can not be created, sub directories can not be created too
 					// should return
 					return false;
 				}
-			}else{
+			}
+			else {
 				// directory exists, should close opened dir
 				closedir(dir);
 			}
@@ -456,7 +489,7 @@ namespace YOSEF
 #endif
 	}
 
-	void FileSystem::CopyDir(const char*src, const char* dst)
+	void FileSystem::CopyDir(const char* src, const char* dst)
 	{
 #if YOSEF_PLATFORM_WIN
 		SHFILEOPSTRUCTA sfo;
@@ -472,7 +505,7 @@ namespace YOSEF
 		StringUtils::ToWindowsPath(dstPath);
 		strcat(srcPath, "\0\0");
 		strcat(dstPath, "\0\0");
-		sfo.wFunc = FO_COPY; 
+		sfo.wFunc = FO_COPY;
 		sfo.pFrom = srcPath;// "Assets\0\0";
 		sfo.pTo = dstPath;// "IOSbuild/InnerAssets\0";
 		sfo.fFlags = FOF_SILENT | FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR;
