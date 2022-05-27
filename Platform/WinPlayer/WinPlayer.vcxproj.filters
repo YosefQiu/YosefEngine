@@ -109,6 +109,9 @@
     <Filter Include="Runtime\Render\GL20">
       <UniqueIdentifier>{19b7c262-c6cc-406d-a420-ddffbe869b78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Geometry">
+      <UniqueIdentifier>{068f6a2d-59fb-4460-a9d4-279c51e8524a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -428,6 +431,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\IO\ShaderResource.cpp">
       <Filter>Runtime\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\Bezier.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\CubicBezier.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\Curve.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\Ray.cpp">
+      <Filter>Runtime\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -796,6 +811,21 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\IO\ShaderResource.h">
       <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Bezier.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\CubicBezier.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Curve.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Point3.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Ray.h">
+      <Filter>Runtime\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

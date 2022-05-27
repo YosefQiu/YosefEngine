@@ -23,7 +23,7 @@ public:
 	{
 		cout << "Base()" << endl;
 	}
-	~Base()
+	virtual ~Base()
 	{
 		cout << "~Base()" << endl;
 	}

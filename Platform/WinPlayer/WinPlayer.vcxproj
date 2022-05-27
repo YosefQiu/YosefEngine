@@ -150,6 +150,10 @@
     <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
+    <ClCompile Include="..\..\Runtime\Geometry\Bezier.cpp" />
+    <ClCompile Include="..\..\Runtime\Geometry\CubicBezier.cpp" />
+    <ClCompile Include="..\..\Runtime\Geometry\Curve.cpp" />
+    <ClCompile Include="..\..\Runtime\Geometry\Ray.cpp" />
     <ClCompile Include="..\..\Runtime\Graphics\ImageUtils.cpp" />
     <ClCompile Include="..\..\Runtime\IO\AndroidAssetReader.cpp" />
     <ClCompile Include="..\..\Runtime\IO\AudioResource.cpp" />
@@ -261,6 +265,11 @@
     <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
+    <ClInclude Include="..\..\Runtime\Geometry\Bezier.h" />
+    <ClInclude Include="..\..\Runtime\Geometry\CubicBezier.h" />
+    <ClInclude Include="..\..\Runtime\Geometry\Curve.h" />
+    <ClInclude Include="..\..\Runtime\Geometry\Point3.h" />
+    <ClInclude Include="..\..\Runtime\Geometry\Ray.h" />
     <ClInclude Include="..\..\Runtime\Graphics\ImageUtils.h" />
     <ClInclude Include="..\..\Runtime\IO\AndroidAssetReader.h" />
     <ClInclude Include="..\..\Runtime\IO\AudioResource.h" />
