@@ -121,6 +121,15 @@
     <Filter Include="Runtime\Render\Light">
       <UniqueIdentifier>{f976da4c-91c4-4628-a0d5-00fce05e2488}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\3D">
+      <UniqueIdentifier>{3106b002-9606-489c-9926-b0a973db4799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Builtin">
+      <UniqueIdentifier>{c9cc2000-b1ab-490a-9e01-16c83ff99967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Builtin\3D">
+      <UniqueIdentifier>{5a884c63-9e94-4e56-86da-b4a5d0b90d3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -544,6 +553,18 @@
       <Filter>Runtime\Render</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Render\UniformUpdater.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\3D\Mesh.cpp">
+      <Filter>Runtime\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\3D\Model.cpp">
+      <Filter>Runtime\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Builtin\3D\SkyBox.cpp">
+      <Filter>Runtime\Builtin\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\IndexBuffer.cpp">
       <Filter>Runtime\Render</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1017,6 +1038,18 @@
       <Filter>Runtime\Render</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Render\UniformUpdater.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\3D\Mesh.h">
+      <Filter>Runtime\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\3D\Model.h">
+      <Filter>Runtime\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Builtin\3D\SkyBox.h">
+      <Filter>Runtime\Builtin\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\IndexBuffer.h">
       <Filter>Runtime\Render</Filter>
     </ClInclude>
   </ItemGroup>

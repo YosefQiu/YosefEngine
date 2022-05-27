@@ -3,11 +3,7 @@
 #include <string.h>
 #include "Runtime/Plugins/al/al.h"
 #include "Runtime/Plugins/al/alc.h"
-#if YOSEF_EDITOR
-#include "Runtime/Plugins/mpg123/mpg123.h"
-#pragma comment(lib,"OpenAL32.lib")
-#endif
-#if YOSEF_WIN_PLAYER
+#if YOSEF_PLATFORM_WIN
 #pragma comment(lib,"OpenAL32.lib")
 #endif
 #include "AudioDebugger.h"

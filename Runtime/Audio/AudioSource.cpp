@@ -116,7 +116,7 @@ namespace YOSEF{
 			short *ad = (short*)data;
 			for (int i = 0; i < dataCount; ++i) {
 				int temp = ad[i];
-				temp = int(temp*mVolume);//实现把声音扩大5倍
+				temp = int(temp*mVolume);
 				if (temp > 32767) {
 					temp = 32767;
 				}
