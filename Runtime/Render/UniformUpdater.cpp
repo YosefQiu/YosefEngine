@@ -1,6 +1,7 @@
 #include "UniformUpdater.h"
 #include "MaterialProperty.h"
 #include "Runtime/Render/RenderState.h"
+#include "Runtime/Debugger/Debugger.h"
 #include "Camera.h"
 namespace YOSEF{
 	UniformUpdater::UniformUpdater(SetUniformFoo foo,GLint loc,void*userData):mLocation(loc),mFoo(foo),mUserData(userData){

@@ -1,12 +1,11 @@
 #include "SceneManager.h"
-#include "Runtime/Render/YOSEFGL.h"
+#include "Runtime/Render/YosefGL.h"
 #include "Runtime/Debugger/Log.h"
 #include "Runtime/Debugger/Debugger.h"
 #include "External/LibCurl/include/curl/curl.h"
 extern "C" void InitMemory();
 static YOSEF::SceneManager *sSceneManager;
-namespace YOSEF 
-{
+namespace YOSEF {
 	//for editor end
 	SceneManager::SceneManager() :mFullResolutionWidth(0), mFullResolutionHeight(0), 
 		mMaxFPS(0), mFixedTimePerFrame(0.0f) {
@@ -27,9 +26,35 @@ namespace YOSEF
 	void SceneManager::Stop() {
 		mbIsPlaying = false;
 	}
+	void SceneManager::AddCamera(Camera*camera) {
+		mCameras.push_back(camera);
+	}
+	void SceneManager::RemoveCamera(Camera*camera) {
+		auto iter = mCameras.begin();
+		auto iterEnd = mCameras.end();
+		for (; iter != iterEnd; ++iter) {
+			if (*iter == camera) {
+				mCameras.erase(iter);
+				break;
+			}
+		}
+	}
+	void SceneManager::AddOffScreenCamera(Camera*camera) {
+		mOffScreenCameras.push_back(camera);
+	}
+	void SceneManager::RemoveOffScreenCamera(Camera*camera) {
+		auto iter = mOffScreenCameras.begin();
+		auto iterEnd = mOffScreenCameras.end();
+		for (; iter != iterEnd; ++iter) {
+			if (*iter == camera) {
+				mOffScreenCameras.erase(iter);
+				break;
+			}
+		}
+	}
 	void SceneManager::Render() {
 		OGL_CALL(glClearColor(0.0f, 0.34f, 0.57f, 1.0f));
-		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT));
 	}
 	void SceneManager::GetCanvasSize(int&width, int&height) {
 		width = mFullResolutionWidth;

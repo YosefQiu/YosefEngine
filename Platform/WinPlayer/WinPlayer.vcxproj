@@ -144,9 +144,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Runtime\2D\Component2D.cpp" />
+    <ClCompile Include="..\..\Runtime\2D\FullScreenQuad.cpp" />
+    <ClCompile Include="..\..\Runtime\2D\ImageSprite.cpp" />
+    <ClCompile Include="..\..\Runtime\2D\ImageSprite9.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
+    <ClCompile Include="..\..\Runtime\Audio\AudioBuffer.cpp" />
+    <ClCompile Include="..\..\Runtime\Audio\AudioDebugger.cpp" />
+    <ClCompile Include="..\..\Runtime\Audio\AudioDevice.cpp" />
+    <ClCompile Include="..\..\Runtime\Audio\AudioListener.cpp" />
+    <ClCompile Include="..\..\Runtime\Audio\AudioSource.cpp" />
+    <ClCompile Include="..\..\Runtime\Base\Component.cpp" />
     <ClCompile Include="..\..\Runtime\Base\Object.cpp" />
+    <ClCompile Include="..\..\Runtime\Base\ScriptObject.cpp" />
+    <ClCompile Include="..\..\Runtime\Base\Transform.cpp" />
     <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
@@ -168,6 +180,7 @@
     <ClCompile Include="..\..\Runtime\IO\TextureResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\YosefData.cpp" />
     <ClCompile Include="..\..\Runtime\IO\YosefResource.cpp" />
+    <ClCompile Include="..\..\Runtime\LuaEngine\LuaCallback.cpp" />
     <ClCompile Include="..\..\Runtime\LuaEngine\LuaEngine.cpp" />
     <ClCompile Include="..\..\Runtime\Math\Color.cpp" />
     <ClCompile Include="..\..\Runtime\Math\ColorHSB.cpp" />
@@ -204,6 +217,7 @@
     <ClCompile Include="..\..\Runtime\Plugins\xml\luaxml.c" />
     <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c" />
     <ClCompile Include="..\..\Runtime\Render\Attribute.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\Camera.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\BufferObject.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\EBO.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\FBO.cpp" />
@@ -213,11 +227,23 @@
     <ClCompile Include="..\..\Runtime\Render\GL20\TextureCube.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\TextureUnit.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\VBO.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\Light\Light.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\Material.cpp" />
     <ClCompile Include="..\..\Runtime\Render\MaterialProperty.cpp" />
     <ClCompile Include="..\..\Runtime\Render\RenderMisc.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\RenderPass.cpp" />
     <ClCompile Include="..\..\Runtime\Render\RenderState.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\Shader.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\UniformUpdater.cpp" />
     <ClCompile Include="..\..\Runtime\Render\VertexData.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\EventDispatcher.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\GameObject.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectPhysicsComponent.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectRenderComponent.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectScriptComponent.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\RendererManager.cpp" />
     <ClCompile Include="..\..\Runtime\Scene\SceneManager.cpp" />
+    <ClCompile Include="..\..\Runtime\Scene\TouchEvent.cpp" />
     <ClCompile Include="..\..\Runtime\Serializer\Animation.serializer.cpp" />
     <ClCompile Include="..\..\Runtime\Serializer\Assets.serializer.cpp" />
     <ClCompile Include="..\..\Runtime\Serializer\Audio.serializer.cpp" />
@@ -261,12 +287,24 @@
     <ClCompile Include="WinPlayerView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Runtime\2D\Component2D.h" />
+    <ClInclude Include="..\..\Runtime\2D\FullScreenQuad.h" />
+    <ClInclude Include="..\..\Runtime\2D\ImageSprite.h" />
+    <ClInclude Include="..\..\Runtime\2D\ImageSprite9.h" />
     <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h" />
     <ClInclude Include="..\..\Runtime\Allocator\MemoryLabel.h" />
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsf.h" />
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
+    <ClInclude Include="..\..\Runtime\Audio\AudioBuffer.h" />
+    <ClInclude Include="..\..\Runtime\Audio\AudioDebugger.h" />
+    <ClInclude Include="..\..\Runtime\Audio\AudioDevice.h" />
+    <ClInclude Include="..\..\Runtime\Audio\AudioListener.h" />
+    <ClInclude Include="..\..\Runtime\Audio\AudioSource.h" />
     <ClInclude Include="..\..\Runtime\Base\ClassID.h" />
+    <ClInclude Include="..\..\Runtime\Base\Component.h" />
     <ClInclude Include="..\..\Runtime\Base\Object.h" />
+    <ClInclude Include="..\..\Runtime\Base\ScriptObject.h" />
+    <ClInclude Include="..\..\Runtime\Base\Transform.h" />
     <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
@@ -293,6 +331,7 @@
     <ClInclude Include="..\..\Runtime\IO\YosefData.h" />
     <ClInclude Include="..\..\Runtime\IO\YosefResource.h" />
     <ClInclude Include="..\..\Runtime\IO\YosefResourceType.h" />
+    <ClInclude Include="..\..\Runtime\LuaEngine\LuaCallback.h" />
     <ClInclude Include="..\..\Runtime\LuaEngine\LuaEngine.h" />
     <ClInclude Include="..\..\Runtime\Math\Color.h" />
     <ClInclude Include="..\..\Runtime\Math\ColorHSB.h" />
@@ -336,6 +375,7 @@
     <ClInclude Include="..\..\Runtime\Plugins\socket\luasocket.h" />
     <ClInclude Include="..\..\Runtime\Plugins\socket\mime.h" />
     <ClInclude Include="..\..\Runtime\Render\Attribute.h" />
+    <ClInclude Include="..\..\Runtime\Render\Camera.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\BufferObject.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\EBO.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\FBO.h" />
@@ -346,13 +386,22 @@
     <ClInclude Include="..\..\Runtime\Render\GL20\TextureCube.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\TextureUnit.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\VBO.h" />
+    <ClInclude Include="..\..\Runtime\Render\Light\Light.h" />
+    <ClInclude Include="..\..\Runtime\Render\Material.h" />
     <ClInclude Include="..\..\Runtime\Render\MaterialProperty.h" />
     <ClInclude Include="..\..\Runtime\Render\RenderMisc.h" />
+    <ClInclude Include="..\..\Runtime\Render\RenderPass.h" />
     <ClInclude Include="..\..\Runtime\Render\RenderState.h" />
+    <ClInclude Include="..\..\Runtime\Render\Shader.h" />
+    <ClInclude Include="..\..\Runtime\Render\UniformUpdater.h" />
     <ClInclude Include="..\..\Runtime\Render\VertexData.h" />
     <ClInclude Include="..\..\Runtime\Render\YosefGL.h" />
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h" />
+    <ClInclude Include="..\..\Runtime\Scene\EventDispatcher.h" />
+    <ClInclude Include="..\..\Runtime\Scene\GameObject.h" />
+    <ClInclude Include="..\..\Runtime\Scene\RendererManager.h" />
     <ClInclude Include="..\..\Runtime\Scene\SceneManager.h" />
+    <ClInclude Include="..\..\Runtime\Scene\TouchEvent.h" />
     <ClInclude Include="..\..\Runtime\Serializer\Animation.serializer.h" />
     <ClInclude Include="..\..\Runtime\Serializer\Assets.serializer.h" />
     <ClInclude Include="..\..\Runtime\Serializer\Audio.serializer.h" />

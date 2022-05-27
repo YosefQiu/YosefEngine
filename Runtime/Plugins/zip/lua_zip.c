@@ -751,7 +751,7 @@ LUALIB_API int luaopen_brimworks_zip(lua_State* L) {
         { "OR",       S_OR },
         { NULL, NULL }
     };
-    luaL_register(L, "Alice.Zip", fns);
+    luaL_register(L, "YOSEF.Zip", fns);
 
 #define EXPORT_CONSTANT(NAME) \
     lua_pushnumber(L, ZIP_##NAME); \

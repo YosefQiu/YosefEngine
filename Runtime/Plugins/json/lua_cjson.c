@@ -46,7 +46,7 @@
 #include "fpconv.h"
 
 #ifndef CJSON_MODNAME
-#define CJSON_MODNAME   "Alice.JSON"
+#define CJSON_MODNAME   "YOSEF.JSON"
 #endif
 
 #ifndef CJSON_VERSION
@@ -1421,7 +1421,7 @@ int luaopen_cjson(lua_State *l)
 
 int luaopen_cjson_safe(lua_State *l)
 {
-	lua_getglobal(l, "Alice");
+	lua_getglobal(l, "YOSEF");
 	lua_pushliteral(l, "JSON");
     lua_cjson_safe_new(l);
 	lua_settable(l, -3);

@@ -34,6 +34,7 @@ typedef void* YOSEFAny;
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 #include <stack>
 #include <list>
 #include <fstream>

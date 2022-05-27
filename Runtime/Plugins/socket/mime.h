@@ -21,7 +21,7 @@
 * This macro prefixes all exported API functions
 \*-------------------------------------------------------------------------*/
 #ifndef MIME_API
-#if ALICE_EDITOR || ALICE_WIN_PLAYER
+#if YOSEF_EDITOR || YOSEF_WIN_PLAYER
 #define MIME_API __declspec(dllimport)
 #else
 #define MIME_API extern "C"

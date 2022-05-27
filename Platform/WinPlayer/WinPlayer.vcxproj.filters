@@ -112,6 +112,15 @@
     <Filter Include="Runtime\Geometry">
       <UniqueIdentifier>{068f6a2d-59fb-4460-a9d4-279c51e8524a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Audio">
+      <UniqueIdentifier>{f920f54c-9d8f-4d1c-835f-75de9e9daf63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\2D">
+      <UniqueIdentifier>{3fc3bb8c-edaf-4486-a9bd-317ef6914895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Render\Light">
+      <UniqueIdentifier>{f976da4c-91c4-4628-a0d5-00fce05e2488}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -458,6 +467,84 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Utils\TTree.cpp">
       <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Audio\AudioBuffer.cpp">
+      <Filter>Runtime\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Audio\AudioDebugger.cpp">
+      <Filter>Runtime\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Audio\AudioDevice.cpp">
+      <Filter>Runtime\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Audio\AudioListener.cpp">
+      <Filter>Runtime\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Audio\AudioSource.cpp">
+      <Filter>Runtime\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Base\Component.cpp">
+      <Filter>Runtime\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Base\ScriptObject.cpp">
+      <Filter>Runtime\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Base\Transform.cpp">
+      <Filter>Runtime\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\LuaEngine\LuaCallback.cpp">
+      <Filter>Runtime\LuaEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\Camera.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\TouchEvent.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\EventDispatcher.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\GameObject.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectPhysicsComponent.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectRenderComponent.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\GameObjectScriptComponent.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Scene\RendererManager.cpp">
+      <Filter>Runtime\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\2D\Component2D.cpp">
+      <Filter>Runtime\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\2D\FullScreenQuad.cpp">
+      <Filter>Runtime\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\2D\ImageSprite.cpp">
+      <Filter>Runtime\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\2D\ImageSprite9.cpp">
+      <Filter>Runtime\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\Light\Light.cpp">
+      <Filter>Runtime\Render\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\Material.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\RenderPass.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\Shader.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\UniformUpdater.cpp">
+      <Filter>Runtime\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -862,6 +949,75 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Utils\TTree.h">
       <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Audio\AudioBuffer.h">
+      <Filter>Runtime\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Audio\AudioDebugger.h">
+      <Filter>Runtime\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Audio\AudioDevice.h">
+      <Filter>Runtime\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Audio\AudioListener.h">
+      <Filter>Runtime\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Audio\AudioSource.h">
+      <Filter>Runtime\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\Component.h">
+      <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\ScriptObject.h">
+      <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Base\Transform.h">
+      <Filter>Runtime\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\LuaEngine\LuaCallback.h">
+      <Filter>Runtime\LuaEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\Camera.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Scene\TouchEvent.h">
+      <Filter>Runtime\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Scene\EventDispatcher.h">
+      <Filter>Runtime\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Scene\GameObject.h">
+      <Filter>Runtime\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Scene\RendererManager.h">
+      <Filter>Runtime\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\2D\Component2D.h">
+      <Filter>Runtime\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\2D\FullScreenQuad.h">
+      <Filter>Runtime\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\2D\ImageSprite.h">
+      <Filter>Runtime\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\2D\ImageSprite9.h">
+      <Filter>Runtime\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\Light\Light.h">
+      <Filter>Runtime\Render\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\Material.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\RenderPass.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\Shader.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\UniformUpdater.h">
+      <Filter>Runtime\Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

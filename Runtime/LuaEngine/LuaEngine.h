@@ -46,6 +46,7 @@ namespace YOSEF{
 		static bool LoadScriptFromUserPath(lua_State*L, const char*scriptName);
 		static void UnloadScriptCode(lua_State*L, const char*scriptName);
 		static const char*GetLuaPathViaGUID(const char*guid);
+		static bool LoadInternalScript(lua_State*L, const char*scriptName);
 	private:
 		static int mStackSize;
 		static int mTraceBackFoo;

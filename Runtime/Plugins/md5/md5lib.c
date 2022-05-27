@@ -200,13 +200,13 @@ static struct luaL_reg md5lib[] = {
   {NULL, NULL}
 };
 
-static const char* sumhexa = "function Alice.MD5.Sumhexa (k) \
-k = Alice.MD5.Sum(k) \
+static const char* sumhexa = "function YOSEF.MD5.Sumhexa (k) \
+k = YOSEF.MD5.Sum(k) \
 return (string.gsub(k, \".\", function(c) return string.format(\"%02x\", string.byte(c)) end))\
 end";
 
 int luaopen_md5_core (lua_State *L) {
-  luaL_register(L, "Alice.MD5", md5lib);
+  luaL_register(L, "YOSEF.MD5", md5lib);
   luaL_dostring(L,sumhexa);
   return 1;
 }

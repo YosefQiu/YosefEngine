@@ -1,5 +1,8 @@
 #pragma once
+#include <vector>
 namespace YOSEF {
+	class Camera;
+	class GameObject;
 	class SceneManager {
 	public:
 		SceneManager();
@@ -12,11 +15,18 @@ namespace YOSEF {
 		void Step();
 		void Reset();
 		void Stop();
+		void AddOffScreenCamera(Camera*camera);
+		void RemoveOffScreenCamera(Camera*camera);
+		void AddCamera(Camera*camera);
+		void RemoveCamera(Camera*camera);
 		int mFullResolutionWidth, mFullResolutionHeight;
 		int mMaxFPS;
 		float mFixedTimePerFrame;
 		float mUIMaxScale;
 		bool mbIsPlaying;
+		GameObject	*mRootObject;
+		std::vector<Camera*> mOffScreenCameras;
+		std::vector<Camera*> mCameras;
 	};
 }
 YOSEF::SceneManager * GetSceneManager();

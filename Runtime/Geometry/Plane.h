@@ -18,6 +18,8 @@ namespace YOSEF{
 		bool operator != (const Plane& p) { return normal != p.normal || distance != p.distance; }
 		void SetInvalid() { normal = Vector3f(0, 0, 0); distance = 0.0F; }
 
+		void SetABCD(const float a, const float b, const float c, const float d);
+		void Normalize();
 		void SetNormalAndPosition(const Vector3f& inNormal, const Vector3f& inPoint);
 		float GetDistanceToPoint(const Vector3f& inPt) const;
 		bool GetSide(const Vector3f& inPt) const;
@@ -41,5 +43,15 @@ namespace YOSEF{
 		normal *= scale;
 		distance *= scale;
 		return *this;
+	}
+	inline void Plane::SetABCD(float a, float b, float c, float d) {
+		normal.Set(a, b, c);
+		distance = d;
+	}
+	inline void Plane::Normalize()
+	{
+		float invMag = 1.0f / Magnitude(normal);
+		normal *= invMag;
+		distance *= invMag;
 	}
 }

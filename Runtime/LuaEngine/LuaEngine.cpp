@@ -2,6 +2,7 @@
 #include "Runtime/Debugger/Log.h"
 #include "Runtime/String/StringUtils.h"
 #include "Runtime/IO/FileSystem.h"
+#include "Runtime/IO/ResourceManager.h"
 #if YOSEF_PLATFORM_WIN
 #pragma comment(lib,"Lua5.1.4.lib")
 #pragma comment(lib,"LibProtoBufferLite.lib")
@@ -369,6 +370,26 @@ namespace YOSEF
 			return iter->second.c_str();
 		}
 		return nullptr;
+	}
+	bool LuaEngine::LoadInternalScript(lua_State*L, const char*scriptName) {
+		//input is a script name like xx.xx.xx
+		//return a lua table if load script sucess,if fail lua stack size unchanged
+		if (GetFromCache(L, scriptName)) {
+			return true;
+		}
+		char luaPath[256] = { 0 };
+		strcpy(luaPath, scriptName);
+		StringUtils::LuaPathToSTDPath(luaPath);
+		strcat(luaPath, ".lua");
+		Data luaSrc;
+		if (ResourceManager::LoadData(luaPath, luaSrc)) {
+			LoadScriptCode(L, scriptName, (char*)luaSrc.mData, luaSrc.mDataLen);
+		}
+		else {
+			errorC("cannot locate script %s : %s", scriptName, luaPath);
+			return false;
+		}
+		return true;
 	}
 
 	void LuaEngine::DumpTable(lua_State*L)

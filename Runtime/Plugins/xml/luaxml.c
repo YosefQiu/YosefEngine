@@ -290,13 +290,13 @@ int Xml_eval(lua_State *L) {
 		// set metatable:    
 		lua_newtable(L);
 		lua_pushliteral(L, "__index");
-		lua_getglobal(L, "Alice");
+		lua_getglobal(L, "YOSEF");
 		lua_getfield(L, -1, "XML");
 		lua_remove(L, -2);
 		lua_settable(L, -3);
 			
 		lua_pushliteral(L, "__tostring"); // set __tostring metamethod
-		lua_getglobal(L, "Alice");
+		lua_getglobal(L, "YOSEF");
 		lua_getfield(L, -1, "XML");
 		lua_remove(L, -2);
 		lua_pushliteral(L,"str");
@@ -422,11 +422,11 @@ int luaopen_xml(lua_State*L)
 		{ "RegisterCode", Xml_registerCode },
 		{ NULL, NULL }
 	};
-	luaL_register(L, "Alice.XML", funcs);
+	luaL_register(L, "YOSEF.XML", funcs);
 	return 1;
 }
 static const char*extra = "local base = _G \n\
-local xml = Alice.XML \n\
+local xml = YOSEF.XML \n\
 TAG = 0 \n\
 function xml.Tag(var, tag) \n\
 	if base.type(var)~= \"table\" then return end \n\
@@ -435,7 +435,7 @@ function xml.Tag(var, tag) \n\
 	end \n\
 	var[TAG] = tag \n\
 end \n\
-function  Alice.XML.New(arg) \n\
+function  YOSEF.XML.New(arg) \n\
 	if base.type(arg) == \"table\" then \n\
 		base.setmetatable(arg, { __index = xml, __tostring = xml.str }) \n\
 		return arg \n\
@@ -498,7 +498,7 @@ file:write(\"<?xml version=\\\"1.0\\\"?>\\n\") \n\
 file:write(xml.Str(var)) \n\
 base.io.close(file) \n\
 end \n\
-function  Alice.XML.Find(var, tag, attributeKey, attributeValue) \n\
+function  YOSEF.XML.Find(var, tag, attributeKey, attributeValue) \n\
 if base.type(var)~= \"table\" then return end \n\
 if base.type(tag) == \"string\" and #tag == 0 then tag = nil end \n\
 if base.type(attributeKey)~= \"string\" or #attributeKey == 0 then attributeKey = nil end \n\
@@ -516,7 +516,7 @@ end \n\
 end \n\
 for k, v in base.ipairs(var) do \n\
 if base.type(v) == \"table\" then \n\
-local ret = Alice.XML.Find(v, tag, attributeKey, attributeValue) \n\
+local ret = YOSEF.XML.Find(v, tag, attributeKey, attributeValue) \n\
 if ret ~= nil then return ret end \n\
 end \n\
 end \n\

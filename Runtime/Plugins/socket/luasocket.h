@@ -18,7 +18,7 @@
 * This macro prefixes all exported API functions
 \*-------------------------------------------------------------------------*/
 #ifndef LUASOCKET_API
-#if ALICE_EDITOR || ALICE_WIN_PLAYER
+#if YOSEF_EDITOR || YOSEF_WIN_PLAYER
 #define LUASOCKET_API __declspec(dllimport)
 #else
 #define LUASOCKET_API extern
