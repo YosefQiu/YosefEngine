@@ -2,7 +2,8 @@
 #include "Runtime/Base/Object.h"
 #include "Runtime/Math/Vector3.h"
 #include "Point3.h"
-namespace YOSEF{
+namespace YOSEF
+{
 	class Ray : public Object{
 	public:
 		Vector3f	mOrigin;

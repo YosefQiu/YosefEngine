@@ -444,6 +444,21 @@
     <ClCompile Include="..\..\Runtime\Geometry\Ray.cpp">
       <Filter>Runtime\Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\Sphere.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\AABB.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Geometry\Intersection.cpp">
+      <Filter>Runtime\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Utils\TreeViewNode.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Utils\TTree.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h">
@@ -826,6 +841,27 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Geometry\Ray.h">
       <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Sphere.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\AABB.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Geometry.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Intersection.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Geometry\Plane.h">
+      <Filter>Runtime\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Utils\TreeViewNode.h">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Utils\TTree.h">
+      <Filter>Runtime\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
