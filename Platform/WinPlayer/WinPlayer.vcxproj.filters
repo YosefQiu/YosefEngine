@@ -130,6 +130,9 @@
     <Filter Include="Runtime\Builtin\3D">
       <UniqueIdentifier>{5a884c63-9e94-4e56-86da-b4a5d0b90d3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Font">
+      <UniqueIdentifier>{4b0cdac4-1949-430b-847f-e72760a5abdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -566,6 +569,24 @@
     </ClCompile>
     <ClCompile Include="..\..\Runtime\Render\IndexBuffer.cpp">
       <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Graphics\TextureRectangleNode.cpp">
+      <Filter>Runtime\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Graphics\DynamicTextureAtlas.cpp">
+      <Filter>Runtime\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Font\CharInfo.cpp">
+      <Filter>Runtime\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Font\DynamicFont.cpp">
+      <Filter>Runtime\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Font\FontFace.cpp">
+      <Filter>Runtime\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\IO\FontResource.cpp">
+      <Filter>Runtime\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1051,6 +1072,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Render\IndexBuffer.h">
       <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Graphics\TextureRectangleNode.h">
+      <Filter>Runtime\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Graphics\DynamicTextureAtlas.h">
+      <Filter>Runtime\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Font\CharInfo.h">
+      <Filter>Runtime\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Font\DynamicFont.h">
+      <Filter>Runtime\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Font\FontFace.h">
+      <Filter>Runtime\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\IO\FontResource.h">
+      <Filter>Runtime\IO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>YOSEF_WIN_PLAYER;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\;../../;../../External/ProtoBuffer/LibProtoBufferLite;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\;../../;../../External/ProtoBuffer/LibProtoBufferLite;../../External/FreeType/include</AdditionalIncludeDirectories>
       <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -165,6 +165,9 @@
     <ClCompile Include="..\..\Runtime\Builtin\3D\SkyBox.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
+    <ClCompile Include="..\..\Runtime\Font\CharInfo.cpp" />
+    <ClCompile Include="..\..\Runtime\Font\DynamicFont.cpp" />
+    <ClCompile Include="..\..\Runtime\Font\FontFace.cpp" />
     <ClCompile Include="..\..\Runtime\Geometry\AABB.cpp" />
     <ClCompile Include="..\..\Runtime\Geometry\Bezier.cpp" />
     <ClCompile Include="..\..\Runtime\Geometry\CubicBezier.cpp" />
@@ -172,11 +175,14 @@
     <ClCompile Include="..\..\Runtime\Geometry\Intersection.cpp" />
     <ClCompile Include="..\..\Runtime\Geometry\Ray.cpp" />
     <ClCompile Include="..\..\Runtime\Geometry\Sphere.cpp" />
+    <ClCompile Include="..\..\Runtime\Graphics\DynamicTextureAtlas.cpp" />
     <ClCompile Include="..\..\Runtime\Graphics\ImageUtils.cpp" />
+    <ClCompile Include="..\..\Runtime\Graphics\TextureRectangleNode.cpp" />
     <ClCompile Include="..\..\Runtime\IO\AndroidAssetReader.cpp" />
     <ClCompile Include="..\..\Runtime\IO\AudioResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileItem.cpp" />
     <ClCompile Include="..\..\Runtime\IO\FileSystem.cpp" />
+    <ClCompile Include="..\..\Runtime\IO\FontResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\ImageResource.cpp" />
     <ClCompile Include="..\..\Runtime\IO\ResourceManager.cpp" />
     <ClCompile Include="..\..\Runtime\IO\ShaderResource.cpp" />
@@ -315,6 +321,9 @@
     <ClInclude Include="..\..\Runtime\Builtin\3D\SkyBox.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
+    <ClInclude Include="..\..\Runtime\Font\CharInfo.h" />
+    <ClInclude Include="..\..\Runtime\Font\DynamicFont.h" />
+    <ClInclude Include="..\..\Runtime\Font\FontFace.h" />
     <ClInclude Include="..\..\Runtime\Geometry\AABB.h" />
     <ClInclude Include="..\..\Runtime\Geometry\Bezier.h" />
     <ClInclude Include="..\..\Runtime\Geometry\CubicBezier.h" />
@@ -325,11 +334,14 @@
     <ClInclude Include="..\..\Runtime\Geometry\Point3.h" />
     <ClInclude Include="..\..\Runtime\Geometry\Ray.h" />
     <ClInclude Include="..\..\Runtime\Geometry\Sphere.h" />
+    <ClInclude Include="..\..\Runtime\Graphics\DynamicTextureAtlas.h" />
     <ClInclude Include="..\..\Runtime\Graphics\ImageUtils.h" />
+    <ClInclude Include="..\..\Runtime\Graphics\TextureRectangleNode.h" />
     <ClInclude Include="..\..\Runtime\IO\AndroidAssetReader.h" />
     <ClInclude Include="..\..\Runtime\IO\AudioResource.h" />
     <ClInclude Include="..\..\Runtime\IO\FileItem.h" />
     <ClInclude Include="..\..\Runtime\IO\FileSystem.h" />
+    <ClInclude Include="..\..\Runtime\IO\FontResource.h" />
     <ClInclude Include="..\..\Runtime\IO\ImageResource.h" />
     <ClInclude Include="..\..\Runtime\IO\IOSBundleManager.h" />
     <ClInclude Include="..\..\Runtime\IO\ResourceManager.h" />

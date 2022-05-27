@@ -53,7 +53,7 @@ namespace YOSEF {
 		}
 	}
 	void SceneManager::Render() {
-		OGL_CALL(glClearColor(0.0f, 0.34f, 0.57f, 1.0f));
+		OGL_CALL(glClearColor(1.0f, 0.34f, 0.57f, 1.0f));
 		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT));
 	}
 	void SceneManager::GetCanvasSize(int&width, int&height) {
