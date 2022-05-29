@@ -1,15 +1,17 @@
 #include "WinPlayerView.h"
 #include "Runtime/IO/FileSystem.h"
 #include "Runtime/String/StringUtils.h"
+#include "Runtime/Scene/SceneManager.h"
 #include <algorithm>
 
 extern "C" void Render();
+extern "C" void InitRuntime();
 static WinPlayerView* sWinPlayerView = nullptr;
 static bool sPermenantDisable = false;
 extern int WinPlayerViewWidth;
 extern int WinPlayerViewHeight;
-static int sFT=26, sFB=4, sFL=3, sFR=3;
-WinPlayerView*GetWinPlayerView()
+static int sFT = 26, sFB = 4, sFL = 3, sFR = 3;
+WinPlayerView* GetWinPlayerView()
 {
 	return sWinPlayerView;
 }
@@ -27,17 +29,21 @@ void WinPlayerView::Init(HWND parent)
 	SetupSimpleGLContext();
 	glewInit();
 	MakeCurrent();
-	DragAcceptFiles(mhWnd,TRUE);
+	DragAcceptFiles(mhWnd, TRUE);
+	InitRuntime();
+	GetSceneManager()->OnViewSizeChange(0, 0, 1280, 720);
+	GetSceneManager()->InitTestCamera();
+	GetSceneManager()->InitTestImageSprite();
 }
 
-void WinPlayerView::PaintWindow(){
+void WinPlayerView::PaintWindow() {
 	mbNeedToUpdateGLWindow = true;
 	Render();
 }
 
 POINT WinPlayerView::mCursorPos;
 bool sbEnableEvent = true;
-void WinPlayerView::OnLButtonDown(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */)
+void WinPlayerView::OnLButtonDown(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */)
 {
 	GLWindow::OnLButtonDown(wParam, lParam, reserved);
 	mbLeftButtonDown = true;
@@ -48,11 +54,11 @@ void WinPlayerView::OnLButtonDown(WPARAM wParam, LPARAM lParam, void*reserved /*
 	}
 }
 
-void WinPlayerView::OnSize(WPARAM wParam, LPARAM lParam, void*reserved) {
+void WinPlayerView::OnSize(WPARAM wParam, LPARAM lParam, void* reserved) {
 	GLWindow::OnSize(wParam, lParam, reserved);
 }
 
-void WinPlayerView::OnLButtonUp(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */)
+void WinPlayerView::OnLButtonUp(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */)
 {
 	GLWindow::OnLButtonUp(wParam, lParam, reserved);
 	mbLeftButtonDown = false;
@@ -65,7 +71,7 @@ void WinPlayerView::OnLButtonUp(WPARAM wParam, LPARAM lParam, void*reserved /* =
 	}
 }
 
-void WinPlayerView::OnRButtonDown(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */)
+void WinPlayerView::OnRButtonDown(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */)
 {
 	GLWindow::OnRButtonDown(wParam, lParam, reserved);
 	mbRightButtonDown = true;
@@ -75,7 +81,7 @@ void WinPlayerView::OnRButtonDown(WPARAM wParam, LPARAM lParam, void*reserved /*
 
 	}
 }
-void WinPlayerView::OnRButtonUp(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */)
+void WinPlayerView::OnRButtonUp(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */)
 {
 	GLWindow::OnRButtonUp(wParam, lParam, reserved);
 	mbRightButtonDown = false;
@@ -87,28 +93,29 @@ void WinPlayerView::OnRButtonUp(WPARAM wParam, LPARAM lParam, void*reserved /* =
 
 	}
 }
-void WinPlayerView::OnMouseMove(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */)
+void WinPlayerView::OnMouseMove(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */)
 {
 	GLWindow::OnMouseMove(wParam, lParam, reserved);
-	mCursorPos.x = LOWORD(lParam)>10000 ?0: LOWORD(lParam);
-	mCursorPos.y = HIWORD(lParam)>10000 ?0:HIWORD(lParam);
+	mCursorPos.x = LOWORD(lParam) > 10000 ? 0 : LOWORD(lParam);
+	mCursorPos.y = HIWORD(lParam) > 10000 ? 0 : HIWORD(lParam);
 	if (sbEnableEvent)
 	{
 
 	}
 }
 
-void WinPlayerView::OnDropFiles(WPARAM wParam, LPARAM lParam, void*reserved /* = nullptr */) {
+void WinPlayerView::OnDropFiles(WPARAM wParam, LPARAM lParam, void* reserved /* = nullptr */) {
 	UINT  nFileCount = ::DragQueryFile((HDROP)wParam, (UINT)-1, NULL, 0);
 	TCHAR szFileName[_MAX_PATH];
 	DWORD dwAttribute;
-	for (UINT i = 0; i < nFileCount; i++){
+	for (UINT i = 0; i < nFileCount; i++) {
 		memset(szFileName, 0, _MAX_PATH);
 		::DragQueryFile((HDROP)wParam, i, szFileName, _MAX_PATH);
 		dwAttribute = ::GetFileAttributes(szFileName);
-		if (dwAttribute & FILE_ATTRIBUTE_DIRECTORY){
+		if (dwAttribute & FILE_ATTRIBUTE_DIRECTORY) {
 
-		}else{
+		}
+		else {
 
 		}
 	}

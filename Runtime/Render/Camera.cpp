@@ -1,6 +1,7 @@
 #include "Runtime/Render/Camera.h"
 #include "Runtime/Scene/SceneManager.h"
 #include "Runtime/Scene/GameObject.h"
+#include "Material.h"
 
 namespace YOSEF
 {

@@ -2,7 +2,7 @@
 #pragma warning(disable:4018)
 namespace YOSEF
 {
-	TTree::TTree():mParent(nullptr),mChild(nullptr),mLeftSibling(nullptr),mRightSibling(nullptr),mLastChild(nullptr)
+	TTree::TTree() :mParent(nullptr), mChild(nullptr), mLeftSibling(nullptr), mRightSibling(nullptr), mLastChild(nullptr)
 	{
 
 	}
@@ -11,15 +11,15 @@ namespace YOSEF
 	{
 
 	}
-	bool TTree::AppendChild(TTree*node)
+	bool TTree::AppendChild(TTree* node)
 	{
 		if (IsParent(node))
 		{
 			return false;
 		}
 		node->Clean();
-		TTree*child = mChild;
-		if (mChild ==nullptr)
+		TTree* child = mChild;
+		if (mChild == nullptr)
 		{
 			mChild = node;
 			node->mParent = this;
@@ -27,7 +27,7 @@ namespace YOSEF
 		}
 		else
 		{
-			while (child->mRightSibling!=nullptr)
+			while (child->mRightSibling != nullptr)
 			{
 				child = child->mRightSibling;
 			}
@@ -39,16 +39,16 @@ namespace YOSEF
 		return true;
 	}
 
-	bool TTree::InsertBefore(TTree*before)
+	bool TTree::InsertBefore(TTree* before)
 	{
 		if (before->IsParent(this))
 		{
 			return false;
 		}
 		Clean();
-		if (before->mParent!=nullptr)
+		if (before->mParent != nullptr)
 		{
-			if (before->mLeftSibling==nullptr)
+			if (before->mLeftSibling == nullptr)
 			{
 				before->mParent->mChild = this;
 			}
@@ -64,7 +64,7 @@ namespace YOSEF
 		return true;
 	}
 
-	bool TTree::InsertAfter(TTree*after)
+	bool TTree::InsertAfter(TTree* after)
 	{
 		if (after->IsParent(this))
 		{
@@ -79,7 +79,7 @@ namespace YOSEF
 		}
 		else
 		{
-			if(mParent!=nullptr)mParent->mLastChild = this;
+			if (mParent != nullptr)mParent->mLastChild = this;
 		}
 		mLeftSibling = after;
 		after->mRightSibling = this;
@@ -88,11 +88,12 @@ namespace YOSEF
 
 	void TTree::Clean()
 	{
-		if (mParent!=nullptr)
+		if (mParent != nullptr)
 		{
 			mParent->RemoveChild(this);
-		} else {
-			if (mLeftSibling!=nullptr){
+		}
+		else {
+			if (mLeftSibling != nullptr) {
 				if (mRightSibling != nullptr) {
 					mLeftSibling->mRightSibling = mRightSibling;
 					mRightSibling->mLeftSibling = mLeftSibling;
@@ -108,7 +109,7 @@ namespace YOSEF
 		}
 	}
 
-	bool TTree::IsParent(TTree*node)
+	bool TTree::IsParent(TTree* node)
 	{
 		bool isParent = false;
 		if (mParent != nullptr)
@@ -126,10 +127,10 @@ namespace YOSEF
 		return isParent;
 	}
 
-	void TTree::RemoveChild(TTree*node)
+	void TTree::RemoveChild(TTree* node)
 	{
 		//如果是大儿子，那么把二儿子变成大儿子节点上来做大儿子
-		if (mChild==node)
+		if (mChild == node)
 		{
 			if (node->mRightSibling != nullptr)
 			{

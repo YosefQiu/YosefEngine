@@ -14,7 +14,23 @@ namespace YOSEF{
 		mShader = r.mShader.mPtr;
 	}
 	RenderPass*RenderPass::Clone() const {
-		return nullptr;
+		RenderPass*pass = new RenderPass;
+		pass->mShader = mShader.mPtr;
+		pass->mbUseStencilMask = mbUseStencilMask;
+		pass->mbWriteStencilMask = mbWriteStencilMask;
+		pass->mCatagory = mCatagory;
+		pass->mRenderState = mRenderState;
+		for (auto iter = mProperties.begin(); iter != mProperties.end(); iter++) {
+			pass->mProperties.insert(std::pair<std::string, MaterialProperty*>(iter->first, iter->second->Clone()));
+		}
+		for (auto iter = mPropertyUpdaters.begin(); iter != mPropertyUpdaters.end(); iter++) {
+			UniformUpdater*src_updater = iter->second;
+			UniformUpdater*updater = new UniformUpdater(src_updater);
+			updater->mUserData = pass->mProperties[iter->first];
+			pass->AddUniformUpdater(updater);
+			pass->mPropertyUpdaters.insert(std::pair<std::string, UniformUpdater*>(iter->first, updater));
+		}
+		return pass;
 	}
 	void RenderPass::SetShader(Shader*shader) {
 		mShader = shader;

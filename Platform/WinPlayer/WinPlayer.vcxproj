@@ -163,6 +163,7 @@
     <ClCompile Include="..\..\Runtime\Base\Transform.cpp" />
     <ClCompile Include="..\..\Runtime\Base\YosefGUID.cpp" />
     <ClCompile Include="..\..\Runtime\Builtin\3D\SkyBox.cpp" />
+    <ClCompile Include="..\..\Runtime\Builtin\HardCodedShader.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Debugger.cpp" />
     <ClCompile Include="..\..\Runtime\Debugger\Log.cpp" />
     <ClCompile Include="..\..\Runtime\Font\CharInfo.cpp" />
@@ -227,6 +228,7 @@
     <ClCompile Include="..\..\Runtime\Plugins\zip\lua_zip.c" />
     <ClCompile Include="..\..\Runtime\Render\Attribute.cpp" />
     <ClCompile Include="..\..\Runtime\Render\Camera.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\DrawCall.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\BufferObject.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\EBO.cpp" />
     <ClCompile Include="..\..\Runtime\Render\GL20\FBO.cpp" />
@@ -319,6 +321,7 @@
     <ClInclude Include="..\..\Runtime\Base\Transform.h" />
     <ClInclude Include="..\..\Runtime\Base\YosefGUID.h" />
     <ClInclude Include="..\..\Runtime\Builtin\3D\SkyBox.h" />
+    <ClInclude Include="..\..\Runtime\Builtin\HardCodedShader.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Debugger.h" />
     <ClInclude Include="..\..\Runtime\Debugger\Log.h" />
     <ClInclude Include="..\..\Runtime\Font\CharInfo.h" />
@@ -395,6 +398,7 @@
     <ClInclude Include="..\..\Runtime\Plugins\socket\mime.h" />
     <ClInclude Include="..\..\Runtime\Render\Attribute.h" />
     <ClInclude Include="..\..\Runtime\Render\Camera.h" />
+    <ClInclude Include="..\..\Runtime\Render\DrawCall.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\BufferObject.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\EBO.h" />
     <ClInclude Include="..\..\Runtime\Render\GL20\FBO.h" />

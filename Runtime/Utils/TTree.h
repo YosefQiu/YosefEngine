@@ -1,8 +1,6 @@
 #pragma once
-namespace YOSEF
-{
-	class TTree
-	{
+namespace YOSEF {
+	class TTree {
 	public:
 		TTree* mParent;
 		TTree* mChild;
@@ -12,26 +10,26 @@ namespace YOSEF
 	public:
 		TTree();
 		virtual ~TTree();
-		bool AppendChild(TTree*node);
-		bool InsertBefore(TTree*before);
-		bool InsertAfter(TTree*after);
-		void RemoveChild(TTree*node);
-		bool IsParent(TTree*node);
+		bool AppendChild(TTree* node);
+		bool InsertBefore(TTree* before);
+		bool InsertAfter(TTree* after);
+		void RemoveChild(TTree* node);
+		bool IsParent(TTree* node);
 		void Clean();
 		template<typename T>
-		T* LeftSibling(){
+		T* LeftSibling() {
 			return (T*)mLeftSibling;
 		}
 		template<typename T>
-		T* RightSibling(){
+		T* RightSibling() {
 			return (T*)mRightSibling;
 		}
 		template<typename T>
-		T* Child(){
+		T* Child() {
 			return (T*)mChild;
 		}
 		template<typename T>
-		T* Parent(){
+		T* Parent() {
 			return (T*)mParent;
 		}
 	};

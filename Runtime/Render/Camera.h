@@ -10,6 +10,7 @@
 #include "GL20/FBO.h"
 #include "YosefGL.h"
 namespace YOSEF{
+	class Material;
 	enum FrustumPlane{
 		kFrustumPlaneLeft,
 		kFrustumPlaneRight,
@@ -71,6 +72,7 @@ namespace YOSEF{
 		bool				mbOffScreen;
 		FBO					*mDepthFBO;
 		bool				mbRenderDepth;
+		SmartPtr<Material>	mDepthMaterial;
 		static bool SortCameras(const Camera *l,const Camera *r){
 			if (l->mDepth<r->mDepth){
 				return true;

@@ -154,7 +154,7 @@ namespace YOSEF{
 	{
 		Vector3f newExtents;
 		for (int i = 0; i < 3; i++)
-			newExtents[i] = YOSEF_ABS(rotation.Get(i, 0) * extents.x) + YOSEF_ABS(rotation.Get(i, 1) * extents.y) + YOSEF_ABS(rotation.Get(i, 2) * extents.z);
+			newExtents[i] = Yosef_ABS(rotation.Get(i, 0) * extents.x) + Yosef_ABS(rotation.Get(i, 1) * extents.y) + YOSEF_ABS(rotation.Get(i, 2) * extents.z);
 		return newExtents;
 	}
 
@@ -162,7 +162,7 @@ namespace YOSEF{
 	{
 		Vector3f newExtents;
 		for (int i = 0; i < 3; i++)
-			newExtents[i] = YOSEF_ABS(rotation.Get(i, 0) * extents.x) + YOSEF_ABS(rotation.Get(i, 1) * extents.y) + YOSEF_ABS(rotation.Get(i, 2) * extents.z);
+			newExtents[i] = Yosef_ABS(rotation.Get(i, 0) * extents.x) + Yosef_ABS(rotation.Get(i, 1) * extents.y) + Yosef_ABS(rotation.Get(i, 2) * extents.z);
 		return newExtents;
 	}
 

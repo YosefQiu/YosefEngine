@@ -588,6 +588,12 @@
     <ClCompile Include="..\..\Runtime\IO\FontResource.cpp">
       <Filter>Runtime\IO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Runtime\Render\DrawCall.cpp">
+      <Filter>Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Builtin\HardCodedShader.cpp">
+      <Filter>Runtime\Builtin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h">
@@ -1090,6 +1096,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\IO\FontResource.h">
       <Filter>Runtime\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Render\DrawCall.h">
+      <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Builtin\HardCodedShader.h">
+      <Filter>Runtime\Builtin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

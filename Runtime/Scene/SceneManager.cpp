@@ -3,11 +3,15 @@
 #include "Runtime/Debugger/Log.h"
 #include "Runtime/Debugger/Debugger.h"
 #include "External/LibCurl/include/curl/curl.h"
+#include "GameObject.h"
+#include "Runtime/2D/ImageSprite.h"
+#include "Runtime/Render/Camera.h"
+#include "Runtime/Render/DrawCall.h"
 extern "C" void InitMemory();
-static YOSEF::SceneManager *sSceneManager;
+static YOSEF::SceneManager* sSceneManager;
 namespace YOSEF {
 	//for editor end
-	SceneManager::SceneManager() :mFullResolutionWidth(0), mFullResolutionHeight(0), 
+	SceneManager::SceneManager() :mFullResolutionWidth(0), mFullResolutionHeight(0),
 		mMaxFPS(0), mFixedTimePerFrame(0.0f) {
 		sSceneManager = this;
 		mbIsPlaying = false;
@@ -18,18 +22,18 @@ namespace YOSEF {
 	}
 	void SceneManager::Step() {
 	}
-	void SceneManager::Pause(){
+	void SceneManager::Pause() {
 		mbIsPlaying = false;
 	}
-	void SceneManager::Reset(){
+	void SceneManager::Reset() {
 	}
 	void SceneManager::Stop() {
 		mbIsPlaying = false;
 	}
-	void SceneManager::AddCamera(Camera*camera) {
+	void SceneManager::AddCamera(Camera* camera) {
 		mCameras.push_back(camera);
 	}
-	void SceneManager::RemoveCamera(Camera*camera) {
+	void SceneManager::RemoveCamera(Camera* camera) {
 		auto iter = mCameras.begin();
 		auto iterEnd = mCameras.end();
 		for (; iter != iterEnd; ++iter) {
@@ -39,10 +43,10 @@ namespace YOSEF {
 			}
 		}
 	}
-	void SceneManager::AddOffScreenCamera(Camera*camera) {
+	void SceneManager::AddOffScreenCamera(Camera* camera) {
 		mOffScreenCameras.push_back(camera);
 	}
-	void SceneManager::RemoveOffScreenCamera(Camera*camera) {
+	void SceneManager::RemoveOffScreenCamera(Camera* camera) {
 		auto iter = mOffScreenCameras.begin();
 		auto iterEnd = mOffScreenCameras.end();
 		for (; iter != iterEnd; ++iter) {
@@ -52,11 +56,49 @@ namespace YOSEF {
 			}
 		}
 	}
-	void SceneManager::Render() {
-		OGL_CALL(glClearColor(1.0f, 0.34f, 0.57f, 1.0f));
-		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT));
+	void SceneManager::InitTestImageSprite() {
+		GameObject* go = new GameObject;
+		mRootObject->AddChild(go);
+		go->SetLocalPosition(0.0f, 0.0f, -1.0f);
+		ImageSprite* is = new ImageSprite;
+		is->SetOwner(go);
 	}
-	void SceneManager::GetCanvasSize(int&width, int&height) {
+	void SceneManager::InitTestCamera() {
+		GameObject* go = new GameObject;
+		mRootObject->AddChild(go);
+		Camera* camera = new Camera;
+		camera->SetOwner(go);
+		GetSceneManager()->AddCamera(camera);
+		camera->mCameraMode = Camera::CameraMode::OrthoMode;
+		int width, height;
+		GetSceneManager()->GetCanvasSize(width, height);
+		camera->OnViewPortSizeChange(width, height);
+	}
+	void SceneManager::Render() {
+		glViewport(0, 0, 1280, 720);
+		OGL_CALL(glClearColor(0.1f, 0.4f, 0.6f, 1.0f));
+		OGL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+		//update script¡¢this may change transform/component
+		mRootObject->UpdateScriptsRecursively(0.016f);
+		//update transform
+		mRootObject->UpdateTransformRecursively();
+		//update component
+		mRootObject->UpdateComponentRecusively(0.016f);
+		//sync rendering geometry to physic world
+		mRootObject->SyncPhysicsComponentRecusively(0.016f);
+		if (mCameras.empty()) {
+			return;
+		}
+		//render offscreen camera
+		//render scene
+		//render ui
+		Camera* camera = mCameras[0];
+		camera->ClearBackground();
+		RenderQueue render_queue(camera);
+		mRootObject->RenderComponentRecursively(camera, &render_queue);
+		render_queue.RenderUI();
+	}
+	void SceneManager::GetCanvasSize(int& width, int& height) {
 		width = mFullResolutionWidth;
 		height = mFullResolutionHeight;
 	}
@@ -68,6 +110,9 @@ namespace YOSEF {
 		mFullResolutionHeight = height;
 	}
 	void SceneManager::Init() {
+		mRootObject = new GameObject;
+		mRootObject->mLayer = 0xFFFFFFFF;
+		mRootObject->mName = "InternalRoot";
 	}
 }
 //1¡¢init log
@@ -92,6 +137,16 @@ extern "C" void InitEngineCore() {
 //should be inited after opengl setup
 extern "C" void InitRuntime() {
 	GetSceneManager()->Init();
+	//V_Color
+	YOSEF::GetRendererManager().InitDefaultColorMaterial();
+	//U_Color
+	YOSEF::GetRendererManager().InitDefaultSimpleColorMaterial();
+	//sprite 2d material
+	YOSEF::GetRendererManager().InitDefault2DMaterial();
+	//dynamic font
+	YOSEF::GetRendererManager().InitDynamicFontMaterial();
+	YOSEF::GetRendererManager().InitDefaultFrameBufferRenderMaterial();
+	YOSEF::GetRendererManager().InitStencilRenderMaterial();
 }
 extern "C" void OnQuitEngine() {
 }
@@ -101,7 +156,7 @@ extern "C" void Render() {
 extern "C" void OnViewSizeChange(int x, int y, int width, int height) {
 	GetSceneManager()->OnViewSizeChange(x, y, width, height);
 }
-YOSEF::SceneManager * GetSceneManager() {
+YOSEF::SceneManager* GetSceneManager() {
 	if (sSceneManager == nullptr) {
 		sSceneManager = new YOSEF::SceneManager();
 	}

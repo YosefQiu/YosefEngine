@@ -3,5 +3,5 @@
 #pragma comment(lib,"OpenGL32.lib")
 #pragma comment(lib,"glew32.lib")
 #endif
-namespace YOSEF{
+namespace Alice{
 }

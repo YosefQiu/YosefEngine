@@ -40,6 +40,17 @@ namespace YOSEF{
 		return nullptr;
 	}
 	Shader*Shader::CreateStandard(const char * name, const char * vscode, const char * fscode) {
-		return nullptr;
+		GLSL*glsl = GLSL::CreateStandardGLSL(vscode, fscode);
+		if (glsl == nullptr) {
+			Error("Shader::CreateStandard failed %s", name);
+			return nullptr;
+		}
+		glsl->mName = name;
+		Shader*shader = new Shader;
+		shader->mName = name;
+		shader->mGPUProgram = glsl;
+		shader->AutoActiveUniform();
+		mCachedShader.insert(std::pair<std::string, Shader*>(name, shader));
+		return shader;
 	}
 }
