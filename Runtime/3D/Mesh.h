@@ -35,6 +35,7 @@ namespace YOSEF{
 		const Sphere & GetBoundingVolume();
 		void InitBoundingBox();
 		void SetVertexData(const void*data, int datasize);
+		void SetMeshData(const Serializer::Mesh& data);
 		void UpdateVertexPosition(int nIndex, float x, float y, float z, float w = 1.0f);
 		void UpdateVertexTexcoord(int nIndex, float x, float y, float z, float w = 1.0f);
 		void UpdateVertexNormal(int nIndex, float x, float y, float z, float w = 1.0f);

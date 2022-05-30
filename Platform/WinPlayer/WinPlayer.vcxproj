@@ -150,11 +150,14 @@
     <ClCompile Include="..\..\Runtime\2D\ImageSprite.cpp" />
     <ClCompile Include="..\..\Runtime\2D\ImageSprite9.cpp" />
     <ClCompile Include="..\..\Runtime\2D\Label.cpp" />
+    <ClCompile Include="..\..\Runtime\3D\CustomComponent.cpp" />
     <ClCompile Include="..\..\Runtime\3D\Mesh.cpp" />
     <ClCompile Include="..\..\Runtime\3D\Model.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
     <ClCompile Include="..\..\Runtime\Animation\Animation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\Avatar.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\Baked3DAnimation.cpp" />
     <ClCompile Include="..\..\Runtime\Animation\ColorAnimation.cpp" />
     <ClCompile Include="..\..\Runtime\Animation\EventAnimation.cpp" />
     <ClCompile Include="..\..\Runtime\Animation\RenderOrderAnimation.cpp" />
@@ -316,6 +319,7 @@
     <ClInclude Include="..\..\Runtime\2D\ImageSprite.h" />
     <ClInclude Include="..\..\Runtime\2D\ImageSprite9.h" />
     <ClInclude Include="..\..\Runtime\2D\Label.h" />
+    <ClInclude Include="..\..\Runtime\3D\CustomComponent.h" />
     <ClInclude Include="..\..\Runtime\3D\Mesh.h" />
     <ClInclude Include="..\..\Runtime\3D\Model.h" />
     <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h" />
@@ -324,6 +328,8 @@
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
     <ClInclude Include="..\..\Runtime\Animation\Animation.h" />
     <ClInclude Include="..\..\Runtime\Animation\AnimationClipType.h" />
+    <ClInclude Include="..\..\Runtime\Animation\Avatar.h" />
+    <ClInclude Include="..\..\Runtime\Animation\Baked3DAnimation.h" />
     <ClInclude Include="..\..\Runtime\Animation\ColorAnimation.h" />
     <ClInclude Include="..\..\Runtime\Animation\EventAnimation.h" />
     <ClInclude Include="..\..\Runtime\Animation\RenderOrderAnimation.h" />

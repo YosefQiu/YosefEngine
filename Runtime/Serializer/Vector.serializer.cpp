@@ -19,6 +19,8 @@ void protobuf_ShutdownFile_Vector_2eproto() {
   delete Vector3i::default_instance_;
   delete Vector4f::default_instance_;
   delete Vector4i::default_instance_;
+  delete Matrix4f::default_instance_;
+  delete Matrix4fB::default_instance_;
 }
 
 void protobuf_AddDesc_Vector_2eproto() {
@@ -33,12 +35,16 @@ void protobuf_AddDesc_Vector_2eproto() {
   Vector3i::default_instance_ = new Vector3i();
   Vector4f::default_instance_ = new Vector4f();
   Vector4i::default_instance_ = new Vector4i();
+  Matrix4f::default_instance_ = new Matrix4f();
+  Matrix4fB::default_instance_ = new Matrix4fB();
   Vector2f::default_instance_->InitAsDefaultInstance();
   Vector2i::default_instance_->InitAsDefaultInstance();
   Vector3f::default_instance_->InitAsDefaultInstance();
   Vector3i::default_instance_->InitAsDefaultInstance();
   Vector4f::default_instance_->InitAsDefaultInstance();
   Vector4i::default_instance_->InitAsDefaultInstance();
+  Matrix4f::default_instance_->InitAsDefaultInstance();
+  Matrix4fB::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Vector_2eproto);
 }
 
@@ -1403,6 +1409,327 @@ void Vector4i::Swap(Vector4i* other) {
 
 ::std::string Vector4i::GetTypeName() const {
   return "Serializer.Vector4i";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int Matrix4f::kDataFieldNumber;
+#endif  // !_MSC_VER
+
+Matrix4f::Matrix4f()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void Matrix4f::InitAsDefaultInstance() {
+}
+
+Matrix4f::Matrix4f(const Matrix4f& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Matrix4f::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Matrix4f::~Matrix4f() {
+  SharedDtor();
+}
+
+void Matrix4f::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Matrix4f::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const Matrix4f& Matrix4f::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vector_2eproto();  return *default_instance_;
+}
+
+Matrix4f* Matrix4f::default_instance_ = NULL;
+
+Matrix4f* Matrix4f::New() const {
+  return new Matrix4f;
+}
+
+void Matrix4f::Clear() {
+  data_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool Matrix4f::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated float data = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_data:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 1, 13, input, this->mutable_data())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, this->mutable_data())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(13)) goto parse_data;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Matrix4f::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated float data = 1;
+  for (int i = 0; i < this->data_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(
+      1, this->data(i), output);
+  }
+  
+}
+
+int Matrix4f::ByteSize() const {
+  int total_size = 0;
+  
+  // repeated float data = 1;
+  {
+    int data_size = 0;
+    data_size = 4 * this->data_size();
+    total_size += 1 * this->data_size() + data_size;
+  }
+  
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Matrix4f::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const Matrix4f*>(&from));
+}
+
+void Matrix4f::MergeFrom(const Matrix4f& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  data_.MergeFrom(from.data_);
+}
+
+void Matrix4f::CopyFrom(const Matrix4f& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Matrix4f::IsInitialized() const {
+  
+  return true;
+}
+
+void Matrix4f::Swap(Matrix4f* other) {
+  if (other != this) {
+    data_.Swap(&other->data_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string Matrix4f::GetTypeName() const {
+  return "Serializer.Matrix4f";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int Matrix4fB::kDataFieldNumber;
+#endif  // !_MSC_VER
+
+Matrix4fB::Matrix4fB()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void Matrix4fB::InitAsDefaultInstance() {
+}
+
+Matrix4fB::Matrix4fB(const Matrix4fB& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Matrix4fB::SharedCtor() {
+  _cached_size_ = 0;
+  data_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Matrix4fB::~Matrix4fB() {
+  SharedDtor();
+}
+
+void Matrix4fB::SharedDtor() {
+  if (data_ != &::google::protobuf::internal::kEmptyString) {
+    delete data_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void Matrix4fB::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const Matrix4fB& Matrix4fB::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vector_2eproto();  return *default_instance_;
+}
+
+Matrix4fB* Matrix4fB::default_instance_ = NULL;
+
+Matrix4fB* Matrix4fB::New() const {
+  return new Matrix4fB;
+}
+
+void Matrix4fB::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_data()) {
+      if (data_ != &::google::protobuf::internal::kEmptyString) {
+        data_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool Matrix4fB::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional bytes data = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_data()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Matrix4fB::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional bytes data = 1;
+  if (has_data()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      1, this->data(), output);
+  }
+  
+}
+
+int Matrix4fB::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional bytes data = 1;
+    if (has_data()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->data());
+    }
+    
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Matrix4fB::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const Matrix4fB*>(&from));
+}
+
+void Matrix4fB::MergeFrom(const Matrix4fB& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_data()) {
+      set_data(from.data());
+    }
+  }
+}
+
+void Matrix4fB::CopyFrom(const Matrix4fB& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Matrix4fB::IsInitialized() const {
+  
+  return true;
+}
+
+void Matrix4fB::Swap(Matrix4fB* other) {
+  if (other != this) {
+    std::swap(data_, other->data_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string Matrix4fB::GetTypeName() const {
+  return "Serializer.Matrix4fB";
 }
 
 

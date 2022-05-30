@@ -630,6 +630,15 @@
     <ClCompile Include="..\..\Runtime\Render\RenderOrder.cpp">
       <Filter>Runtime\Render</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Runtime\Animation\Avatar.cpp">
+      <Filter>Runtime\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\Animation\Baked3DAnimation.cpp">
+      <Filter>Runtime\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Runtime\3D\CustomComponent.cpp">
+      <Filter>Runtime\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Runtime\RuntimePrefix.h">
@@ -1174,6 +1183,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Runtime\Render\RenderOrder.h">
       <Filter>Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Animation\Avatar.h">
+      <Filter>Runtime\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\Animation\Baked3DAnimation.h">
+      <Filter>Runtime\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Runtime\3D\CustomComponent.h">
+      <Filter>Runtime\3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

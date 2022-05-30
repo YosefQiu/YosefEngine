@@ -22,6 +22,8 @@
 #include "generated_message_util.h"
 #include "repeated_field.h"
 #include "extension_set.h"
+#include "Vector.serializer.h"
+#include "Mesh.serializer.h"
 #include "GameObject.serializer.h"
 #include "Animation.serializer.h"
 // @@protoc_insertion_point(includes)
@@ -40,6 +42,7 @@ class Attachment;
 class SlotAvailableAttachmentsInfo;
 class Skin;
 class SpineAvatar;
+class Avatar3D;
 
 // ===================================================================
 
@@ -827,6 +830,105 @@ class SpineAvatar : public ::google::protobuf::MessageLite {
   
   void InitAsDefaultInstance();
   static SpineAvatar* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Avatar3D : public ::google::protobuf::MessageLite {
+ public:
+  Avatar3D();
+  virtual ~Avatar3D();
+  
+  Avatar3D(const Avatar3D& from);
+  
+  inline Avatar3D& operator=(const Avatar3D& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Avatar3D& default_instance();
+  
+  void Swap(Avatar3D* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Avatar3D* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Avatar3D& from);
+  void MergeFrom(const Avatar3D& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  
+  // repeated .Serializer.Mesh t_pose = 2;
+  inline int t_pose_size() const;
+  inline void clear_t_pose();
+  static const int kTPoseFieldNumber = 2;
+  inline const ::Serializer::Mesh& t_pose(int index) const;
+  inline ::Serializer::Mesh* mutable_t_pose(int index);
+  inline ::Serializer::Mesh* add_t_pose();
+  inline const ::google::protobuf::RepeatedPtrField< ::Serializer::Mesh >&
+      t_pose() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Serializer::Mesh >*
+      mutable_t_pose();
+  
+  // repeated .Serializer.Matrix4fB t_pose_invert_matrix = 3;
+  inline int t_pose_invert_matrix_size() const;
+  inline void clear_t_pose_invert_matrix();
+  static const int kTPoseInvertMatrixFieldNumber = 3;
+  inline const ::Serializer::Matrix4fB& t_pose_invert_matrix(int index) const;
+  inline ::Serializer::Matrix4fB* mutable_t_pose_invert_matrix(int index);
+  inline ::Serializer::Matrix4fB* add_t_pose_invert_matrix();
+  inline const ::google::protobuf::RepeatedPtrField< ::Serializer::Matrix4fB >&
+      t_pose_invert_matrix() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Serializer::Matrix4fB >*
+      mutable_t_pose_invert_matrix();
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Avatar3D)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+  
+  ::std::string* name_;
+  ::google::protobuf::RepeatedPtrField< ::Serializer::Mesh > t_pose_;
+  ::google::protobuf::RepeatedPtrField< ::Serializer::Matrix4fB > t_pose_invert_matrix_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Avatar_2eproto();
+  friend void protobuf_AssignDesc_Avatar_2eproto();
+  friend void protobuf_ShutdownFile_Avatar_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Avatar3D* default_instance_;
 };
 // ===================================================================
 
@@ -1841,6 +1943,118 @@ SpineAvatar::animations() const {
 inline ::google::protobuf::RepeatedPtrField< ::Serializer::Animation >*
 SpineAvatar::mutable_animations() {
   return &animations_;
+}
+
+// -------------------------------------------------------------------
+
+// Avatar3D
+
+// optional string name = 1;
+inline bool Avatar3D::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Avatar3D::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Avatar3D::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Avatar3D::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& Avatar3D::name() const {
+  return *name_;
+}
+inline void Avatar3D::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Avatar3D::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Avatar3D::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Avatar3D::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* Avatar3D::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
+// repeated .Serializer.Mesh t_pose = 2;
+inline int Avatar3D::t_pose_size() const {
+  return t_pose_.size();
+}
+inline void Avatar3D::clear_t_pose() {
+  t_pose_.Clear();
+}
+inline const ::Serializer::Mesh& Avatar3D::t_pose(int index) const {
+  return t_pose_.Get(index);
+}
+inline ::Serializer::Mesh* Avatar3D::mutable_t_pose(int index) {
+  return t_pose_.Mutable(index);
+}
+inline ::Serializer::Mesh* Avatar3D::add_t_pose() {
+  return t_pose_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Serializer::Mesh >&
+Avatar3D::t_pose() const {
+  return t_pose_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Serializer::Mesh >*
+Avatar3D::mutable_t_pose() {
+  return &t_pose_;
+}
+
+// repeated .Serializer.Matrix4fB t_pose_invert_matrix = 3;
+inline int Avatar3D::t_pose_invert_matrix_size() const {
+  return t_pose_invert_matrix_.size();
+}
+inline void Avatar3D::clear_t_pose_invert_matrix() {
+  t_pose_invert_matrix_.Clear();
+}
+inline const ::Serializer::Matrix4fB& Avatar3D::t_pose_invert_matrix(int index) const {
+  return t_pose_invert_matrix_.Get(index);
+}
+inline ::Serializer::Matrix4fB* Avatar3D::mutable_t_pose_invert_matrix(int index) {
+  return t_pose_invert_matrix_.Mutable(index);
+}
+inline ::Serializer::Matrix4fB* Avatar3D::add_t_pose_invert_matrix() {
+  return t_pose_invert_matrix_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Serializer::Matrix4fB >&
+Avatar3D::t_pose_invert_matrix() const {
+  return t_pose_invert_matrix_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Serializer::Matrix4fB >*
+Avatar3D::mutable_t_pose_invert_matrix() {
+  return &t_pose_invert_matrix_;
 }
 
 

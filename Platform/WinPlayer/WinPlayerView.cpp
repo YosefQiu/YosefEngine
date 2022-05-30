@@ -36,6 +36,7 @@ void WinPlayerView::Init(HWND parent)
 	GetSceneManager()->InitTestImageSprite();
 	GetSceneManager()->InitTestLabel();
 	GetSceneManager()->InitTest2DAnimation();
+	GetSceneManager()->InitTest3DAnimation();
 }
 
 void WinPlayerView::PaintWindow() {

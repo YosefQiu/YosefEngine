@@ -20,6 +20,7 @@ void protobuf_ShutdownFile_Avatar_2eproto() {
   delete SlotAvailableAttachmentsInfo::default_instance_;
   delete Skin::default_instance_;
   delete SpineAvatar::default_instance_;
+  delete Avatar3D::default_instance_;
 }
 
 void protobuf_AddDesc_Avatar_2eproto() {
@@ -28,6 +29,8 @@ void protobuf_AddDesc_Avatar_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::Serializer::protobuf_AddDesc_Vector_2eproto();
+  ::Serializer::protobuf_AddDesc_Mesh_2eproto();
   ::Serializer::protobuf_AddDesc_GameObject_2eproto();
   ::Serializer::protobuf_AddDesc_Animation_2eproto();
   Bone::default_instance_ = new Bone();
@@ -37,6 +40,7 @@ void protobuf_AddDesc_Avatar_2eproto() {
   SlotAvailableAttachmentsInfo::default_instance_ = new SlotAvailableAttachmentsInfo();
   Skin::default_instance_ = new Skin();
   SpineAvatar::default_instance_ = new SpineAvatar();
+  Avatar3D::default_instance_ = new Avatar3D();
   Bone::default_instance_->InitAsDefaultInstance();
   Slot::default_instance_->InitAsDefaultInstance();
   RegionAttachment::default_instance_->InitAsDefaultInstance();
@@ -44,6 +48,7 @@ void protobuf_AddDesc_Avatar_2eproto() {
   SlotAvailableAttachmentsInfo::default_instance_->InitAsDefaultInstance();
   Skin::default_instance_->InitAsDefaultInstance();
   SpineAvatar::default_instance_->InitAsDefaultInstance();
+  Avatar3D::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Avatar_2eproto);
 }
 
@@ -2009,6 +2014,236 @@ void SpineAvatar::Swap(SpineAvatar* other) {
 
 ::std::string SpineAvatar::GetTypeName() const {
   return "Serializer.SpineAvatar";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int Avatar3D::kNameFieldNumber;
+const int Avatar3D::kTPoseFieldNumber;
+const int Avatar3D::kTPoseInvertMatrixFieldNumber;
+#endif  // !_MSC_VER
+
+Avatar3D::Avatar3D()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void Avatar3D::InitAsDefaultInstance() {
+}
+
+Avatar3D::Avatar3D(const Avatar3D& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Avatar3D::SharedCtor() {
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Avatar3D::~Avatar3D() {
+  SharedDtor();
+}
+
+void Avatar3D::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void Avatar3D::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const Avatar3D& Avatar3D::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Avatar_2eproto();  return *default_instance_;
+}
+
+Avatar3D* Avatar3D::default_instance_ = NULL;
+
+Avatar3D* Avatar3D::New() const {
+  return new Avatar3D;
+}
+
+void Avatar3D::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
+        name_->clear();
+      }
+    }
+  }
+  t_pose_.Clear();
+  t_pose_invert_matrix_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool Avatar3D::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_t_pose;
+        break;
+      }
+      
+      // repeated .Serializer.Mesh t_pose = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_t_pose:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_t_pose()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_t_pose;
+        if (input->ExpectTag(26)) goto parse_t_pose_invert_matrix;
+        break;
+      }
+      
+      // repeated .Serializer.Matrix4fB t_pose_invert_matrix = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_t_pose_invert_matrix:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_t_pose_invert_matrix()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_t_pose_invert_matrix;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Avatar3D::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->name(), output);
+  }
+  
+  // repeated .Serializer.Mesh t_pose = 2;
+  for (int i = 0; i < this->t_pose_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, this->t_pose(i), output);
+  }
+  
+  // repeated .Serializer.Matrix4fB t_pose_invert_matrix = 3;
+  for (int i = 0; i < this->t_pose_invert_matrix_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      3, this->t_pose_invert_matrix(i), output);
+  }
+  
+}
+
+int Avatar3D::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
+  }
+  // repeated .Serializer.Mesh t_pose = 2;
+  total_size += 1 * this->t_pose_size();
+  for (int i = 0; i < this->t_pose_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->t_pose(i));
+  }
+  
+  // repeated .Serializer.Matrix4fB t_pose_invert_matrix = 3;
+  total_size += 1 * this->t_pose_invert_matrix_size();
+  for (int i = 0; i < this->t_pose_invert_matrix_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->t_pose_invert_matrix(i));
+  }
+  
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Avatar3D::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const Avatar3D*>(&from));
+}
+
+void Avatar3D::MergeFrom(const Avatar3D& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  t_pose_.MergeFrom(from.t_pose_);
+  t_pose_invert_matrix_.MergeFrom(from.t_pose_invert_matrix_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+  }
+}
+
+void Avatar3D::CopyFrom(const Avatar3D& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Avatar3D::IsInitialized() const {
+  
+  return true;
+}
+
+void Avatar3D::Swap(Avatar3D* other) {
+  if (other != this) {
+    std::swap(name_, other->name_);
+    t_pose_.Swap(&other->t_pose_);
+    t_pose_invert_matrix_.Swap(&other->t_pose_invert_matrix_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string Avatar3D::GetTypeName() const {
+  return "Serializer.Avatar3D";
 }
 
 

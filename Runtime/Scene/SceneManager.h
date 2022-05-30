@@ -24,6 +24,7 @@ namespace YOSEF {
 		void InitTestLabel();
 		void InitTestImageSprite9();
 		void InitTest2DAnimation();
+		void InitTest3DAnimation();
 		int mFullResolutionWidth, mFullResolutionHeight;
 		int mMaxFPS;
 		float mFixedTimePerFrame;

@@ -37,6 +37,8 @@ class Vector3f;
 class Vector3i;
 class Vector4f;
 class Vector4i;
+class Matrix4f;
+class Matrix4fB;
 
 // ===================================================================
 
@@ -572,6 +574,151 @@ class Vector4i : public ::google::protobuf::MessageLite {
   void InitAsDefaultInstance();
   static Vector4i* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class Matrix4f : public ::google::protobuf::MessageLite {
+ public:
+  Matrix4f();
+  virtual ~Matrix4f();
+  
+  Matrix4f(const Matrix4f& from);
+  
+  inline Matrix4f& operator=(const Matrix4f& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Matrix4f& default_instance();
+  
+  void Swap(Matrix4f* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Matrix4f* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Matrix4f& from);
+  void MergeFrom(const Matrix4f& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // repeated float data = 1;
+  inline int data_size() const;
+  inline void clear_data();
+  static const int kDataFieldNumber = 1;
+  inline float data(int index) const;
+  inline void set_data(int index, float value);
+  inline void add_data(float value);
+  inline const ::google::protobuf::RepeatedField< float >&
+      data() const;
+  inline ::google::protobuf::RepeatedField< float >*
+      mutable_data();
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Matrix4f)
+ private:
+  
+  ::google::protobuf::RepeatedField< float > data_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Vector_2eproto();
+  friend void protobuf_AssignDesc_Vector_2eproto();
+  friend void protobuf_ShutdownFile_Vector_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Matrix4f* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Matrix4fB : public ::google::protobuf::MessageLite {
+ public:
+  Matrix4fB();
+  virtual ~Matrix4fB();
+  
+  Matrix4fB(const Matrix4fB& from);
+  
+  inline Matrix4fB& operator=(const Matrix4fB& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Matrix4fB& default_instance();
+  
+  void Swap(Matrix4fB* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Matrix4fB* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Matrix4fB& from);
+  void MergeFrom(const Matrix4fB& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional bytes data = 1;
+  inline bool has_data() const;
+  inline void clear_data();
+  static const int kDataFieldNumber = 1;
+  inline const ::std::string& data() const;
+  inline void set_data(const ::std::string& value);
+  inline void set_data(const char* value);
+  inline void set_data(const void* value, size_t size);
+  inline ::std::string* mutable_data();
+  inline ::std::string* release_data();
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Matrix4fB)
+ private:
+  inline void set_has_data();
+  inline void clear_has_data();
+  
+  ::std::string* data_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Vector_2eproto();
+  friend void protobuf_AssignDesc_Vector_2eproto();
+  friend void protobuf_ShutdownFile_Vector_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Matrix4fB* default_instance_;
+};
 // ===================================================================
 
 
@@ -993,6 +1140,97 @@ inline ::google::protobuf::int32 Vector4i::w() const {
 inline void Vector4i::set_w(::google::protobuf::int32 value) {
   set_has_w();
   w_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Matrix4f
+
+// repeated float data = 1;
+inline int Matrix4f::data_size() const {
+  return data_.size();
+}
+inline void Matrix4f::clear_data() {
+  data_.Clear();
+}
+inline float Matrix4f::data(int index) const {
+  return data_.Get(index);
+}
+inline void Matrix4f::set_data(int index, float value) {
+  data_.Set(index, value);
+}
+inline void Matrix4f::add_data(float value) {
+  data_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Matrix4f::data() const {
+  return data_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Matrix4f::mutable_data() {
+  return &data_;
+}
+
+// -------------------------------------------------------------------
+
+// Matrix4fB
+
+// optional bytes data = 1;
+inline bool Matrix4fB::has_data() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Matrix4fB::set_has_data() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Matrix4fB::clear_has_data() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Matrix4fB::clear_data() {
+  if (data_ != &::google::protobuf::internal::kEmptyString) {
+    data_->clear();
+  }
+  clear_has_data();
+}
+inline const ::std::string& Matrix4fB::data() const {
+  return *data_;
+}
+inline void Matrix4fB::set_data(const ::std::string& value) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::kEmptyString) {
+    data_ = new ::std::string;
+  }
+  data_->assign(value);
+}
+inline void Matrix4fB::set_data(const char* value) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::kEmptyString) {
+    data_ = new ::std::string;
+  }
+  data_->assign(value);
+}
+inline void Matrix4fB::set_data(const void* value, size_t size) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::kEmptyString) {
+    data_ = new ::std::string;
+  }
+  data_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Matrix4fB::mutable_data() {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::kEmptyString) {
+    data_ = new ::std::string;
+  }
+  return data_;
+}
+inline ::std::string* Matrix4fB::release_data() {
+  clear_has_data();
+  if (data_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = data_;
+    data_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
 
 

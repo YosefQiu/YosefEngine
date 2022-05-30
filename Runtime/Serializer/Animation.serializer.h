@@ -53,6 +53,9 @@ class DrawOrderAnimationKeyFrame;
 class DrawOrderAnimationClip;
 class AnimationClip;
 class Animation;
+class BakedMeshData;
+class BakedKeyFrame;
+class BakedAnimationData;
 
 // ===================================================================
 
@@ -1798,6 +1801,261 @@ class Animation : public ::google::protobuf::MessageLite {
   void InitAsDefaultInstance();
   static Animation* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class BakedMeshData : public ::google::protobuf::MessageLite {
+ public:
+  BakedMeshData();
+  virtual ~BakedMeshData();
+  
+  BakedMeshData(const BakedMeshData& from);
+  
+  inline BakedMeshData& operator=(const BakedMeshData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const BakedMeshData& default_instance();
+  
+  void Swap(BakedMeshData* other);
+  
+  // implements Message ----------------------------------------------
+  
+  BakedMeshData* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const BakedMeshData& from);
+  void MergeFrom(const BakedMeshData& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional bytes vertex_buffer = 1;
+  inline bool has_vertex_buffer() const;
+  inline void clear_vertex_buffer();
+  static const int kVertexBufferFieldNumber = 1;
+  inline const ::std::string& vertex_buffer() const;
+  inline void set_vertex_buffer(const ::std::string& value);
+  inline void set_vertex_buffer(const char* value);
+  inline void set_vertex_buffer(const void* value, size_t size);
+  inline ::std::string* mutable_vertex_buffer();
+  inline ::std::string* release_vertex_buffer();
+  
+  // optional bytes offset_matrix = 2;
+  inline bool has_offset_matrix() const;
+  inline void clear_offset_matrix();
+  static const int kOffsetMatrixFieldNumber = 2;
+  inline const ::std::string& offset_matrix() const;
+  inline void set_offset_matrix(const ::std::string& value);
+  inline void set_offset_matrix(const char* value);
+  inline void set_offset_matrix(const void* value, size_t size);
+  inline ::std::string* mutable_offset_matrix();
+  inline ::std::string* release_offset_matrix();
+  
+  // @@protoc_insertion_point(class_scope:Serializer.BakedMeshData)
+ private:
+  inline void set_has_vertex_buffer();
+  inline void clear_has_vertex_buffer();
+  inline void set_has_offset_matrix();
+  inline void clear_has_offset_matrix();
+  
+  ::std::string* vertex_buffer_;
+  ::std::string* offset_matrix_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Animation_2eproto();
+  friend void protobuf_AssignDesc_Animation_2eproto();
+  friend void protobuf_ShutdownFile_Animation_2eproto();
+  
+  void InitAsDefaultInstance();
+  static BakedMeshData* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BakedKeyFrame : public ::google::protobuf::MessageLite {
+ public:
+  BakedKeyFrame();
+  virtual ~BakedKeyFrame();
+  
+  BakedKeyFrame(const BakedKeyFrame& from);
+  
+  inline BakedKeyFrame& operator=(const BakedKeyFrame& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const BakedKeyFrame& default_instance();
+  
+  void Swap(BakedKeyFrame* other);
+  
+  // implements Message ----------------------------------------------
+  
+  BakedKeyFrame* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const BakedKeyFrame& from);
+  void MergeFrom(const BakedKeyFrame& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // repeated .Serializer.BakedMeshData mesh_datas = 1;
+  inline int mesh_datas_size() const;
+  inline void clear_mesh_datas();
+  static const int kMeshDatasFieldNumber = 1;
+  inline const ::Serializer::BakedMeshData& mesh_datas(int index) const;
+  inline ::Serializer::BakedMeshData* mutable_mesh_datas(int index);
+  inline ::Serializer::BakedMeshData* add_mesh_datas();
+  inline const ::google::protobuf::RepeatedPtrField< ::Serializer::BakedMeshData >&
+      mesh_datas() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Serializer::BakedMeshData >*
+      mutable_mesh_datas();
+  
+  // @@protoc_insertion_point(class_scope:Serializer.BakedKeyFrame)
+ private:
+  
+  ::google::protobuf::RepeatedPtrField< ::Serializer::BakedMeshData > mesh_datas_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Animation_2eproto();
+  friend void protobuf_AssignDesc_Animation_2eproto();
+  friend void protobuf_ShutdownFile_Animation_2eproto();
+  
+  void InitAsDefaultInstance();
+  static BakedKeyFrame* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BakedAnimationData : public ::google::protobuf::MessageLite {
+ public:
+  BakedAnimationData();
+  virtual ~BakedAnimationData();
+  
+  BakedAnimationData(const BakedAnimationData& from);
+  
+  inline BakedAnimationData& operator=(const BakedAnimationData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const BakedAnimationData& default_instance();
+  
+  void Swap(BakedAnimationData* other);
+  
+  // implements Message ----------------------------------------------
+  
+  BakedAnimationData* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const BakedAnimationData& from);
+  void MergeFrom(const BakedAnimationData& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  
+  // repeated .Serializer.BakedKeyFrame key_frames = 2;
+  inline int key_frames_size() const;
+  inline void clear_key_frames();
+  static const int kKeyFramesFieldNumber = 2;
+  inline const ::Serializer::BakedKeyFrame& key_frames(int index) const;
+  inline ::Serializer::BakedKeyFrame* mutable_key_frames(int index);
+  inline ::Serializer::BakedKeyFrame* add_key_frames();
+  inline const ::google::protobuf::RepeatedPtrField< ::Serializer::BakedKeyFrame >&
+      key_frames() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Serializer::BakedKeyFrame >*
+      mutable_key_frames();
+  
+  // optional int32 frame_rate = 3;
+  inline bool has_frame_rate() const;
+  inline void clear_frame_rate();
+  static const int kFrameRateFieldNumber = 3;
+  inline ::google::protobuf::int32 frame_rate() const;
+  inline void set_frame_rate(::google::protobuf::int32 value);
+  
+  // @@protoc_insertion_point(class_scope:Serializer.BakedAnimationData)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_frame_rate();
+  inline void clear_has_frame_rate();
+  
+  ::std::string* name_;
+  ::google::protobuf::RepeatedPtrField< ::Serializer::BakedKeyFrame > key_frames_;
+  ::google::protobuf::int32 frame_rate_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Animation_2eproto();
+  friend void protobuf_AssignDesc_Animation_2eproto();
+  friend void protobuf_ShutdownFile_Animation_2eproto();
+  
+  void InitAsDefaultInstance();
+  static BakedAnimationData* default_instance_;
+};
 // ===================================================================
 
 
@@ -3162,6 +3420,264 @@ Animation::animation_clips() const {
 inline ::google::protobuf::RepeatedPtrField< ::Serializer::AnimationClip >*
 Animation::mutable_animation_clips() {
   return &animation_clips_;
+}
+
+// -------------------------------------------------------------------
+
+// BakedMeshData
+
+// optional bytes vertex_buffer = 1;
+inline bool BakedMeshData::has_vertex_buffer() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BakedMeshData::set_has_vertex_buffer() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BakedMeshData::clear_has_vertex_buffer() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BakedMeshData::clear_vertex_buffer() {
+  if (vertex_buffer_ != &::google::protobuf::internal::kEmptyString) {
+    vertex_buffer_->clear();
+  }
+  clear_has_vertex_buffer();
+}
+inline const ::std::string& BakedMeshData::vertex_buffer() const {
+  return *vertex_buffer_;
+}
+inline void BakedMeshData::set_vertex_buffer(const ::std::string& value) {
+  set_has_vertex_buffer();
+  if (vertex_buffer_ == &::google::protobuf::internal::kEmptyString) {
+    vertex_buffer_ = new ::std::string;
+  }
+  vertex_buffer_->assign(value);
+}
+inline void BakedMeshData::set_vertex_buffer(const char* value) {
+  set_has_vertex_buffer();
+  if (vertex_buffer_ == &::google::protobuf::internal::kEmptyString) {
+    vertex_buffer_ = new ::std::string;
+  }
+  vertex_buffer_->assign(value);
+}
+inline void BakedMeshData::set_vertex_buffer(const void* value, size_t size) {
+  set_has_vertex_buffer();
+  if (vertex_buffer_ == &::google::protobuf::internal::kEmptyString) {
+    vertex_buffer_ = new ::std::string;
+  }
+  vertex_buffer_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BakedMeshData::mutable_vertex_buffer() {
+  set_has_vertex_buffer();
+  if (vertex_buffer_ == &::google::protobuf::internal::kEmptyString) {
+    vertex_buffer_ = new ::std::string;
+  }
+  return vertex_buffer_;
+}
+inline ::std::string* BakedMeshData::release_vertex_buffer() {
+  clear_has_vertex_buffer();
+  if (vertex_buffer_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = vertex_buffer_;
+    vertex_buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
+// optional bytes offset_matrix = 2;
+inline bool BakedMeshData::has_offset_matrix() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BakedMeshData::set_has_offset_matrix() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BakedMeshData::clear_has_offset_matrix() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BakedMeshData::clear_offset_matrix() {
+  if (offset_matrix_ != &::google::protobuf::internal::kEmptyString) {
+    offset_matrix_->clear();
+  }
+  clear_has_offset_matrix();
+}
+inline const ::std::string& BakedMeshData::offset_matrix() const {
+  return *offset_matrix_;
+}
+inline void BakedMeshData::set_offset_matrix(const ::std::string& value) {
+  set_has_offset_matrix();
+  if (offset_matrix_ == &::google::protobuf::internal::kEmptyString) {
+    offset_matrix_ = new ::std::string;
+  }
+  offset_matrix_->assign(value);
+}
+inline void BakedMeshData::set_offset_matrix(const char* value) {
+  set_has_offset_matrix();
+  if (offset_matrix_ == &::google::protobuf::internal::kEmptyString) {
+    offset_matrix_ = new ::std::string;
+  }
+  offset_matrix_->assign(value);
+}
+inline void BakedMeshData::set_offset_matrix(const void* value, size_t size) {
+  set_has_offset_matrix();
+  if (offset_matrix_ == &::google::protobuf::internal::kEmptyString) {
+    offset_matrix_ = new ::std::string;
+  }
+  offset_matrix_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BakedMeshData::mutable_offset_matrix() {
+  set_has_offset_matrix();
+  if (offset_matrix_ == &::google::protobuf::internal::kEmptyString) {
+    offset_matrix_ = new ::std::string;
+  }
+  return offset_matrix_;
+}
+inline ::std::string* BakedMeshData::release_offset_matrix() {
+  clear_has_offset_matrix();
+  if (offset_matrix_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = offset_matrix_;
+    offset_matrix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
+// -------------------------------------------------------------------
+
+// BakedKeyFrame
+
+// repeated .Serializer.BakedMeshData mesh_datas = 1;
+inline int BakedKeyFrame::mesh_datas_size() const {
+  return mesh_datas_.size();
+}
+inline void BakedKeyFrame::clear_mesh_datas() {
+  mesh_datas_.Clear();
+}
+inline const ::Serializer::BakedMeshData& BakedKeyFrame::mesh_datas(int index) const {
+  return mesh_datas_.Get(index);
+}
+inline ::Serializer::BakedMeshData* BakedKeyFrame::mutable_mesh_datas(int index) {
+  return mesh_datas_.Mutable(index);
+}
+inline ::Serializer::BakedMeshData* BakedKeyFrame::add_mesh_datas() {
+  return mesh_datas_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Serializer::BakedMeshData >&
+BakedKeyFrame::mesh_datas() const {
+  return mesh_datas_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Serializer::BakedMeshData >*
+BakedKeyFrame::mutable_mesh_datas() {
+  return &mesh_datas_;
+}
+
+// -------------------------------------------------------------------
+
+// BakedAnimationData
+
+// optional string name = 1;
+inline bool BakedAnimationData::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BakedAnimationData::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BakedAnimationData::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BakedAnimationData::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& BakedAnimationData::name() const {
+  return *name_;
+}
+inline void BakedAnimationData::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void BakedAnimationData::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void BakedAnimationData::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BakedAnimationData::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* BakedAnimationData::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
+// repeated .Serializer.BakedKeyFrame key_frames = 2;
+inline int BakedAnimationData::key_frames_size() const {
+  return key_frames_.size();
+}
+inline void BakedAnimationData::clear_key_frames() {
+  key_frames_.Clear();
+}
+inline const ::Serializer::BakedKeyFrame& BakedAnimationData::key_frames(int index) const {
+  return key_frames_.Get(index);
+}
+inline ::Serializer::BakedKeyFrame* BakedAnimationData::mutable_key_frames(int index) {
+  return key_frames_.Mutable(index);
+}
+inline ::Serializer::BakedKeyFrame* BakedAnimationData::add_key_frames() {
+  return key_frames_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Serializer::BakedKeyFrame >&
+BakedAnimationData::key_frames() const {
+  return key_frames_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Serializer::BakedKeyFrame >*
+BakedAnimationData::mutable_key_frames() {
+  return &key_frames_;
+}
+
+// optional int32 frame_rate = 3;
+inline bool BakedAnimationData::has_frame_rate() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BakedAnimationData::set_has_frame_rate() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BakedAnimationData::clear_has_frame_rate() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BakedAnimationData::clear_frame_rate() {
+  frame_rate_ = 0;
+  clear_has_frame_rate();
+}
+inline ::google::protobuf::int32 BakedAnimationData::frame_rate() const {
+  return frame_rate_;
+}
+inline void BakedAnimationData::set_frame_rate(::google::protobuf::int32 value) {
+  set_has_frame_rate();
+  frame_rate_ = value;
 }
 
 

@@ -91,3 +91,15 @@ message Animation{
 	optional float duration=2;
 	repeated AnimationClip animation_clips=3;
 }
+message BakedMeshData{
+	optional bytes vertex_buffer=1;
+	optional bytes offset_matrix=2;
+}
+message BakedKeyFrame{
+	repeated BakedMeshData mesh_datas=1;
+}
+message BakedAnimationData{
+	optional string name=1;
+	repeated BakedKeyFrame key_frames=2;
+    optional int32 frame_rate=3;
+}

@@ -130,6 +130,41 @@ namespace YOSEF {
 		}
 		go->SetLocalPosition(0.0f, -200.0f, 0.0f);
 	}
+	void SceneManager::InitTest3DAnimation() {
+		GameObject* uiroot = new GameObject;
+		mRootObject->AddChild(uiroot);
+		uiroot->SetLocalPosition(0.0f, 0.0f, -1.0f);
+
+		GameObject* go = new GameObject;
+		uiroot->AddChild(go);
+
+		Material* material = new Material;
+		*material = *Material::mCachedMaterials["builtin/Material/Texture2D"];
+		material->mbSharedMaterial = false;
+		Texture2D* texture = Texture2D::LoadTexture2D("Resource/alien.atlas");
+		material->SetTextureProperty("U_MainTexture", texture);
+
+		SpineAvatar* avatar = new SpineAvatar;
+		avatar->SetOwner(go);
+		avatar->mSharedMaterial = material;
+
+		Resource* avatar_resource = Resource::LoadAssetWithUserPath("Resource/alien.avatar");
+		if (avatar_resource != nullptr) {
+			Serializer::SpineAvatar* avatar_data = new (kMemAnimationId)Serializer::SpineAvatar;
+			if (avatar_data->ParseFromArray(avatar_resource->mAssetBundle->rawdata().c_str(), avatar_resource->mAssetBundle->rawdata().size())) {
+				avatar->mSpineAvatarData = avatar_data;
+				go->InitSelfWithSerializedData(avatar_data->mutable_setup_pose(), avatar->mSharedMaterial.mPtr);
+				avatar->ResetToTPose();
+				for (int animation_index = 0; animation_index < avatar_data->animations_size(); ++animation_index) {
+					avatar->AttachAnimation(avatar_data->animations(animation_index));
+				}
+				avatar->Play("run");
+				avatar->mAnimationMode = kAnimationModeLoop;
+			}
+		}
+		go->SetLocalPosition(0.0f, -200.0f, 0.0f);
+		
+	}
 	void SceneManager::Render() {
 		glViewport(0, 0, 1280, 720);
 		OGL_CALL(glClearColor(0.1f, 0.4f, 0.6f, 1.0f));

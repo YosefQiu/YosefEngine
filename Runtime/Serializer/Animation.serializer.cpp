@@ -33,6 +33,9 @@ void protobuf_ShutdownFile_Animation_2eproto() {
   delete DrawOrderAnimationClip::default_instance_;
   delete AnimationClip::default_instance_;
   delete Animation::default_instance_;
+  delete BakedMeshData::default_instance_;
+  delete BakedKeyFrame::default_instance_;
+  delete BakedAnimationData::default_instance_;
 }
 
 void protobuf_AddDesc_Animation_2eproto() {
@@ -63,6 +66,9 @@ void protobuf_AddDesc_Animation_2eproto() {
   DrawOrderAnimationClip::default_instance_ = new DrawOrderAnimationClip();
   AnimationClip::default_instance_ = new AnimationClip();
   Animation::default_instance_ = new Animation();
+  BakedMeshData::default_instance_ = new BakedMeshData();
+  BakedKeyFrame::default_instance_ = new BakedKeyFrame();
+  BakedAnimationData::default_instance_ = new BakedAnimationData();
   Curve::default_instance_->InitAsDefaultInstance();
   CubicBezier::default_instance_->InitAsDefaultInstance();
   RotateAnimationKeyFrame::default_instance_->InitAsDefaultInstance();
@@ -83,6 +89,9 @@ void protobuf_AddDesc_Animation_2eproto() {
   DrawOrderAnimationClip::default_instance_->InitAsDefaultInstance();
   AnimationClip::default_instance_->InitAsDefaultInstance();
   Animation::default_instance_->InitAsDefaultInstance();
+  BakedMeshData::default_instance_->InitAsDefaultInstance();
+  BakedKeyFrame::default_instance_->InitAsDefaultInstance();
+  BakedAnimationData::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Animation_2eproto);
 }
 
@@ -4201,6 +4210,594 @@ void Animation::Swap(Animation* other) {
 
 ::std::string Animation::GetTypeName() const {
   return "Serializer.Animation";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int BakedMeshData::kVertexBufferFieldNumber;
+const int BakedMeshData::kOffsetMatrixFieldNumber;
+#endif  // !_MSC_VER
+
+BakedMeshData::BakedMeshData()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void BakedMeshData::InitAsDefaultInstance() {
+}
+
+BakedMeshData::BakedMeshData(const BakedMeshData& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void BakedMeshData::SharedCtor() {
+  _cached_size_ = 0;
+  vertex_buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  offset_matrix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+BakedMeshData::~BakedMeshData() {
+  SharedDtor();
+}
+
+void BakedMeshData::SharedDtor() {
+  if (vertex_buffer_ != &::google::protobuf::internal::kEmptyString) {
+    delete vertex_buffer_;
+  }
+  if (offset_matrix_ != &::google::protobuf::internal::kEmptyString) {
+    delete offset_matrix_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void BakedMeshData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const BakedMeshData& BakedMeshData::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Animation_2eproto();  return *default_instance_;
+}
+
+BakedMeshData* BakedMeshData::default_instance_ = NULL;
+
+BakedMeshData* BakedMeshData::New() const {
+  return new BakedMeshData;
+}
+
+void BakedMeshData::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_vertex_buffer()) {
+      if (vertex_buffer_ != &::google::protobuf::internal::kEmptyString) {
+        vertex_buffer_->clear();
+      }
+    }
+    if (has_offset_matrix()) {
+      if (offset_matrix_ != &::google::protobuf::internal::kEmptyString) {
+        offset_matrix_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool BakedMeshData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional bytes vertex_buffer = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_vertex_buffer()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_offset_matrix;
+        break;
+      }
+      
+      // optional bytes offset_matrix = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_offset_matrix:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_offset_matrix()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void BakedMeshData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional bytes vertex_buffer = 1;
+  if (has_vertex_buffer()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      1, this->vertex_buffer(), output);
+  }
+  
+  // optional bytes offset_matrix = 2;
+  if (has_offset_matrix()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      2, this->offset_matrix(), output);
+  }
+  
+}
+
+int BakedMeshData::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional bytes vertex_buffer = 1;
+    if (has_vertex_buffer()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->vertex_buffer());
+    }
+    
+    // optional bytes offset_matrix = 2;
+    if (has_offset_matrix()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->offset_matrix());
+    }
+    
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void BakedMeshData::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const BakedMeshData*>(&from));
+}
+
+void BakedMeshData::MergeFrom(const BakedMeshData& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_vertex_buffer()) {
+      set_vertex_buffer(from.vertex_buffer());
+    }
+    if (from.has_offset_matrix()) {
+      set_offset_matrix(from.offset_matrix());
+    }
+  }
+}
+
+void BakedMeshData::CopyFrom(const BakedMeshData& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BakedMeshData::IsInitialized() const {
+  
+  return true;
+}
+
+void BakedMeshData::Swap(BakedMeshData* other) {
+  if (other != this) {
+    std::swap(vertex_buffer_, other->vertex_buffer_);
+    std::swap(offset_matrix_, other->offset_matrix_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string BakedMeshData::GetTypeName() const {
+  return "Serializer.BakedMeshData";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int BakedKeyFrame::kMeshDatasFieldNumber;
+#endif  // !_MSC_VER
+
+BakedKeyFrame::BakedKeyFrame()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void BakedKeyFrame::InitAsDefaultInstance() {
+}
+
+BakedKeyFrame::BakedKeyFrame(const BakedKeyFrame& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void BakedKeyFrame::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+BakedKeyFrame::~BakedKeyFrame() {
+  SharedDtor();
+}
+
+void BakedKeyFrame::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void BakedKeyFrame::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const BakedKeyFrame& BakedKeyFrame::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Animation_2eproto();  return *default_instance_;
+}
+
+BakedKeyFrame* BakedKeyFrame::default_instance_ = NULL;
+
+BakedKeyFrame* BakedKeyFrame::New() const {
+  return new BakedKeyFrame;
+}
+
+void BakedKeyFrame::Clear() {
+  mesh_datas_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool BakedKeyFrame::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .Serializer.BakedMeshData mesh_datas = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_mesh_datas:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_mesh_datas()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_mesh_datas;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void BakedKeyFrame::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .Serializer.BakedMeshData mesh_datas = 1;
+  for (int i = 0; i < this->mesh_datas_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      1, this->mesh_datas(i), output);
+  }
+  
+}
+
+int BakedKeyFrame::ByteSize() const {
+  int total_size = 0;
+  
+  // repeated .Serializer.BakedMeshData mesh_datas = 1;
+  total_size += 1 * this->mesh_datas_size();
+  for (int i = 0; i < this->mesh_datas_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->mesh_datas(i));
+  }
+  
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void BakedKeyFrame::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const BakedKeyFrame*>(&from));
+}
+
+void BakedKeyFrame::MergeFrom(const BakedKeyFrame& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  mesh_datas_.MergeFrom(from.mesh_datas_);
+}
+
+void BakedKeyFrame::CopyFrom(const BakedKeyFrame& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BakedKeyFrame::IsInitialized() const {
+  
+  return true;
+}
+
+void BakedKeyFrame::Swap(BakedKeyFrame* other) {
+  if (other != this) {
+    mesh_datas_.Swap(&other->mesh_datas_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string BakedKeyFrame::GetTypeName() const {
+  return "Serializer.BakedKeyFrame";
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int BakedAnimationData::kNameFieldNumber;
+const int BakedAnimationData::kKeyFramesFieldNumber;
+const int BakedAnimationData::kFrameRateFieldNumber;
+#endif  // !_MSC_VER
+
+BakedAnimationData::BakedAnimationData()
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+}
+
+void BakedAnimationData::InitAsDefaultInstance() {
+}
+
+BakedAnimationData::BakedAnimationData(const BakedAnimationData& from)
+  : ::google::protobuf::MessageLite() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void BakedAnimationData::SharedCtor() {
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  frame_rate_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+BakedAnimationData::~BakedAnimationData() {
+  SharedDtor();
+}
+
+void BakedAnimationData::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void BakedAnimationData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const BakedAnimationData& BakedAnimationData::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Animation_2eproto();  return *default_instance_;
+}
+
+BakedAnimationData* BakedAnimationData::default_instance_ = NULL;
+
+BakedAnimationData* BakedAnimationData::New() const {
+  return new BakedAnimationData;
+}
+
+void BakedAnimationData::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
+        name_->clear();
+      }
+    }
+    frame_rate_ = 0;
+  }
+  key_frames_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+bool BakedAnimationData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_key_frames;
+        break;
+      }
+      
+      // repeated .Serializer.BakedKeyFrame key_frames = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_key_frames:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_key_frames()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_key_frames;
+        if (input->ExpectTag(24)) goto parse_frame_rate;
+        break;
+      }
+      
+      // optional int32 frame_rate = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_frame_rate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &frame_rate_)));
+          set_has_frame_rate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void BakedAnimationData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->name(), output);
+  }
+  
+  // repeated .Serializer.BakedKeyFrame key_frames = 2;
+  for (int i = 0; i < this->key_frames_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessage(
+      2, this->key_frames(i), output);
+  }
+  
+  // optional int32 frame_rate = 3;
+  if (has_frame_rate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->frame_rate(), output);
+  }
+  
+}
+
+int BakedAnimationData::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
+    // optional int32 frame_rate = 3;
+    if (has_frame_rate()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->frame_rate());
+    }
+    
+  }
+  // repeated .Serializer.BakedKeyFrame key_frames = 2;
+  total_size += 1 * this->key_frames_size();
+  for (int i = 0; i < this->key_frames_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->key_frames(i));
+  }
+  
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void BakedAnimationData::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const BakedAnimationData*>(&from));
+}
+
+void BakedAnimationData::MergeFrom(const BakedAnimationData& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  key_frames_.MergeFrom(from.key_frames_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+    if (from.has_frame_rate()) {
+      set_frame_rate(from.frame_rate());
+    }
+  }
+}
+
+void BakedAnimationData::CopyFrom(const BakedAnimationData& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BakedAnimationData::IsInitialized() const {
+  
+  return true;
+}
+
+void BakedAnimationData::Swap(BakedAnimationData* other) {
+  if (other != this) {
+    std::swap(name_, other->name_);
+    key_frames_.Swap(&other->key_frames_);
+    std::swap(frame_rate_, other->frame_rate_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::std::string BakedAnimationData::GetTypeName() const {
+  return "Serializer.BakedAnimationData";
 }
 
 

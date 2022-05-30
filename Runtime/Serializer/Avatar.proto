@@ -1,5 +1,7 @@
 package Serializer;
 option optimize_for = LITE_RUNTIME;
+import "Vector.proto";
+import "Mesh.proto";
 import "GameObject.proto";
 import "Animation.proto";
 message Bone{
@@ -44,4 +46,9 @@ message SpineAvatar{
 	repeated Slot slots=4;
 	repeated Skin skins=5;
 	repeated Animation animations=6;
+}
+message Avatar3D{
+	optional string name=1;
+	repeated Mesh t_pose=2;
+	repeated Matrix4fB t_pose_invert_matrix=3;
 }
