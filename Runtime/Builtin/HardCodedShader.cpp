@@ -29,7 +29,7 @@ namespace YOSEF {
 	varying vec4 V_Texcoord;
 	void main() {
 		vec4 texture_color = texture2D(U_MainTexture, V_Texcoord.xy);
-		float alpha = texture_color.a * V_Light.a + 1.0;
+		float alpha = texture_color.a * V_Light.a;
 		gl_FragColor.a = alpha;
 		gl_FragColor.rgb = (vec3((texture_color.a - 1.0) * V_Dark.a + 1.0) - texture_color.rgb) * V_Dark.rgb + texture_color.rgb * V_Light.rgb;
 	}

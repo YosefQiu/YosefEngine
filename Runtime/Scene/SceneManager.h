@@ -21,6 +21,9 @@ namespace YOSEF {
 		void RemoveCamera(Camera* camera);
 		void InitTestImageSprite();
 		void InitTestCamera();
+		void InitTestLabel();
+		void InitTestImageSprite9();
+		void InitTest2DAnimation();
 		int mFullResolutionWidth, mFullResolutionHeight;
 		int mMaxFPS;
 		float mFixedTimePerFrame;

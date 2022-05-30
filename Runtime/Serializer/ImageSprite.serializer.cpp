@@ -23,7 +23,6 @@ void protobuf_AddDesc_ImageSprite_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::Serializer::protobuf_AddDesc_Color_2eproto();
   ImageSprite::default_instance_ = new ImageSprite();
   ImageSprite9::default_instance_ = new ImageSprite9();
   ImageSprite::default_instance_->InitAsDefaultInstance();
@@ -46,11 +45,10 @@ const int ImageSprite::kImagePathFieldNumber;
 const int ImageSprite::kSpriteNameFieldNumber;
 const int ImageSprite::kSizeFieldNumber;
 const int ImageSprite::kColorFieldNumber;
+const int ImageSprite::kLightColorFieldNumber;
 const int ImageSprite::kDarkColorFieldNumber;
 const int ImageSprite::kBlendFuncSrcFieldNumber;
 const int ImageSprite::kBlendFuncDstFieldNumber;
-const int ImageSprite::kMaterialFieldNumber;
-const int ImageSprite::kAddColorFieldNumber;
 #endif  // !_MSC_VER
 
 ImageSprite::ImageSprite()
@@ -73,7 +71,6 @@ void ImageSprite::SharedCtor() {
   sprite_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   blend_func_src_ = 0;
   blend_func_dst_ = 0;
-  material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -87,9 +84,6 @@ void ImageSprite::SharedDtor() {
   }
   if (sprite_name_ != &::google::protobuf::internal::kEmptyString) {
     delete sprite_name_;
-  }
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    delete material_;
   }
   if (this != default_instance_) {
   }
@@ -124,16 +118,11 @@ void ImageSprite::Clear() {
     }
     blend_func_src_ = 0;
     blend_func_dst_ = 0;
-    if (has_material()) {
-      if (material_ != &::google::protobuf::internal::kEmptyString) {
-        material_->clear();
-      }
-    }
   }
   size_.Clear();
   color_.Clear();
+  light_color_.Clear();
   dark_color_.Clear();
-  add_color_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -210,18 +199,40 @@ bool ImageSprite::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(37)) goto parse_color;
-        if (input->ExpectTag(45)) goto parse_dark_color;
+        if (input->ExpectTag(45)) goto parse_light_color;
         break;
       }
       
-      // repeated float dark_color = 5;
+      // repeated float light_color = 5;
       case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_light_color:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 1, 45, input, this->mutable_light_color())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, this->mutable_light_color())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(45)) goto parse_light_color;
+        if (input->ExpectTag(53)) goto parse_dark_color;
+        break;
+      }
+      
+      // repeated float dark_color = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
          parse_dark_color:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 45, input, this->mutable_dark_color())));
+                 1, 53, input, this->mutable_dark_color())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
@@ -231,13 +242,13 @@ bool ImageSprite::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(45)) goto parse_dark_color;
-        if (input->ExpectTag(48)) goto parse_blend_func_src;
+        if (input->ExpectTag(53)) goto parse_dark_color;
+        if (input->ExpectTag(56)) goto parse_blend_func_src;
         break;
       }
       
-      // optional int32 blend_func_src = 6;
-      case 6: {
+      // required int32 blend_func_src = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_blend_func_src:
@@ -248,12 +259,12 @@ bool ImageSprite::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(56)) goto parse_blend_func_dst;
+        if (input->ExpectTag(64)) goto parse_blend_func_dst;
         break;
       }
       
-      // optional int32 blend_func_dst = 7;
-      case 7: {
+      // required int32 blend_func_dst = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_blend_func_dst:
@@ -264,42 +275,6 @@ bool ImageSprite::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(66)) goto parse_material;
-        break;
-      }
-      
-      // optional string material = 8;
-      case 8: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_material:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_material()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(77)) goto parse_add_color;
-        break;
-      }
-      
-      // repeated float add_color = 9;
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_add_color:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 77, input, this->mutable_add_color())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_add_color())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(77)) goto parse_add_color;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -345,32 +320,26 @@ void ImageSprite::SerializeWithCachedSizes(
       4, this->color(i), output);
   }
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  for (int i = 0; i < this->light_color_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(
+      5, this->light_color(i), output);
+  }
+  
+  // repeated float dark_color = 6;
   for (int i = 0; i < this->dark_color_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(
-      5, this->dark_color(i), output);
+      6, this->dark_color(i), output);
   }
   
-  // optional int32 blend_func_src = 6;
+  // required int32 blend_func_src = 7;
   if (has_blend_func_src()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->blend_func_src(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->blend_func_src(), output);
   }
   
-  // optional int32 blend_func_dst = 7;
+  // required int32 blend_func_dst = 8;
   if (has_blend_func_dst()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->blend_func_dst(), output);
-  }
-  
-  // optional string material = 8;
-  if (has_material()) {
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      8, this->material(), output);
-  }
-  
-  // repeated float add_color = 9;
-  for (int i = 0; i < this->add_color_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(
-      9, this->add_color(i), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->blend_func_dst(), output);
   }
   
 }
@@ -393,25 +362,18 @@ int ImageSprite::ByteSize() const {
           this->sprite_name());
     }
     
-    // optional int32 blend_func_src = 6;
+    // required int32 blend_func_src = 7;
     if (has_blend_func_src()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->blend_func_src());
     }
     
-    // optional int32 blend_func_dst = 7;
+    // required int32 blend_func_dst = 8;
     if (has_blend_func_dst()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->blend_func_dst());
-    }
-    
-    // optional string material = 8;
-    if (has_material()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->material());
     }
     
   }
@@ -429,18 +391,18 @@ int ImageSprite::ByteSize() const {
     total_size += 1 * this->color_size() + data_size;
   }
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  {
+    int data_size = 0;
+    data_size = 4 * this->light_color_size();
+    total_size += 1 * this->light_color_size() + data_size;
+  }
+  
+  // repeated float dark_color = 6;
   {
     int data_size = 0;
     data_size = 4 * this->dark_color_size();
     total_size += 1 * this->dark_color_size() + data_size;
-  }
-  
-  // repeated float add_color = 9;
-  {
-    int data_size = 0;
-    data_size = 4 * this->add_color_size();
-    total_size += 1 * this->add_color_size() + data_size;
   }
   
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -458,8 +420,8 @@ void ImageSprite::MergeFrom(const ImageSprite& from) {
   GOOGLE_CHECK_NE(&from, this);
   size_.MergeFrom(from.size_);
   color_.MergeFrom(from.color_);
+  light_color_.MergeFrom(from.light_color_);
   dark_color_.MergeFrom(from.dark_color_);
-  add_color_.MergeFrom(from.add_color_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_image_path()) {
       set_image_path(from.image_path());
@@ -473,9 +435,6 @@ void ImageSprite::MergeFrom(const ImageSprite& from) {
     if (from.has_blend_func_dst()) {
       set_blend_func_dst(from.blend_func_dst());
     }
-    if (from.has_material()) {
-      set_material(from.material());
-    }
   }
 }
 
@@ -486,6 +445,7 @@ void ImageSprite::CopyFrom(const ImageSprite& from) {
 }
 
 bool ImageSprite::IsInitialized() const {
+  if ((_has_bits_[0] & 0x000000c0) != 0x000000c0) return false;
   
   return true;
 }
@@ -496,11 +456,10 @@ void ImageSprite::Swap(ImageSprite* other) {
     std::swap(sprite_name_, other->sprite_name_);
     size_.Swap(&other->size_);
     color_.Swap(&other->color_);
+    light_color_.Swap(&other->light_color_);
     dark_color_.Swap(&other->dark_color_);
     std::swap(blend_func_src_, other->blend_func_src_);
     std::swap(blend_func_dst_, other->blend_func_dst_);
-    std::swap(material_, other->material_);
-    add_color_.Swap(&other->add_color_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     std::swap(_cached_size_, other->_cached_size_);
   }
@@ -518,12 +477,11 @@ const int ImageSprite9::kImagePathFieldNumber;
 const int ImageSprite9::kSpriteNameFieldNumber;
 const int ImageSprite9::kSizeFieldNumber;
 const int ImageSprite9::kColorFieldNumber;
+const int ImageSprite9::kLightColorFieldNumber;
 const int ImageSprite9::kDarkColorFieldNumber;
 const int ImageSprite9::kBlendFuncSrcFieldNumber;
 const int ImageSprite9::kBlendFuncDstFieldNumber;
-const int ImageSprite9::kMaterialFieldNumber;
 const int ImageSprite9::kSplitFieldNumber;
-const int ImageSprite9::kAddColorFieldNumber;
 #endif  // !_MSC_VER
 
 ImageSprite9::ImageSprite9()
@@ -546,7 +504,6 @@ void ImageSprite9::SharedCtor() {
   sprite_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   blend_func_src_ = 0;
   blend_func_dst_ = 0;
-  material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -560,9 +517,6 @@ void ImageSprite9::SharedDtor() {
   }
   if (sprite_name_ != &::google::protobuf::internal::kEmptyString) {
     delete sprite_name_;
-  }
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    delete material_;
   }
   if (this != default_instance_) {
   }
@@ -597,17 +551,12 @@ void ImageSprite9::Clear() {
     }
     blend_func_src_ = 0;
     blend_func_dst_ = 0;
-    if (has_material()) {
-      if (material_ != &::google::protobuf::internal::kEmptyString) {
-        material_->clear();
-      }
-    }
   }
   size_.Clear();
   color_.Clear();
+  light_color_.Clear();
   dark_color_.Clear();
   split_.Clear();
-  add_color_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -684,18 +633,40 @@ bool ImageSprite9::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(37)) goto parse_color;
-        if (input->ExpectTag(45)) goto parse_dark_color;
+        if (input->ExpectTag(45)) goto parse_light_color;
         break;
       }
       
-      // repeated float dark_color = 5;
+      // repeated float light_color = 5;
       case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_light_color:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 1, 45, input, this->mutable_light_color())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, this->mutable_light_color())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(45)) goto parse_light_color;
+        if (input->ExpectTag(53)) goto parse_dark_color;
+        break;
+      }
+      
+      // repeated float dark_color = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
          parse_dark_color:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 45, input, this->mutable_dark_color())));
+                 1, 53, input, this->mutable_dark_color())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
@@ -705,13 +676,13 @@ bool ImageSprite9::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(45)) goto parse_dark_color;
-        if (input->ExpectTag(48)) goto parse_blend_func_src;
+        if (input->ExpectTag(53)) goto parse_dark_color;
+        if (input->ExpectTag(56)) goto parse_blend_func_src;
         break;
       }
       
-      // optional int32 blend_func_src = 6;
-      case 6: {
+      // required int32 blend_func_src = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_blend_func_src:
@@ -722,12 +693,12 @@ bool ImageSprite9::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(56)) goto parse_blend_func_dst;
+        if (input->ExpectTag(64)) goto parse_blend_func_dst;
         break;
       }
       
-      // optional int32 blend_func_dst = 7;
-      case 7: {
+      // required int32 blend_func_dst = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_blend_func_dst:
@@ -735,20 +706,6 @@ bool ImageSprite9::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &blend_func_dst_)));
           set_has_blend_func_dst();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(66)) goto parse_material;
-        break;
-      }
-      
-      // optional string material = 8;
-      case 8: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_material:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_material()));
         } else {
           goto handle_uninterpreted;
         }
@@ -774,28 +731,6 @@ bool ImageSprite9::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(72)) goto parse_split;
-        if (input->ExpectTag(85)) goto parse_add_color;
-        break;
-      }
-      
-      // repeated float add_color = 10;
-      case 10: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_add_color:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 85, input, this->mutable_add_color())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_add_color())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(85)) goto parse_add_color;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -841,38 +776,32 @@ void ImageSprite9::SerializeWithCachedSizes(
       4, this->color(i), output);
   }
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  for (int i = 0; i < this->light_color_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(
+      5, this->light_color(i), output);
+  }
+  
+  // repeated float dark_color = 6;
   for (int i = 0; i < this->dark_color_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(
-      5, this->dark_color(i), output);
+      6, this->dark_color(i), output);
   }
   
-  // optional int32 blend_func_src = 6;
+  // required int32 blend_func_src = 7;
   if (has_blend_func_src()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->blend_func_src(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->blend_func_src(), output);
   }
   
-  // optional int32 blend_func_dst = 7;
+  // required int32 blend_func_dst = 8;
   if (has_blend_func_dst()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->blend_func_dst(), output);
-  }
-  
-  // optional string material = 8;
-  if (has_material()) {
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      8, this->material(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->blend_func_dst(), output);
   }
   
   // repeated int32 split = 9;
   for (int i = 0; i < this->split_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(
       9, this->split(i), output);
-  }
-  
-  // repeated float add_color = 10;
-  for (int i = 0; i < this->add_color_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(
-      10, this->add_color(i), output);
   }
   
 }
@@ -895,25 +824,18 @@ int ImageSprite9::ByteSize() const {
           this->sprite_name());
     }
     
-    // optional int32 blend_func_src = 6;
+    // required int32 blend_func_src = 7;
     if (has_blend_func_src()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->blend_func_src());
     }
     
-    // optional int32 blend_func_dst = 7;
+    // required int32 blend_func_dst = 8;
     if (has_blend_func_dst()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->blend_func_dst());
-    }
-    
-    // optional string material = 8;
-    if (has_material()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->material());
     }
     
   }
@@ -931,7 +853,14 @@ int ImageSprite9::ByteSize() const {
     total_size += 1 * this->color_size() + data_size;
   }
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  {
+    int data_size = 0;
+    data_size = 4 * this->light_color_size();
+    total_size += 1 * this->light_color_size() + data_size;
+  }
+  
+  // repeated float dark_color = 6;
   {
     int data_size = 0;
     data_size = 4 * this->dark_color_size();
@@ -946,13 +875,6 @@ int ImageSprite9::ByteSize() const {
         Int32Size(this->split(i));
     }
     total_size += 1 * this->split_size() + data_size;
-  }
-  
-  // repeated float add_color = 10;
-  {
-    int data_size = 0;
-    data_size = 4 * this->add_color_size();
-    total_size += 1 * this->add_color_size() + data_size;
   }
   
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -970,9 +892,9 @@ void ImageSprite9::MergeFrom(const ImageSprite9& from) {
   GOOGLE_CHECK_NE(&from, this);
   size_.MergeFrom(from.size_);
   color_.MergeFrom(from.color_);
+  light_color_.MergeFrom(from.light_color_);
   dark_color_.MergeFrom(from.dark_color_);
   split_.MergeFrom(from.split_);
-  add_color_.MergeFrom(from.add_color_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_image_path()) {
       set_image_path(from.image_path());
@@ -986,9 +908,6 @@ void ImageSprite9::MergeFrom(const ImageSprite9& from) {
     if (from.has_blend_func_dst()) {
       set_blend_func_dst(from.blend_func_dst());
     }
-    if (from.has_material()) {
-      set_material(from.material());
-    }
   }
 }
 
@@ -999,6 +918,7 @@ void ImageSprite9::CopyFrom(const ImageSprite9& from) {
 }
 
 bool ImageSprite9::IsInitialized() const {
+  if ((_has_bits_[0] & 0x000000c0) != 0x000000c0) return false;
   
   return true;
 }
@@ -1009,12 +929,11 @@ void ImageSprite9::Swap(ImageSprite9* other) {
     std::swap(sprite_name_, other->sprite_name_);
     size_.Swap(&other->size_);
     color_.Swap(&other->color_);
+    light_color_.Swap(&other->light_color_);
     dark_color_.Swap(&other->dark_color_);
     std::swap(blend_func_src_, other->blend_func_src_);
     std::swap(blend_func_dst_, other->blend_func_dst_);
-    std::swap(material_, other->material_);
     split_.Swap(&other->split_);
-    add_color_.Swap(&other->add_color_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     std::swap(_cached_size_, other->_cached_size_);
   }

@@ -6,11 +6,13 @@
 #include "Runtime/LuaEngine/LuaEngine.h"
 #include "Runtime/Geometry/Intersection.h"
 #include "Runtime/Serializer/Audio.serializer.h"
+#include "Runtime/Render/RenderOrder.h"
+#include "Runtime/2D/ImageSprite9.h"
 
-namespace YOSEF{
-	GameObject::GameObject() : mComponents(nullptr), mScripts(nullptr){
+namespace YOSEF {
+	GameObject::GameObject() : mComponents(nullptr), mScripts(nullptr) {
 		mLocalTransform = new(kMemDefaultId)Transform;
-		mLocalTransform.mOwner=this;
+		mLocalTransform.mOwner = this;
 		mParent = nullptr;
 		mLayer = GameObjectLayer_Default;
 		mName = "GameObject";
@@ -22,7 +24,7 @@ namespace YOSEF{
 		mbLocalMatrixDirty = true;
 		mPhysicsComponent = nullptr;
 	}
-	GameObject::~GameObject(){
+	GameObject::~GameObject() {
 		//Info("delete GameObject %s",mName.mText);
 		GetEventDispatcher()->RemoveEventListener(this);
 		GetEventDispatcher()->RemoveKeyboardListener(this);
@@ -30,71 +32,71 @@ namespace YOSEF{
 		GetEventDispatcher()->RemoveMouseMiddleButtonEventListener(this);
 		GetEventDispatcher()->RemovePasteEventListener(this);
 		GetEventDispatcher()->ReleaseTouchPos(this);
-		if (GetEventDispatcher()->mLastGameObjectHovered==this){
+		if (GetEventDispatcher()->mLastGameObjectHovered == this) {
 			GetEventDispatcher()->mLastGameObjectHovered = nullptr;
 		}
 		if (GetEventDispatcher()->mLastTouchObject == this) {
 			GetEventDispatcher()->mLastTouchObject = nullptr;
 		}
-		Component*current = mComponents;
-		while (current != nullptr){
-			Component*prev = current;
+		Component* current = mComponents;
+		while (current != nullptr) {
+			Component* prev = current;
 			current = current->Next<Component>();
 			delete prev;
 		}
-		ScriptObject*currentScript = mScripts;
+		ScriptObject* currentScript = mScripts;
 		while (currentScript != nullptr) {
-			ScriptObject*prevScript = currentScript;
+			ScriptObject* prevScript = currentScript;
 			currentScript = currentScript->Next<ScriptObject>();
 			delete prevScript;
 		}
 
-		if (mChild != nullptr){
+		if (mChild != nullptr) {
 			delete Child<GameObject>();
 		}
-		if (mRightSibling != nullptr){
+		if (mRightSibling != nullptr) {
 			delete RightSibling<GameObject>();
 		}
 		Clean();
 	}
 	void GameObject::OnDestroy() {
-		ScriptObject*currentScript = mScripts;
+		ScriptObject* currentScript = mScripts;
 		while (currentScript != nullptr) {
 			currentScript->OnDestroy();
 			currentScript = currentScript->Next<ScriptObject>();
 		}
 	}
 
-    void GameObject::DumpTree(int nLevel){
-        if(nLevel>10){
-            return;
-        }
-        for(int i=0;i<nLevel;++i){
-            printf("-");
-        }
-        printf("%s\n",mName.mText);
-        if (mChild != nullptr){
-            Child<GameObject>()->DumpTree(nLevel+1);
-        }
-        if (mRightSibling != nullptr){
-            RightSibling<GameObject>()->DumpTree(nLevel);
-        }
-    }
-	const Matrix4x4&GameObject::GetLocalMatrix() {
-		if (mbLocalMatrixDirty){
+	void GameObject::DumpTree(int nLevel) {
+		if (nLevel > 10) {
+			return;
+		}
+		for (int i = 0; i < nLevel; ++i) {
+			printf("-");
+		}
+		printf("%s\n", mName.mText);
+		if (mChild != nullptr) {
+			Child<GameObject>()->DumpTree(nLevel + 1);
+		}
+		if (mRightSibling != nullptr) {
+			RightSibling<GameObject>()->DumpTree(nLevel);
+		}
+	}
+	const Matrix4x4& GameObject::GetLocalMatrix() {
+		if (mbLocalMatrixDirty) {
 			mLocalTransform.ToMatrix(mLocalMatrix);
 			mbLocalMatrixDirty = false;
 			mLocalTransform.mbDirty = false;
 		}
 		return mLocalMatrix;
 	}
-	const Matrix4x4&GameObject::GetWorldMatrix() {
-		if (mbWorldMatrixDirty){
+	const Matrix4x4& GameObject::GetWorldMatrix() {
+		if (mbWorldMatrixDirty) {
 			mbWorldMatrixDirty = false;
-			const Matrix4x4&local_matrix = GetLocalMatrix();
+			const Matrix4x4& local_matrix = GetLocalMatrix();
 			if (mParent != nullptr) {
-				GameObject*parent = Parent<GameObject>();
-				const Matrix4x4&parent_world_matrix = parent->GetWorldMatrix();
+				GameObject* parent = Parent<GameObject>();
+				const Matrix4x4& parent_world_matrix = parent->GetWorldMatrix();
 				Matrix4x4MultiplyMatrix4x4(parent_world_matrix.mData, local_matrix.mData, mWorldMatrix.mData);
 			}
 			else {
@@ -105,25 +107,25 @@ namespace YOSEF{
 	}
 	void GameObject::MarkWorldMatrixDirty() {
 		mbWorldMatrixDirty = true;
-		if (mChild != nullptr){
+		if (mChild != nullptr) {
 			Child<GameObject>()->MarkWorldMatrixDirty();
 		}
-		if (mRightSibling != nullptr){
+		if (mRightSibling != nullptr) {
 			RightSibling<GameObject>()->MarkWorldMatrixDirty();
 		}
 	}
-	bool GameObject::IsEnabled(){
-		return mParent == nullptr ? mbEnable : (mbEnable&&Parent<GameObject>()->IsEnabled());
+	bool GameObject::IsEnabled() {
+		return mParent == nullptr ? mbEnable : (mbEnable && Parent<GameObject>()->IsEnabled());
 	}
-	void GameObject::RenderMyselfOnly(RenderQueue*rq
+	void GameObject::RenderMyselfOnly(RenderQueue* rq
 #if YOSEF_EDITOR
-		, DrawCallInfo &rs
+		, DrawCallInfo& rs
 #endif
 	)
 	{
 		if (mbEnable)
 		{
-			Component*current = mComponents;
+			Component* current = mComponents;
 			while (current != nullptr)
 			{
 				current->Render(rq
@@ -136,29 +138,29 @@ namespace YOSEF{
 		}
 	}
 
-	void GameObject::UpdateTransformRecursively(){
-		if (mbLocalMatrixDirty || mbWorldMatrixDirty){
-			Component*current = mComponents;
-			while (current != nullptr){
+	void GameObject::UpdateTransformRecursively() {
+		if (mbLocalMatrixDirty || mbWorldMatrixDirty) {
+			Component* current = mComponents;
+			while (current != nullptr) {
 				current->mbPositionChanged = true;
 				current = current->Next<Component>();
 			}
 		}
-		if (mChild != nullptr){
+		if (mChild != nullptr) {
 			Child<GameObject>()->UpdateTransformRecursively();
 		}
-		if (mRightSibling!=nullptr){
+		if (mRightSibling != nullptr) {
 			RightSibling<GameObject>()->UpdateTransformRecursively();
 		}
 	}
 
-	void GameObject::UpdateScriptsRecursively(float deltaTime){
-		GameObject*right_sibling = RightSibling<GameObject>();
+	void GameObject::UpdateScriptsRecursively(float deltaTime) {
+		GameObject* right_sibling = RightSibling<GameObject>();
 		if (mObjectMask != -2) {
 			if (mbEnable) {
-				ScriptObject*current = mScripts;
+				ScriptObject* current = mScripts;
 				while (current != nullptr) {
-					ScriptObject*next = current->Next<ScriptObject>();
+					ScriptObject* next = current->Next<ScriptObject>();
 					if (current->mbEnable)current->Update(deltaTime);
 					current = next;
 				}
@@ -170,25 +172,25 @@ namespace YOSEF{
 		else {
 			DestroyGameObject(this);
 		}
-		if (right_sibling != nullptr){
+		if (right_sibling != nullptr) {
 			right_sibling->UpdateScriptsRecursively(deltaTime);
 		}
 	}
 
 	void GameObject::UpdateComponentRecusively(float deltaTime)
 	{
-		if (mbEnable){//if game object is enabled 
-			Component*current = mComponents;
-			while (current != nullptr){
-				Component * next = current->Next<Component>();
-				if(current->mbEnable) current->Update(deltaTime);//if component is enabled
+		if (mbEnable) {//if game object is enabled 
+			Component* current = mComponents;
+			while (current != nullptr) {
+				Component* next = current->Next<Component>();
+				if (current->mbEnable) current->Update(deltaTime);//if component is enabled
 				current = next;
 			}
-			if (mChild != nullptr){
+			if (mChild != nullptr) {
 				Child<GameObject>()->UpdateComponentRecusively(deltaTime);
 			}
 		}
-		if (mRightSibling != nullptr){
+		if (mRightSibling != nullptr) {
 			RightSibling<GameObject>()->UpdateComponentRecusively(deltaTime);
 		}
 	}
@@ -198,14 +200,14 @@ namespace YOSEF{
 		return true;
 	}
 
-	bool GameObject::NewGameObjectWithPrefabName(const char*prefabName)
+	bool GameObject::NewGameObjectWithPrefabName(const char* prefabName)
 	{
-		lua_State*L = LuaEngine::s_GlobalStatePtr;
+		lua_State* L = LuaEngine::s_GlobalStatePtr;
 		bool ret = false;
-		const char*guid = Resource::GetResourceGUIDViaUserName(prefabName);
+		const char* guid = Resource::GetResourceGUIDViaUserName(prefabName);
 		if (guid != nullptr)
 		{
-			PrefabResource*prefab = Resource::LoadResource<PrefabResource>(guid);
+			PrefabResource* prefab = Resource::LoadResource<PrefabResource>(guid);
 			if (prefab != nullptr)
 			{
 				ret = NewGameObjectWithPrefab(prefab);
@@ -222,41 +224,42 @@ namespace YOSEF{
 		return ret;
 	}
 
-	bool GameObject::NewGameObjectWithPrefab(PrefabResource*prefab){
+	bool GameObject::NewGameObjectWithPrefab(PrefabResource* prefab) {
 		return false;
 	}
 
-	bool GameObject::DestroyGameObject(GameObject*go)
+	bool GameObject::DestroyGameObject(GameObject* go)
 	{
 		go->Clean();
 		delete go;
 		return true;
 	}
 
-	void GameObject::AddComponent(Component*component) {
-		if (component != nullptr){
-			if (mComponents != nullptr){
+	void GameObject::AddComponent(Component* component) {
+		if (component != nullptr) {
+			if (mComponents != nullptr) {
 				mComponents->Append(component);
-			}else{
+			}
+			else {
 				mComponents = component;
 			}
 		}
 	}
 
-	void GameObject::OnRemoveComponent(Component*component){
+	void GameObject::OnRemoveComponent(Component* component) {
 	}
 
-	bool GameObject::RemoveComponent(Component*component)
+	bool GameObject::RemoveComponent(Component* component)
 	{
-		Component*current = mComponents;
-		while (current!=nullptr)
+		Component* current = mComponents;
+		while (current != nullptr)
 		{
 			if (current == component)
 			{
 				//remove it
 				if (current == mComponents)
 				{
-					Component*next = current->Next<Component>();
+					Component* next = current->Next<Component>();
 					current->LeaveList();
 					//last component
 					mComponents = next;
@@ -273,9 +276,9 @@ namespace YOSEF{
 		return false;
 	}
 
-	Component*GameObject::GetComponent(int classID)
+	Component* GameObject::GetComponent(int classID)
 	{
-		Component*current = mComponents;
+		Component* current = mComponents;
 		while (current != nullptr)
 		{
 			if (current->GetClassID() == classID)
@@ -287,28 +290,28 @@ namespace YOSEF{
 		return nullptr;
 	}
 
-	GameObject*GameObject::FindChild(const char*childName){
-		GameObject*ret = nullptr;
-		if (mName==childName){
+	GameObject* GameObject::FindChild(const char* childName) {
+		GameObject* ret = nullptr;
+		if (mName == childName) {
 			return this;
 		}
-		if (mChild!=nullptr){
+		if (mChild != nullptr) {
 			ret = ((GameObject*)mChild)->FindChild(childName);
-			if (ret!=nullptr){
+			if (ret != nullptr) {
 				return ret;
 			}
 		}
-		if (mRightSibling!=nullptr){
+		if (mRightSibling != nullptr) {
 			ret = ((GameObject*)mRightSibling)->FindChild(childName);
 		}
 		return ret;
 	}
-	void GameObject::SetPosition(float x, float y, float z){
-		const Matrix4x4&world_matrix = Parent<GameObject>()->GetWorldMatrix();
+	void GameObject::SetPosition(float x, float y, float z) {
+		const Matrix4x4& world_matrix = Parent<GameObject>()->GetWorldMatrix();
 		Vector3f local_position = world_matrix.InverseMultiplyPoint3Affine(Vector3f(x, y, z));
-		mLocalTransform.SetLocalPosition(local_position.x,local_position.y,local_position.z);
-		Component*current = mComponents;
-		while (current != nullptr){
+		mLocalTransform.SetLocalPosition(local_position.x, local_position.y, local_position.z);
+		Component* current = mComponents;
+		while (current != nullptr) {
 			current->mbPositionChanged = true;
 			current = current->Next<Component>();
 		}
@@ -325,33 +328,33 @@ namespace YOSEF{
 	{
 	}
 
-	bool GameObject::AddChild(GameObject*go){
+	bool GameObject::AddChild(GameObject* go) {
 		AppendChild(go);
-		if (mbWorldMatrixDirty){
+		if (mbWorldMatrixDirty) {
 			go->mbWorldMatrixDirty;
 		}
 		return true;
 	}
-	bool GameObject::InsertBefore(GameObject*go){
+	bool GameObject::InsertBefore(GameObject* go) {
 		TTree::InsertBefore(go);
-		if (mParent != nullptr&&Parent<GameObject>()->mbWorldMatrixDirty) {
+		if (mParent != nullptr && Parent<GameObject>()->mbWorldMatrixDirty) {
 			go->mbWorldMatrixDirty;
 		}
 		return true;
 	}
-	bool GameObject::InsertAfter(GameObject*go) {
-		if (mParent!=nullptr&&Parent<GameObject>()->mbWorldMatrixDirty) {
+	bool GameObject::InsertAfter(GameObject* go) {
+		if (mParent != nullptr && Parent<GameObject>()->mbWorldMatrixDirty) {
 			go->mbWorldMatrixDirty;
 		}
 		return TTree::InsertAfter(go);
 	}
 
-	bool GameObject::Show(){
-		if (!mbEnable){
+	bool GameObject::Show() {
+		if (!mbEnable) {
 			mbEnable = true;
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnShow();
 				current = next;
 			}
@@ -360,12 +363,12 @@ namespace YOSEF{
 		return false;
 	}
 
-	bool GameObject::Hide(){
-		if (mbEnable){
+	bool GameObject::Hide() {
+		if (mbEnable) {
 			mbEnable = false;
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnHide();
 				current = next;
 			}
@@ -374,12 +377,12 @@ namespace YOSEF{
 		return false;
 	}
 
-	bool GameObject::SetName(const char*name){
+	bool GameObject::SetName(const char* name) {
 		mName = name;
 		return true;
 	}
 
-	bool GameObject::SetLocalPosition(float x, float y, float z){
+	bool GameObject::SetLocalPosition(float x, float y, float z) {
 		mLocalTransform.SetLocalPosition(x, y, z);
 		mbLocalMatrixDirty = true;
 		MarkWorldMatrixDirty();
@@ -387,22 +390,22 @@ namespace YOSEF{
 		return true;
 	}
 
-	bool GameObject::SetLocalRotation(float x, float y, float z){
+	bool GameObject::SetLocalRotation(float x, float y, float z) {
 		mLocalTransform.SetLocalRotation(x, y, z);
 		mbLocalMatrixDirty = true;
 		MarkWorldMatrixDirty();
 		return true;
 	}
 
-	bool GameObject::SetLocalScale(float x, float y, float z){
+	bool GameObject::SetLocalScale(float x, float y, float z) {
 		mLocalTransform.SetLocalScale(x, y, z);
 		mbLocalMatrixDirty = true;
 		MarkWorldMatrixDirty();
 		return true;
 	}
 
-	void GameObject::OnStop(){
-		Component*current = mComponents;
+	void GameObject::OnStop() {
+		Component* current = mComponents;
 		while (current != nullptr)
 		{
 			if (AudioSource::ClassID == current->GetClassID())
@@ -411,20 +414,20 @@ namespace YOSEF{
 			}
 			current = current->Next<Component>();
 		}
-		if (mChild!=nullptr)
+		if (mChild != nullptr)
 		{
 			((GameObject*)mChild)->OnStop();
 		}
 		if (mRightSibling != nullptr)
 		{
-			((GameObject*)mRightSibling)->OnStop(); 
+			((GameObject*)mRightSibling)->OnStop();
 		}
 	}
 
 
-	void GameObject::OnCollideBegin(GameObject*other)
+	void GameObject::OnCollideBegin(GameObject* other)
 	{
-		ScriptObject*current = mScripts;
+		ScriptObject* current = mScripts;
 		while (current != nullptr)
 		{
 			current->OnCollideBegin(other);
@@ -432,9 +435,9 @@ namespace YOSEF{
 		}
 	}
 
-	void GameObject::OnCollideEnd(GameObject*other)
+	void GameObject::OnCollideEnd(GameObject* other)
 	{
-		ScriptObject*current = mScripts;
+		ScriptObject* current = mScripts;
 		while (current != nullptr)
 		{
 			current->OnCollideEnd(other);
@@ -444,36 +447,36 @@ namespace YOSEF{
 
 	void GameObject::OnViewportChanged(float width, float height)
 	{
-		ScriptObject*current = mScripts;
+		ScriptObject* current = mScripts;
 		while (current != nullptr)
 		{
-			current->OnViewportChanged(width,height);
+			current->OnViewportChanged(width, height);
 			current = current->Next<ScriptObject>();
 		}
 	}
 
-	YOSEF::GameObject*GameObject::Insetersect(TouchEvent *te, bool bEditMode){
-		YOSEF::GameObject*ret = nullptr;
-		if (mbEnable){
-			if (((GameObject*)mLastChild) != nullptr){
+	YOSEF::GameObject* GameObject::Insetersect(TouchEvent* te, bool bEditMode) {
+		YOSEF::GameObject* ret = nullptr;
+		if (mbEnable) {
+			if (((GameObject*)mLastChild) != nullptr) {
 				ret = ((GameObject*)mLastChild)->Insetersect(te, bEditMode);
 			}
-			if (ret != nullptr){
+			if (ret != nullptr) {
 				return ret;
 			}
-			ret = Intersect2DComponent(te->mX,te->mY, bEditMode);
-			if (ret != nullptr){
+			ret = Intersect2DComponent(te->mX, te->mY, bEditMode);
+			if (ret != nullptr) {
 				return ret;
 			}
 		}
-		if (mLeftSibling != nullptr){
+		if (mLeftSibling != nullptr) {
 			ret = ((GameObject*)mLeftSibling)->Insetersect(te, bEditMode);
 		}
 		return ret;
 	}
 
-	YOSEF::GameObject*GameObject::RayCastTestRecursively(Ray*ray) {
-		YOSEF::GameObject*ret = nullptr;
+	YOSEF::GameObject* GameObject::RayCastTestRecursively(Ray* ray) {
+		YOSEF::GameObject* ret = nullptr;
 		if (mbEnable) {
 			if (((GameObject*)mLastChild) != nullptr) {
 				ret = ((GameObject*)mLastChild)->RayCastTestRecursively(ray);
@@ -492,15 +495,15 @@ namespace YOSEF{
 		return ret;
 	}
 
-	GameObject* GameObject::RayCastTest(Ray*ray) {
-		if (false==mbReceiveRayCast) {
+	GameObject* GameObject::RayCastTest(Ray* ray) {
+		if (false == mbReceiveRayCast) {
 			return nullptr;
 		}
 		return nullptr;
 	}
 
 	GameObject* GameObject::Intersect2DComponent(float x, float y, bool bEditMode) {
-		if (GetEventDispatcher()->mEventListeners.find(this) == GetEventDispatcher()->mEventListeners.end()){
+		if (GetEventDispatcher()->mEventListeners.find(this) == GetEventDispatcher()->mEventListeners.end()) {
 			if (!bEditMode) {
 				return nullptr;
 			}
@@ -511,152 +514,234 @@ namespace YOSEF{
 	//在点选时还要考虑到有的物体本身根本就不会被选中，但是在编辑器模式下，所有物体都会被选中
 	//在场景中选择物体的时候，然后根据Z轴来排序，Z轴越小，越靠后
 	//在Z轴一样的情况下，根据物体被加载到场景树中的先后关系来判断，先被加到场景中的物体处于后方，后来的物体处于前方，前方就是指最上面的意思
-	void GameObject::OnTouchBegin(const TouchEvent&te) {
-		ScriptObject*current = mScripts;
+	void GameObject::OnTouchBegin(const TouchEvent& te) {
+		ScriptObject* current = mScripts;
 		while (current != nullptr) {
-			ScriptObject*next = current->Next<ScriptObject>();
+			ScriptObject* next = current->Next<ScriptObject>();
 			if (current->mbEnable)current->OnTouchBegin(te);
 			current = next;
 		}
 	}
 
-	void GameObject::OnTouchEnd(const TouchEvent&te){
-		ScriptObject*current = mScripts;
+	void GameObject::OnTouchEnd(const TouchEvent& te) {
+		ScriptObject* current = mScripts;
 		while (current != nullptr) {
-			ScriptObject*next = current->Next<ScriptObject>();
+			ScriptObject* next = current->Next<ScriptObject>();
 			if (current->mbEnable)current->OnTouchEnd(te);
 			current = next;
 		}
 	}
 
-	void GameObject::OnTouchMove(const TouchEvent&te){
+	void GameObject::OnTouchMove(const TouchEvent& te) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnTouchMove(te);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnTouchCanceled(const TouchEvent&te){
-		if (IsEnabled()){
-			ScriptObject*current = mScripts;
+	void GameObject::OnTouchCanceled(const TouchEvent& te) {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnTouchCanceled(te);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnTouchEnter(const TouchEvent&te) {
+	void GameObject::OnTouchEnter(const TouchEvent& te) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnTouchEnter(te);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnTouchLeave(const TouchEvent&te) {
+	void GameObject::OnTouchLeave(const TouchEvent& te) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnTouchLeave(te);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnMouseWheel(const MouseWheelEvent*event) {
+	void GameObject::OnMouseWheel(const MouseWheelEvent* event) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnMouseWheel(event);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnIMEChar(const char*utf8Str){
-		if (IsEnabled()){
-			ScriptObject*current = mScripts;
+	void GameObject::OnIMEChar(const char* utf8Str) {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnIMEChar(utf8Str);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnIMECompositionString(const char*utf8Str,bool isResult) {
+	void GameObject::OnIMECompositionString(const char* utf8Str, bool isResult) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
-				if (current->mbEnable)current->OnIMECompositionString(utf8Str,isResult);
+				ScriptObject* next = current->Next<ScriptObject>();
+				if (current->mbEnable)current->OnIMECompositionString(utf8Str, isResult);
 				current = next;
 			}
 		}
 	}
-	
-	void GameObject::OnEditEnd(){
-        if (IsEnabled()){
-            ScriptObject*current = mScripts;
-            while (current != nullptr) {
-                ScriptObject*next = current->Next<ScriptObject>();
-                if (current->mbEnable)current->OnEditEnd();
-                current = next;
-            }
-        }
-    }
 
-	void GameObject::OnChar(YOSEFUInt32 charCode){
-		if (IsEnabled()){
-			ScriptObject*current = mScripts;
+	void GameObject::OnEditEnd() {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
+				if (current->mbEnable)current->OnEditEnd();
+				current = next;
+			}
+		}
+	}
+
+	void GameObject::OnChar(YOSEFUInt32 charCode) {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
+			while (current != nullptr) {
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnChar(charCode);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnKeyDown(int code){
-		if (IsEnabled()){
-			ScriptObject*current = mScripts;
+	void GameObject::OnKeyDown(int code) {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnKeyDown(code);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnKeyUp(int code){
-		if (IsEnabled()){
-			ScriptObject*current = mScripts;
+	void GameObject::OnKeyUp(int code) {
+		if (IsEnabled()) {
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnKeyUp(code);
 				current = next;
 			}
 		}
 	}
 
-	void GameObject::OnAnimationEnd(const char*name) {
+	void GameObject::OnAnimationEnd(const char* name) {
 		if (IsEnabled()) {
-			ScriptObject*current = mScripts;
+			ScriptObject* current = mScripts;
 			while (current != nullptr) {
-				ScriptObject*next = current->Next<ScriptObject>();
+				ScriptObject* next = current->Next<ScriptObject>();
 				if (current->mbEnable)current->OnAnimationEnd(name);
 				current = next;
+			}
+		}
+	}
+	void GameObject::InitSelfWithSerializedData(Serializer::GameObject* goData, Material* material) {
+		SetName(goData->name().c_str());
+		mLayer = goData->layer();
+		mbEnable = goData->enable();
+		const Serializer::Transform& transformData = goData->transform();
+		mLocalTransform.SetLocalPosition(transformData.position(0), transformData.position(1), transformData.position(2));
+		mLocalTransform.SetLocalRotation(transformData.rotation(0), transformData.rotation(1), transformData.rotation(2));
+		mLocalTransform.SetLocalScale(transformData.scale(0), transformData.scale(1), transformData.scale(2));
+		mLocalTransform.SetLocalShearing(transformData.shear(0), transformData.shear(1), transformData.shear(2));
+		if (mName.StartWith("b_")) {
+			mWorldTransform = mLocalTransform;
+		}
+		if (goData->has_imagesprite9()) {
+			InitImageSprite9(goData->imagesprite9(), material);
+		}
+		if (goData->has_child())
+		{
+			GameObject* go = new GameObject;
+			AppendChild(go);
+			go->InitSelfWithSerializedData(goData->mutable_child(), material);
+		}
+		if (goData->has_right_sibling())
+		{
+			GameObject* go = new GameObject;
+			go->TTree::InsertAfter(this);
+			go->InitSelfWithSerializedData(goData->mutable_right_sibling(), material);
+		}
+		if (goData->render_order_size() > 0) {
+			mRenderOrder = new RenderOrder;//AddComponent<RenderOrder>();
+			mRenderOrder->SetOwner(this);
+			for (int i = 0; i < goData->render_order_size(); ++i) {
+				Debug("render order %s %d", goData->render_order(i).c_str(), i);
+				GameObject* go = FindChild(goData->render_order(i).c_str());
+				if (go == nullptr) {
+					Error("cannot find render order target %s", goData->render_order(i).c_str());
+				}
+				else {
+					RenderUnit* ru = new RenderUnit;
+					ru->mIndex = i;
+					ru->mOffset = 0;
+					ru->mGameObject = go;
+					if (mRenderOrder->mRenderUnit == nullptr) {
+						mRenderOrder->mRenderUnit = ru;
+					}
+					else {
+						mRenderOrder->mRenderUnit->Append(ru);
+					}
+				}
+			}
+		}
+	}
+	void GameObject::InitImageSprite9(const Serializer::ImageSprite9& image_sprite, Material* material) {
+		ImageSprite9* is = GetComponent<ImageSprite9>();
+		if (is == nullptr) {
+			is = new ImageSprite9;
+			is->SetOwner(this);
+		}
+		is->SetMaterial(material);
+		is->BlendFunc(image_sprite.blend_func_src(), image_sprite.blend_func_dst());
+		if (image_sprite.has_image_path()) {
+			Texture2D* texture = Texture2D::LoadTexture2D(image_sprite.image_path().c_str());
+			if (texture != nullptr) {
+				is->SetTexture("U_MainTexture", texture);
+			}
+		}
+		if (image_sprite.has_sprite_name()) {
+			is->SetSpriteByName(image_sprite.sprite_name().c_str());
+		}
+		is->SetSize(image_sprite.size(0), image_sprite.size(1));
+		is->SetColor(image_sprite.color(0), image_sprite.color(1), image_sprite.color(2), image_sprite.color(3));
+		if (image_sprite.split_size() > 0) {
+			is->SetSplit(image_sprite.split(0), image_sprite.split(1), image_sprite.split(2), image_sprite.split(3));
+		}
+		if (image_sprite.light_color_size() > 0) {
+			is->SetAdditionalColor(image_sprite.light_color(0), image_sprite.light_color(1), image_sprite.light_color(2), image_sprite.light_color(3));
+		}
+		if (image_sprite.dark_color_size() > 0) {
+			for (int i = 0; i < 16; ++i) {
+				is->UpdateVertexTexcoord1(i, image_sprite.dark_color(0), image_sprite.dark_color(1), image_sprite.dark_color(2), image_sprite.dark_color(3));
 			}
 		}
 	}

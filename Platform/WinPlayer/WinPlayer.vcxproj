@@ -145,13 +145,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Runtime\2D\Component2D.cpp" />
+    <ClCompile Include="..\..\Runtime\2D\DisplayChar.cpp" />
     <ClCompile Include="..\..\Runtime\2D\FullScreenQuad.cpp" />
     <ClCompile Include="..\..\Runtime\2D\ImageSprite.cpp" />
     <ClCompile Include="..\..\Runtime\2D\ImageSprite9.cpp" />
+    <ClCompile Include="..\..\Runtime\2D\Label.cpp" />
     <ClCompile Include="..\..\Runtime\3D\Mesh.cpp" />
     <ClCompile Include="..\..\Runtime\3D\Model.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\DefaultAllocator.cpp" />
     <ClCompile Include="..\..\Runtime\Allocator\tlsf\tlsf.c" />
+    <ClCompile Include="..\..\Runtime\Animation\Animation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\ColorAnimation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\EventAnimation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\RenderOrderAnimation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\SpineAvatar.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\SpriteSequenceAnimation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\TransformAnimation.cpp" />
+    <ClCompile Include="..\..\Runtime\Animation\TwoColorAnimation.cpp" />
     <ClCompile Include="..\..\Runtime\Audio\AudioBuffer.cpp" />
     <ClCompile Include="..\..\Runtime\Audio\AudioDebugger.cpp" />
     <ClCompile Include="..\..\Runtime\Audio\AudioDevice.cpp" />
@@ -243,6 +253,7 @@
     <ClCompile Include="..\..\Runtime\Render\Material.cpp" />
     <ClCompile Include="..\..\Runtime\Render\MaterialProperty.cpp" />
     <ClCompile Include="..\..\Runtime\Render\RenderMisc.cpp" />
+    <ClCompile Include="..\..\Runtime\Render\RenderOrder.cpp" />
     <ClCompile Include="..\..\Runtime\Render\RenderPass.cpp" />
     <ClCompile Include="..\..\Runtime\Render\RenderState.cpp" />
     <ClCompile Include="..\..\Runtime\Render\Shader.cpp" />
@@ -300,15 +311,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Runtime\2D\Component2D.h" />
+    <ClInclude Include="..\..\Runtime\2D\DisplayChar.h" />
     <ClInclude Include="..\..\Runtime\2D\FullScreenQuad.h" />
     <ClInclude Include="..\..\Runtime\2D\ImageSprite.h" />
     <ClInclude Include="..\..\Runtime\2D\ImageSprite9.h" />
+    <ClInclude Include="..\..\Runtime\2D\Label.h" />
     <ClInclude Include="..\..\Runtime\3D\Mesh.h" />
     <ClInclude Include="..\..\Runtime\3D\Model.h" />
     <ClInclude Include="..\..\Runtime\Allocator\DefaultAllocator.h" />
     <ClInclude Include="..\..\Runtime\Allocator\MemoryLabel.h" />
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsf.h" />
     <ClInclude Include="..\..\Runtime\Allocator\tlsf\tlsfbits.h" />
+    <ClInclude Include="..\..\Runtime\Animation\Animation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\AnimationClipType.h" />
+    <ClInclude Include="..\..\Runtime\Animation\ColorAnimation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\EventAnimation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\RenderOrderAnimation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\SpineAvatar.h" />
+    <ClInclude Include="..\..\Runtime\Animation\SpriteSequenceAnimation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\TransformAnimation.h" />
+    <ClInclude Include="..\..\Runtime\Animation\TwoColorAnimation.h" />
     <ClInclude Include="..\..\Runtime\Audio\AudioBuffer.h" />
     <ClInclude Include="..\..\Runtime\Audio\AudioDebugger.h" />
     <ClInclude Include="..\..\Runtime\Audio\AudioDevice.h" />
@@ -414,6 +436,7 @@
     <ClInclude Include="..\..\Runtime\Render\Material.h" />
     <ClInclude Include="..\..\Runtime\Render\MaterialProperty.h" />
     <ClInclude Include="..\..\Runtime\Render\RenderMisc.h" />
+    <ClInclude Include="..\..\Runtime\Render\RenderOrder.h" />
     <ClInclude Include="..\..\Runtime\Render\RenderPass.h" />
     <ClInclude Include="..\..\Runtime\Render\RenderState.h" />
     <ClInclude Include="..\..\Runtime\Render\Shader.h" />

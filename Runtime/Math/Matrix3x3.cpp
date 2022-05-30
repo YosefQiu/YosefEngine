@@ -2,11 +2,11 @@
 #include "Matrix3x3.h"
 #include "YosefMatrix4x4.h"
 using namespace std;
-namespace YOSEF{
+namespace YOSEF {
 	void Matrix3x3::operator = (const Matrix3x3& other) {
 		memcpy(mData, other.mData, sizeof(float) * 9);
 	}
-	void Matrix3x3::operator = (const Matrix4x4& other){
+	void Matrix3x3::operator = (const Matrix4x4& other) {
 		mData[0] = other.mData[0];
 		mData[1] = other.mData[1];
 		mData[2] = other.mData[2];
@@ -19,18 +19,18 @@ namespace YOSEF{
 		mData[7] = other.mData[9];
 		mData[8] = other.mData[10];
 	}
-	Matrix3x3::Matrix3x3(){
+	Matrix3x3::Matrix3x3() {
 		LoadIdentity();
 	}
-	Matrix3x3::Matrix3x3(const Matrix3x3& r){
+	Matrix3x3::Matrix3x3(const Matrix3x3& r) {
 		memcpy(mData, r.mData, sizeof(float) * 9);
 	}
 	Matrix3x3::Matrix3x3(float v) {
 		mData[0] = v; mData[1] = 0.0f; mData[2] = 0.0f;
-		mData[0] = 0.0f; mData[1] = v; mData[2] = 0.0f;
-		mData[0] = 0.0f; mData[1] = 0.0f; mData[2] = v;
+		mData[3] = 0.0f; mData[4] = v; mData[5] = 0.0f;
+		mData[6] = 0.0f; mData[7] = 0.0f; mData[8] = v;
 	}
-	Matrix3x3::Matrix3x3(const Matrix4x4& other){
+	Matrix3x3::Matrix3x3(const Matrix4x4& other) {
 		mData[0] = other.mData[0];
 		mData[1] = other.mData[1];
 		mData[2] = other.mData[2];
@@ -43,10 +43,10 @@ namespace YOSEF{
 		mData[7] = other.mData[9];
 		mData[8] = other.mData[10];
 	}
-	void Matrix3x3::LoadIdentity(){
+	void Matrix3x3::LoadIdentity() {
 		mData[0] = 1.0f; mData[1] = 0.0f; mData[2] = 0.0f;
-		mData[0] = 0.0f; mData[1] = 1.0f; mData[2] = 0.0f;
-		mData[0] = 0.0f; mData[1] = 0.0f; mData[2] = 1.0f;
+		mData[3] = 0.0f; mData[4] = 1.0f; mData[5] = 0.0f;
+		mData[6] = 0.0f; mData[7] = 0.0f; mData[8] = 1.0f;
 	}
 	bool Matrix3x3::IsIdentity(float threshold) {
 		if (EqualApproximately(Get(0, 0), 1.0f, threshold) && EqualApproximately(Get(0, 1), 0.0f, threshold) && EqualApproximately(Get(0, 2), 0.0f, threshold) &&
@@ -55,7 +55,7 @@ namespace YOSEF{
 			return true;
 		return false;
 	}
-	float Matrix3x3::GetDeterminant() const{
+	float Matrix3x3::GetDeterminant() const {
 		float fCofactor0 = Get(0, 0) * Get(1, 1) * Get(2, 2);
 		float fCofactor1 = Get(0, 1) * Get(1, 2) * Get(2, 0);
 		float fCofactor2 = Get(0, 2) * Get(1, 0) * Get(2, 1);
@@ -75,7 +75,7 @@ namespace YOSEF{
 		return *this;
 	}
 
-	bool Matrix3x3::Invert(){
+	bool Matrix3x3::Invert() {
 		float m11 = mData[0];
 		float m12 = mData[1];
 		float m13 = mData[2];
@@ -105,7 +105,7 @@ namespace YOSEF{
 
 	Matrix3x3& Matrix3x3::operator *= (float f)
 	{
-		for (int i = 0; i<9; i++)
+		for (int i = 0; i < 9; i++)
 			mData[i] *= f;
 		return *this;
 	}
@@ -113,7 +113,7 @@ namespace YOSEF{
 	Matrix3x3& Matrix3x3::operator *= (const Matrix3x3& inM)
 	{
 		int i;
-		for (i = 0; i<3; i++)
+		for (i = 0; i < 3; i++)
 		{
 			float v[3] = { Get(i, 0), Get(i, 1), Get(i, 2) };
 			Get(i, 0) = v[0] * inM.Get(0, 0) + v[1] * inM.Get(1, 0) + v[2] * inM.Get(2, 0);
@@ -126,7 +126,7 @@ namespace YOSEF{
 	Matrix3x3& Matrix3x3::operator *= (const Matrix4x4& inM)
 	{
 		int i;
-		for (i = 0; i<3; i++)
+		for (i = 0; i < 3; i++)
 		{
 			float v[3] = { Get(i, 0), Get(i, 1), Get(i, 2) };
 			Get(i, 0) = v[0] * inM.Get(0, 0) + v[1] * inM.Get(1, 0) + v[2] * inM.Get(2, 0);
@@ -166,17 +166,17 @@ namespace YOSEF{
 		float cz = cos(v.z);
 		float sz = sin(v.z);
 
-		matrix.Get(0, 0) = cy*cz + sx*sy*sz;
-		matrix.Get(0, 1) = cz*sx*sy - cy*sz;
-		matrix.Get(0, 2) = cx*sy;
+		matrix.Get(0, 0) = cy * cz + sx * sy * sz;
+		matrix.Get(0, 1) = cz * sx * sy - cy * sz;
+		matrix.Get(0, 2) = cx * sy;
 
-		matrix.Get(1, 0) = cx*sz;
-		matrix.Get(1, 1) = cx*cz;
+		matrix.Get(1, 0) = cx * sz;
+		matrix.Get(1, 1) = cx * cz;
 		matrix.Get(1, 2) = -sx;
 
-		matrix.Get(2, 0) = -cz*sy + cy*sx*sz;
-		matrix.Get(2, 1) = cy*cz*sx + sy*sz;
-		matrix.Get(2, 2) = cx*cy;
+		matrix.Get(2, 0) = -cz * sy + cy * sx * sz;
+		matrix.Get(2, 1) = cy * cz * sx + sy * sz;
+		matrix.Get(2, 2) = cx * cy;
 	}
 	bool MatrixToEuler(const Matrix3x3& matrix, Vector3f& v)
 	{
@@ -209,7 +209,7 @@ namespace YOSEF{
 			return false;
 		}
 	}
-	void RotationMatrix(const Vector3f & from, const Vector3f & to, float *rotation_matrix_3x3) {
+	void RotationMatrix(const Vector3f& from, const Vector3f& to, float* rotation_matrix_3x3) {
 		float dot_from_to = Dot(from, to);
 	}
 	void FromToRotation(const float* from, const float* to, float mtx[3][3])
@@ -218,13 +218,13 @@ namespace YOSEF{
 		float e, h;
 		YOSEF_VE3_CROSS(v, from, to);
 		e = YOSEF_VE3_DOT(from, to);
-		if (e>1.0 - YOSEF_EPSILON)
+		if (e > 1.0 - YOSEF_EPSILON)
 		{
 			mtx[0][0] = 1.0; mtx[0][1] = 0.0; mtx[0][2] = 0.0;
 			mtx[1][0] = 0.0; mtx[1][1] = 1.0; mtx[1][2] = 0.0;
 			mtx[2][0] = 0.0; mtx[2][1] = 0.0; mtx[2][2] = 1.0;
 		}
-		else if (e<-1.0 + YOSEF_EPSILON)
+		else if (e < -1.0 + YOSEF_EPSILON)
 		{
 			float up[3], left[3];
 			float invlen;
@@ -232,7 +232,7 @@ namespace YOSEF{
 			float uxx, uyy, uzz, uxy, uxz, uyz;
 			float lxx, lyy, lzz, lxy, lxz, lyz;
 			left[0] = 0.0; left[1] = from[2]; left[2] = -from[1];
-			if (YOSEF_VE3_DOT(left, left)< YOSEF_EPSILON)
+			if (YOSEF_VE3_DOT(left, left) < YOSEF_EPSILON)
 			{
 				left[0] = -from[2]; left[1] = 0.0; left[2] = from[0];
 			}
@@ -255,14 +255,14 @@ namespace YOSEF{
 		{
 			float hvx, hvz, hvxy, hvxz, hvyz;
 			h = (1.0f - e) / YOSEF_VE3_DOT(v, v);
-			hvx = h*v[0];
-			hvz = h*v[2];
-			hvxy = hvx*v[1];
-			hvxz = hvx*v[2];
-			hvyz = hvz*v[1];
-			mtx[0][0] = e + hvx*v[0]; mtx[0][1] = hvxy - v[2];     mtx[0][2] = hvxz + v[1];
-			mtx[1][0] = hvxy + v[2];  mtx[1][1] = e + h*v[1] * v[1]; mtx[1][2] = hvyz - v[0];
-			mtx[2][0] = hvxz - v[1];  mtx[2][1] = hvyz + v[0];     mtx[2][2] = e + hvz*v[2];
+			hvx = h * v[0];
+			hvz = h * v[2];
+			hvxy = hvx * v[1];
+			hvxz = hvx * v[2];
+			hvyz = hvz * v[1];
+			mtx[0][0] = e + hvx * v[0]; mtx[0][1] = hvxy - v[2];     mtx[0][2] = hvxz + v[1];
+			mtx[1][0] = hvxy + v[2];  mtx[1][1] = e + h * v[1] * v[1]; mtx[1][2] = hvyz - v[0];
+			mtx[2][0] = hvxz - v[1];  mtx[2][1] = hvyz + v[0];     mtx[2][2] = e + hvz * v[2];
 		}
 	}
 }

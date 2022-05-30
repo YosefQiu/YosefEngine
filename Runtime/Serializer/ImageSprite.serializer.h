@@ -22,7 +22,6 @@
 #include "generated_message_util.h"
 #include "repeated_field.h"
 #include "extension_set.h"
-#include "Color.serializer.h"
 // @@protoc_insertion_point(includes)
 
 namespace Serializer {
@@ -126,10 +125,22 @@ class ImageSprite : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::RepeatedField< float >*
       mutable_color();
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  inline int light_color_size() const;
+  inline void clear_light_color();
+  static const int kLightColorFieldNumber = 5;
+  inline float light_color(int index) const;
+  inline void set_light_color(int index, float value);
+  inline void add_light_color(float value);
+  inline const ::google::protobuf::RepeatedField< float >&
+      light_color() const;
+  inline ::google::protobuf::RepeatedField< float >*
+      mutable_light_color();
+  
+  // repeated float dark_color = 6;
   inline int dark_color_size() const;
   inline void clear_dark_color();
-  static const int kDarkColorFieldNumber = 5;
+  static const int kDarkColorFieldNumber = 6;
   inline float dark_color(int index) const;
   inline void set_dark_color(int index, float value);
   inline void add_dark_color(float value);
@@ -138,42 +149,19 @@ class ImageSprite : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::RepeatedField< float >*
       mutable_dark_color();
   
-  // optional int32 blend_func_src = 6;
+  // required int32 blend_func_src = 7;
   inline bool has_blend_func_src() const;
   inline void clear_blend_func_src();
-  static const int kBlendFuncSrcFieldNumber = 6;
+  static const int kBlendFuncSrcFieldNumber = 7;
   inline ::google::protobuf::int32 blend_func_src() const;
   inline void set_blend_func_src(::google::protobuf::int32 value);
   
-  // optional int32 blend_func_dst = 7;
+  // required int32 blend_func_dst = 8;
   inline bool has_blend_func_dst() const;
   inline void clear_blend_func_dst();
-  static const int kBlendFuncDstFieldNumber = 7;
+  static const int kBlendFuncDstFieldNumber = 8;
   inline ::google::protobuf::int32 blend_func_dst() const;
   inline void set_blend_func_dst(::google::protobuf::int32 value);
-  
-  // optional string material = 8;
-  inline bool has_material() const;
-  inline void clear_material();
-  static const int kMaterialFieldNumber = 8;
-  inline const ::std::string& material() const;
-  inline void set_material(const ::std::string& value);
-  inline void set_material(const char* value);
-  inline void set_material(const char* value, size_t size);
-  inline ::std::string* mutable_material();
-  inline ::std::string* release_material();
-  
-  // repeated float add_color = 9;
-  inline int add_color_size() const;
-  inline void clear_add_color();
-  static const int kAddColorFieldNumber = 9;
-  inline float add_color(int index) const;
-  inline void set_add_color(int index, float value);
-  inline void add_add_color(float value);
-  inline const ::google::protobuf::RepeatedField< float >&
-      add_color() const;
-  inline ::google::protobuf::RepeatedField< float >*
-      mutable_add_color();
   
   // @@protoc_insertion_point(class_scope:Serializer.ImageSprite)
  private:
@@ -185,21 +173,18 @@ class ImageSprite : public ::google::protobuf::MessageLite {
   inline void clear_has_blend_func_src();
   inline void set_has_blend_func_dst();
   inline void clear_has_blend_func_dst();
-  inline void set_has_material();
-  inline void clear_has_material();
   
   ::std::string* image_path_;
   ::std::string* sprite_name_;
   ::google::protobuf::RepeatedField< float > size_;
   ::google::protobuf::RepeatedField< float > color_;
+  ::google::protobuf::RepeatedField< float > light_color_;
   ::google::protobuf::RepeatedField< float > dark_color_;
   ::google::protobuf::int32 blend_func_src_;
   ::google::protobuf::int32 blend_func_dst_;
-  ::std::string* material_;
-  ::google::protobuf::RepeatedField< float > add_color_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
   
   friend void  protobuf_AddDesc_ImageSprite_2eproto();
   friend void protobuf_AssignDesc_ImageSprite_2eproto();
@@ -299,10 +284,22 @@ class ImageSprite9 : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::RepeatedField< float >*
       mutable_color();
   
-  // repeated float dark_color = 5;
+  // repeated float light_color = 5;
+  inline int light_color_size() const;
+  inline void clear_light_color();
+  static const int kLightColorFieldNumber = 5;
+  inline float light_color(int index) const;
+  inline void set_light_color(int index, float value);
+  inline void add_light_color(float value);
+  inline const ::google::protobuf::RepeatedField< float >&
+      light_color() const;
+  inline ::google::protobuf::RepeatedField< float >*
+      mutable_light_color();
+  
+  // repeated float dark_color = 6;
   inline int dark_color_size() const;
   inline void clear_dark_color();
-  static const int kDarkColorFieldNumber = 5;
+  static const int kDarkColorFieldNumber = 6;
   inline float dark_color(int index) const;
   inline void set_dark_color(int index, float value);
   inline void add_dark_color(float value);
@@ -311,30 +308,19 @@ class ImageSprite9 : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::RepeatedField< float >*
       mutable_dark_color();
   
-  // optional int32 blend_func_src = 6;
+  // required int32 blend_func_src = 7;
   inline bool has_blend_func_src() const;
   inline void clear_blend_func_src();
-  static const int kBlendFuncSrcFieldNumber = 6;
+  static const int kBlendFuncSrcFieldNumber = 7;
   inline ::google::protobuf::int32 blend_func_src() const;
   inline void set_blend_func_src(::google::protobuf::int32 value);
   
-  // optional int32 blend_func_dst = 7;
+  // required int32 blend_func_dst = 8;
   inline bool has_blend_func_dst() const;
   inline void clear_blend_func_dst();
-  static const int kBlendFuncDstFieldNumber = 7;
+  static const int kBlendFuncDstFieldNumber = 8;
   inline ::google::protobuf::int32 blend_func_dst() const;
   inline void set_blend_func_dst(::google::protobuf::int32 value);
-  
-  // optional string material = 8;
-  inline bool has_material() const;
-  inline void clear_material();
-  static const int kMaterialFieldNumber = 8;
-  inline const ::std::string& material() const;
-  inline void set_material(const ::std::string& value);
-  inline void set_material(const char* value);
-  inline void set_material(const char* value, size_t size);
-  inline ::std::string* mutable_material();
-  inline ::std::string* release_material();
   
   // repeated int32 split = 9;
   inline int split_size() const;
@@ -348,18 +334,6 @@ class ImageSprite9 : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_split();
   
-  // repeated float add_color = 10;
-  inline int add_color_size() const;
-  inline void clear_add_color();
-  static const int kAddColorFieldNumber = 10;
-  inline float add_color(int index) const;
-  inline void set_add_color(int index, float value);
-  inline void add_add_color(float value);
-  inline const ::google::protobuf::RepeatedField< float >&
-      add_color() const;
-  inline ::google::protobuf::RepeatedField< float >*
-      mutable_add_color();
-  
   // @@protoc_insertion_point(class_scope:Serializer.ImageSprite9)
  private:
   inline void set_has_image_path();
@@ -370,22 +344,19 @@ class ImageSprite9 : public ::google::protobuf::MessageLite {
   inline void clear_has_blend_func_src();
   inline void set_has_blend_func_dst();
   inline void clear_has_blend_func_dst();
-  inline void set_has_material();
-  inline void clear_has_material();
   
   ::std::string* image_path_;
   ::std::string* sprite_name_;
   ::google::protobuf::RepeatedField< float > size_;
   ::google::protobuf::RepeatedField< float > color_;
+  ::google::protobuf::RepeatedField< float > light_color_;
   ::google::protobuf::RepeatedField< float > dark_color_;
   ::google::protobuf::int32 blend_func_src_;
   ::google::protobuf::int32 blend_func_dst_;
-  ::std::string* material_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > split_;
-  ::google::protobuf::RepeatedField< float > add_color_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   friend void  protobuf_AddDesc_ImageSprite_2eproto();
   friend void protobuf_AssignDesc_ImageSprite_2eproto();
@@ -567,7 +538,32 @@ ImageSprite::mutable_color() {
   return &color_;
 }
 
-// repeated float dark_color = 5;
+// repeated float light_color = 5;
+inline int ImageSprite::light_color_size() const {
+  return light_color_.size();
+}
+inline void ImageSprite::clear_light_color() {
+  light_color_.Clear();
+}
+inline float ImageSprite::light_color(int index) const {
+  return light_color_.Get(index);
+}
+inline void ImageSprite::set_light_color(int index, float value) {
+  light_color_.Set(index, value);
+}
+inline void ImageSprite::add_light_color(float value) {
+  light_color_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< float >&
+ImageSprite::light_color() const {
+  return light_color_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+ImageSprite::mutable_light_color() {
+  return &light_color_;
+}
+
+// repeated float dark_color = 6;
 inline int ImageSprite::dark_color_size() const {
   return dark_color_.size();
 }
@@ -592,15 +588,15 @@ ImageSprite::mutable_dark_color() {
   return &dark_color_;
 }
 
-// optional int32 blend_func_src = 6;
+// required int32 blend_func_src = 7;
 inline bool ImageSprite::has_blend_func_src() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void ImageSprite::set_has_blend_func_src() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void ImageSprite::clear_has_blend_func_src() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void ImageSprite::clear_blend_func_src() {
   blend_func_src_ = 0;
@@ -614,15 +610,15 @@ inline void ImageSprite::set_blend_func_src(::google::protobuf::int32 value) {
   blend_func_src_ = value;
 }
 
-// optional int32 blend_func_dst = 7;
+// required int32 blend_func_dst = 8;
 inline bool ImageSprite::has_blend_func_dst() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void ImageSprite::set_has_blend_func_dst() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void ImageSprite::clear_has_blend_func_dst() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void ImageSprite::clear_blend_func_dst() {
   blend_func_dst_ = 0;
@@ -634,89 +630,6 @@ inline ::google::protobuf::int32 ImageSprite::blend_func_dst() const {
 inline void ImageSprite::set_blend_func_dst(::google::protobuf::int32 value) {
   set_has_blend_func_dst();
   blend_func_dst_ = value;
-}
-
-// optional string material = 8;
-inline bool ImageSprite::has_material() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void ImageSprite::set_has_material() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void ImageSprite::clear_has_material() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void ImageSprite::clear_material() {
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    material_->clear();
-  }
-  clear_has_material();
-}
-inline const ::std::string& ImageSprite::material() const {
-  return *material_;
-}
-inline void ImageSprite::set_material(const ::std::string& value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(value);
-}
-inline void ImageSprite::set_material(const char* value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(value);
-}
-inline void ImageSprite::set_material(const char* value, size_t size) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ImageSprite::mutable_material() {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  return material_;
-}
-inline ::std::string* ImageSprite::release_material() {
-  clear_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = material_;
-    material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-
-// repeated float add_color = 9;
-inline int ImageSprite::add_color_size() const {
-  return add_color_.size();
-}
-inline void ImageSprite::clear_add_color() {
-  add_color_.Clear();
-}
-inline float ImageSprite::add_color(int index) const {
-  return add_color_.Get(index);
-}
-inline void ImageSprite::set_add_color(int index, float value) {
-  add_color_.Set(index, value);
-}
-inline void ImageSprite::add_add_color(float value) {
-  add_color_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< float >&
-ImageSprite::add_color() const {
-  return add_color_;
-}
-inline ::google::protobuf::RepeatedField< float >*
-ImageSprite::mutable_add_color() {
-  return &add_color_;
 }
 
 // -------------------------------------------------------------------
@@ -889,7 +802,32 @@ ImageSprite9::mutable_color() {
   return &color_;
 }
 
-// repeated float dark_color = 5;
+// repeated float light_color = 5;
+inline int ImageSprite9::light_color_size() const {
+  return light_color_.size();
+}
+inline void ImageSprite9::clear_light_color() {
+  light_color_.Clear();
+}
+inline float ImageSprite9::light_color(int index) const {
+  return light_color_.Get(index);
+}
+inline void ImageSprite9::set_light_color(int index, float value) {
+  light_color_.Set(index, value);
+}
+inline void ImageSprite9::add_light_color(float value) {
+  light_color_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< float >&
+ImageSprite9::light_color() const {
+  return light_color_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+ImageSprite9::mutable_light_color() {
+  return &light_color_;
+}
+
+// repeated float dark_color = 6;
 inline int ImageSprite9::dark_color_size() const {
   return dark_color_.size();
 }
@@ -914,15 +852,15 @@ ImageSprite9::mutable_dark_color() {
   return &dark_color_;
 }
 
-// optional int32 blend_func_src = 6;
+// required int32 blend_func_src = 7;
 inline bool ImageSprite9::has_blend_func_src() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void ImageSprite9::set_has_blend_func_src() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void ImageSprite9::clear_has_blend_func_src() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void ImageSprite9::clear_blend_func_src() {
   blend_func_src_ = 0;
@@ -936,15 +874,15 @@ inline void ImageSprite9::set_blend_func_src(::google::protobuf::int32 value) {
   blend_func_src_ = value;
 }
 
-// optional int32 blend_func_dst = 7;
+// required int32 blend_func_dst = 8;
 inline bool ImageSprite9::has_blend_func_dst() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void ImageSprite9::set_has_blend_func_dst() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void ImageSprite9::clear_has_blend_func_dst() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void ImageSprite9::clear_blend_func_dst() {
   blend_func_dst_ = 0;
@@ -956,64 +894,6 @@ inline ::google::protobuf::int32 ImageSprite9::blend_func_dst() const {
 inline void ImageSprite9::set_blend_func_dst(::google::protobuf::int32 value) {
   set_has_blend_func_dst();
   blend_func_dst_ = value;
-}
-
-// optional string material = 8;
-inline bool ImageSprite9::has_material() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void ImageSprite9::set_has_material() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void ImageSprite9::clear_has_material() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void ImageSprite9::clear_material() {
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    material_->clear();
-  }
-  clear_has_material();
-}
-inline const ::std::string& ImageSprite9::material() const {
-  return *material_;
-}
-inline void ImageSprite9::set_material(const ::std::string& value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(value);
-}
-inline void ImageSprite9::set_material(const char* value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(value);
-}
-inline void ImageSprite9::set_material(const char* value, size_t size) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  material_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ImageSprite9::mutable_material() {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
-  }
-  return material_;
-}
-inline ::std::string* ImageSprite9::release_material() {
-  clear_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = material_;
-    material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
 }
 
 // repeated int32 split = 9;
@@ -1039,31 +919,6 @@ ImageSprite9::split() const {
 inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 ImageSprite9::mutable_split() {
   return &split_;
-}
-
-// repeated float add_color = 10;
-inline int ImageSprite9::add_color_size() const {
-  return add_color_.size();
-}
-inline void ImageSprite9::clear_add_color() {
-  add_color_.Clear();
-}
-inline float ImageSprite9::add_color(int index) const {
-  return add_color_.Get(index);
-}
-inline void ImageSprite9::set_add_color(int index, float value) {
-  add_color_.Set(index, value);
-}
-inline void ImageSprite9::add_add_color(float value) {
-  add_color_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< float >&
-ImageSprite9::add_color() const {
-  return add_color_;
-}
-inline ::google::protobuf::RepeatedField< float >*
-ImageSprite9::mutable_add_color() {
-  return &add_color_;
 }
 
 

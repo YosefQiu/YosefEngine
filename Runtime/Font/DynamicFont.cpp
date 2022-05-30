@@ -43,7 +43,7 @@ namespace YOSEF{
 	}
 	void DynamicFont::InitFTLib(){
 		FontFace::InitFreeType();
-		YOSEF::FontResource*fontData = YOSEF::Resource::LoadResource<YOSEF::FontResource>("builtin/Font/Arial");
+		YOSEF::FontResource*fontData = YOSEF::Resource::LoadResource<YOSEF::FontResource>("builtin/Font/Arial.ttf");
 		if (fontData != nullptr) {
 			FontFace*face = new (kMemFontId)FontFace;
 			if (face->Init(fontData)) {

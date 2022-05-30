@@ -3,8 +3,12 @@
 #include "Runtime/Debugger/Log.h"
 #include "Runtime/Debugger/Debugger.h"
 #include "External/LibCurl/include/curl/curl.h"
+#include "Runtime/Font/DynamicFont.h"
 #include "GameObject.h"
 #include "Runtime/2D/ImageSprite.h"
+#include "Runtime/2D/ImageSprite9.h"
+#include "Runtime/2D/Label.h"
+#include "Runtime/Animation/SpineAvatar.h"
 #include "Runtime/Render/Camera.h"
 #include "Runtime/Render/DrawCall.h"
 extern "C" void InitMemory();
@@ -74,6 +78,55 @@ namespace YOSEF {
 		GetSceneManager()->GetCanvasSize(width, height);
 		camera->OnViewPortSizeChange(width, height);
 	}
+	void SceneManager::InitTestLabel() {
+		GameObject* go = new GameObject;
+		mRootObject->AddChild(go);
+		go->SetLocalPosition(0.0f, 0.0f, -1.0f);
+		Label* label = new Label;
+		label->Initialize();
+		label->SetOwner(go);
+		label->SetText("HelloWorld!");
+	}
+	void SceneManager::InitTestImageSprite9() {
+		GameObject* go = new GameObject;
+		mRootObject->AddChild(go);
+		go->SetLocalPosition(0.0f, 0.0f, -1.0f);
+		ImageSprite9* is = new ImageSprite9;
+		is->SetOwner(go);
+		Texture2D* texture = Texture2D::LoadTexture2D("Resource/powerup.atlas");
+		is->SetTexture("U_MainTexture", texture);
+	}
+	void SceneManager::InitTest2DAnimation() {
+		GameObject* uiroot = new GameObject;
+		mRootObject->AddChild(uiroot);
+		uiroot->SetLocalPosition(0.0f, 0.0f, -1.0f);
+		GameObject* go = new GameObject;
+		uiroot->AddChild(go);
+		Material* material = new Material;
+		*material = *Material::mCachedMaterials["builtin/Material/Texture2D"];
+		material->mbSharedMaterial = false;
+		material->EnableCull(false);
+		SpineAvatar* avatar = new SpineAvatar;
+		avatar->SetOwner(go);
+		Texture2D* texture = Texture2D::LoadTexture2D("Resource/powerup.atlas");
+		material->SetTextureProperty("U_MainTexture", texture);
+		avatar->mSharedMaterial = material;
+		Resource* avatar_resource = Resource::LoadAssetWithUserPath("Resource/powerup.avatar");
+		if (avatar_resource != nullptr) {
+			Serializer::SpineAvatar* avatar_data = new (kMemAnimationId)Serializer::SpineAvatar;
+			if (avatar_data->ParseFromArray(avatar_resource->mAssetBundle->rawdata().c_str(), avatar_resource->mAssetBundle->rawdata().size())) {
+				avatar->mSpineAvatarData = avatar_data;
+				go->InitSelfWithSerializedData(avatar_data->mutable_setup_pose(), avatar->mSharedMaterial.mPtr);
+				avatar->ResetToTPose();
+				for (int animation_index = 0; animation_index < avatar_data->animations_size(); ++animation_index) {
+					avatar->AttachAnimation(avatar_data->animations(animation_index));
+				}
+				avatar->Play("bounce");
+				avatar->mAnimationMode = kAnimationModeLoop;
+			}
+		}
+		go->SetLocalPosition(0.0f, -200.0f, 0.0f);
+	}
 	void SceneManager::Render() {
 		glViewport(0, 0, 1280, 720);
 		OGL_CALL(glClearColor(0.1f, 0.4f, 0.6f, 1.0f));
@@ -126,6 +179,8 @@ namespace YOSEF {
 extern "C" void InitEngineCore() {
 	curl_global_init(CURL_GLOBAL_ALL);
 	InitMemory();
+	YOSEF::Resource::Init();
+	YOSEF::ResourceManager::Init();
 	InitEngineLog("Log/EngineCoreLog");
 	Info("curl version %s", curl_version());
 }
@@ -136,6 +191,8 @@ extern "C" void InitEngineCore() {
 //13¡¢init graphic engine for post rendering
 //should be inited after opengl setup
 extern "C" void InitRuntime() {
+	YOSEF::GlobalRenderState::Init();
+	YOSEF::DynamicFont::InitFTLib();
 	GetSceneManager()->Init();
 	//V_Color
 	YOSEF::GetRendererManager().InitDefaultColorMaterial();

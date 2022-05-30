@@ -13,7 +13,7 @@
 namespace Serializer {
 
 void protobuf_ShutdownFile_Color_2eproto() {
-  delete Color3b::default_instance_;
+  delete Color3B::default_instance_;
   delete ColorHSB::default_instance_;
   delete Color4B::default_instance_;
   delete Color3f::default_instance_;
@@ -26,12 +26,12 @@ void protobuf_AddDesc_Color_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  Color3b::default_instance_ = new Color3b();
+  Color3B::default_instance_ = new Color3B();
   ColorHSB::default_instance_ = new ColorHSB();
   Color4B::default_instance_ = new Color4B();
   Color3f::default_instance_ = new Color3f();
   Color4f::default_instance_ = new Color4f();
-  Color3b::default_instance_->InitAsDefaultInstance();
+  Color3B::default_instance_->InitAsDefaultInstance();
   ColorHSB::default_instance_->InitAsDefaultInstance();
   Color4B::default_instance_->InitAsDefaultInstance();
   Color3f::default_instance_->InitAsDefaultInstance();
@@ -50,26 +50,26 @@ struct StaticDescriptorInitializer_Color_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Color3b::kRFieldNumber;
-const int Color3b::kGFieldNumber;
-const int Color3b::kBFieldNumber;
+const int Color3B::kRFieldNumber;
+const int Color3B::kGFieldNumber;
+const int Color3B::kBFieldNumber;
 #endif  // !_MSC_VER
 
-Color3b::Color3b()
+Color3B::Color3B()
   : ::google::protobuf::MessageLite() {
   SharedCtor();
 }
 
-void Color3b::InitAsDefaultInstance() {
+void Color3B::InitAsDefaultInstance() {
 }
 
-Color3b::Color3b(const Color3b& from)
+Color3B::Color3B(const Color3B& from)
   : ::google::protobuf::MessageLite() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Color3b::SharedCtor() {
+void Color3B::SharedCtor() {
   _cached_size_ = 0;
   r_ = 0;
   g_ = 0;
@@ -77,31 +77,31 @@ void Color3b::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Color3b::~Color3b() {
+Color3B::~Color3B() {
   SharedDtor();
 }
 
-void Color3b::SharedDtor() {
+void Color3B::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Color3b::SetCachedSize(int size) const {
+void Color3B::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const Color3b& Color3b::default_instance() {
+const Color3B& Color3B::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_Color_2eproto();  return *default_instance_;
 }
 
-Color3b* Color3b::default_instance_ = NULL;
+Color3B* Color3B::default_instance_ = NULL;
 
-Color3b* Color3b::New() const {
-  return new Color3b;
+Color3B* Color3B::New() const {
+  return new Color3B;
 }
 
-void Color3b::Clear() {
+void Color3B::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     r_ = 0;
     g_ = 0;
@@ -110,7 +110,7 @@ void Color3b::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-bool Color3b::MergePartialFromCodedStream(
+bool Color3B::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -178,7 +178,7 @@ bool Color3b::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Color3b::SerializeWithCachedSizes(
+void Color3B::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required int32 r = 1;
   if (has_r()) {
@@ -197,7 +197,7 @@ void Color3b::SerializeWithCachedSizes(
   
 }
 
-int Color3b::ByteSize() const {
+int Color3B::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -229,12 +229,12 @@ int Color3b::ByteSize() const {
   return total_size;
 }
 
-void Color3b::CheckTypeAndMergeFrom(
+void Color3B::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const Color3b*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const Color3B*>(&from));
 }
 
-void Color3b::MergeFrom(const Color3b& from) {
+void Color3B::MergeFrom(const Color3B& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_r()) {
@@ -249,19 +249,19 @@ void Color3b::MergeFrom(const Color3b& from) {
   }
 }
 
-void Color3b::CopyFrom(const Color3b& from) {
+void Color3B::CopyFrom(const Color3B& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Color3b::IsInitialized() const {
+bool Color3B::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   
   return true;
 }
 
-void Color3b::Swap(Color3b* other) {
+void Color3B::Swap(Color3B* other) {
   if (other != this) {
     std::swap(r_, other->r_);
     std::swap(g_, other->g_);
@@ -271,8 +271,8 @@ void Color3b::Swap(Color3b* other) {
   }
 }
 
-::std::string Color3b::GetTypeName() const {
-  return "Serializer.Color3b";
+::std::string Color3B::GetTypeName() const {
+  return "Serializer.Color3B";
 }
 
 

@@ -32,8 +32,11 @@ void protobuf_AssignDesc_Vector_2eproto();
 void protobuf_ShutdownFile_Vector_2eproto();
 
 class Vector2f;
+class Vector2i;
 class Vector3f;
+class Vector3i;
 class Vector4f;
+class Vector4i;
 
 // ===================================================================
 
@@ -113,6 +116,85 @@ class Vector2f : public ::google::protobuf::MessageLite {
   
   void InitAsDefaultInstance();
   static Vector2f* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Vector2i : public ::google::protobuf::MessageLite {
+ public:
+  Vector2i();
+  virtual ~Vector2i();
+  
+  Vector2i(const Vector2i& from);
+  
+  inline Vector2i& operator=(const Vector2i& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Vector2i& default_instance();
+  
+  void Swap(Vector2i* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Vector2i* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Vector2i& from);
+  void MergeFrom(const Vector2i& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // required int32 x = 1;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+  
+  // required int32 y = 2;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Vector2i)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Vector_2eproto();
+  friend void protobuf_AssignDesc_Vector_2eproto();
+  friend void protobuf_ShutdownFile_Vector_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Vector2i* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -202,6 +284,95 @@ class Vector3f : public ::google::protobuf::MessageLite {
   
   void InitAsDefaultInstance();
   static Vector3f* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Vector3i : public ::google::protobuf::MessageLite {
+ public:
+  Vector3i();
+  virtual ~Vector3i();
+  
+  Vector3i(const Vector3i& from);
+  
+  inline Vector3i& operator=(const Vector3i& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Vector3i& default_instance();
+  
+  void Swap(Vector3i* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Vector3i* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Vector3i& from);
+  void MergeFrom(const Vector3i& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // required int32 x = 1;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+  
+  // required int32 y = 2;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+  
+  // required int32 z = 3;
+  inline bool has_z() const;
+  inline void clear_z();
+  static const int kZFieldNumber = 3;
+  inline ::google::protobuf::int32 z() const;
+  inline void set_z(::google::protobuf::int32 value);
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Vector3i)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_z();
+  inline void clear_has_z();
+  
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 z_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Vector_2eproto();
+  friend void protobuf_AssignDesc_Vector_2eproto();
+  friend void protobuf_ShutdownFile_Vector_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Vector3i* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -302,6 +473,105 @@ class Vector4f : public ::google::protobuf::MessageLite {
   void InitAsDefaultInstance();
   static Vector4f* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class Vector4i : public ::google::protobuf::MessageLite {
+ public:
+  Vector4i();
+  virtual ~Vector4i();
+  
+  Vector4i(const Vector4i& from);
+  
+  inline Vector4i& operator=(const Vector4i& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  static const Vector4i& default_instance();
+  
+  void Swap(Vector4i* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Vector4i* New() const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const Vector4i& from);
+  void MergeFrom(const Vector4i& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::std::string GetTypeName() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // required int32 x = 1;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+  
+  // required int32 y = 2;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+  
+  // required int32 z = 3;
+  inline bool has_z() const;
+  inline void clear_z();
+  static const int kZFieldNumber = 3;
+  inline ::google::protobuf::int32 z() const;
+  inline void set_z(::google::protobuf::int32 value);
+  
+  // required int32 w = 4;
+  inline bool has_w() const;
+  inline void clear_w();
+  static const int kWFieldNumber = 4;
+  inline ::google::protobuf::int32 w() const;
+  inline void set_w(::google::protobuf::int32 value);
+  
+  // @@protoc_insertion_point(class_scope:Serializer.Vector4i)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_z();
+  inline void clear_has_z();
+  inline void set_has_w();
+  inline void clear_has_w();
+  
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 z_;
+  ::google::protobuf::int32 w_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Vector_2eproto();
+  friend void protobuf_AssignDesc_Vector_2eproto();
+  friend void protobuf_ShutdownFile_Vector_2eproto();
+  
+  void InitAsDefaultInstance();
+  static Vector4i* default_instance_;
+};
 // ===================================================================
 
 
@@ -349,6 +619,54 @@ inline float Vector2f::y() const {
   return y_;
 }
 inline void Vector2f::set_y(float value) {
+  set_has_y();
+  y_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Vector2i
+
+// required int32 x = 1;
+inline bool Vector2i::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Vector2i::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Vector2i::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Vector2i::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 Vector2i::x() const {
+  return x_;
+}
+inline void Vector2i::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+}
+
+// required int32 y = 2;
+inline bool Vector2i::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Vector2i::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Vector2i::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Vector2i::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 Vector2i::y() const {
+  return y_;
+}
+inline void Vector2i::set_y(::google::protobuf::int32 value) {
   set_has_y();
   y_ = value;
 }
@@ -419,6 +737,76 @@ inline float Vector3f::z() const {
   return z_;
 }
 inline void Vector3f::set_z(float value) {
+  set_has_z();
+  z_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Vector3i
+
+// required int32 x = 1;
+inline bool Vector3i::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Vector3i::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Vector3i::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Vector3i::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 Vector3i::x() const {
+  return x_;
+}
+inline void Vector3i::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+}
+
+// required int32 y = 2;
+inline bool Vector3i::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Vector3i::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Vector3i::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Vector3i::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 Vector3i::y() const {
+  return y_;
+}
+inline void Vector3i::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+}
+
+// required int32 z = 3;
+inline bool Vector3i::has_z() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Vector3i::set_has_z() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Vector3i::clear_has_z() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Vector3i::clear_z() {
+  z_ = 0;
+  clear_has_z();
+}
+inline ::google::protobuf::int32 Vector3i::z() const {
+  return z_;
+}
+inline void Vector3i::set_z(::google::protobuf::int32 value) {
   set_has_z();
   z_ = value;
 }
@@ -511,6 +899,98 @@ inline float Vector4f::w() const {
   return w_;
 }
 inline void Vector4f::set_w(float value) {
+  set_has_w();
+  w_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Vector4i
+
+// required int32 x = 1;
+inline bool Vector4i::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Vector4i::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Vector4i::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Vector4i::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 Vector4i::x() const {
+  return x_;
+}
+inline void Vector4i::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+}
+
+// required int32 y = 2;
+inline bool Vector4i::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Vector4i::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Vector4i::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Vector4i::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 Vector4i::y() const {
+  return y_;
+}
+inline void Vector4i::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+}
+
+// required int32 z = 3;
+inline bool Vector4i::has_z() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Vector4i::set_has_z() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Vector4i::clear_has_z() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Vector4i::clear_z() {
+  z_ = 0;
+  clear_has_z();
+}
+inline ::google::protobuf::int32 Vector4i::z() const {
+  return z_;
+}
+inline void Vector4i::set_z(::google::protobuf::int32 value) {
+  set_has_z();
+  z_ = value;
+}
+
+// required int32 w = 4;
+inline bool Vector4i::has_w() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Vector4i::set_has_w() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Vector4i::clear_has_w() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Vector4i::clear_w() {
+  w_ = 0;
+  clear_has_w();
+}
+inline ::google::protobuf::int32 Vector4i::w() const {
+  return w_;
+}
+inline void Vector4i::set_w(::google::protobuf::int32 value) {
   set_has_w();
   w_ = value;
 }

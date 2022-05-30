@@ -31,7 +31,7 @@ void  protobuf_AddDesc_Color_2eproto();
 void protobuf_AssignDesc_Color_2eproto();
 void protobuf_ShutdownFile_Color_2eproto();
 
-class Color3b;
+class Color3B;
 class ColorHSB;
 class Color4B;
 class Color3f;
@@ -39,28 +39,28 @@ class Color4f;
 
 // ===================================================================
 
-class Color3b : public ::google::protobuf::MessageLite {
+class Color3B : public ::google::protobuf::MessageLite {
  public:
-  Color3b();
-  virtual ~Color3b();
+  Color3B();
+  virtual ~Color3B();
   
-  Color3b(const Color3b& from);
+  Color3B(const Color3B& from);
   
-  inline Color3b& operator=(const Color3b& from) {
+  inline Color3B& operator=(const Color3B& from) {
     CopyFrom(from);
     return *this;
   }
   
-  static const Color3b& default_instance();
+  static const Color3B& default_instance();
   
-  void Swap(Color3b* other);
+  void Swap(Color3B* other);
   
   // implements Message ----------------------------------------------
   
-  Color3b* New() const;
+  Color3B* New() const;
   void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
-  void CopyFrom(const Color3b& from);
-  void MergeFrom(const Color3b& from);
+  void CopyFrom(const Color3B& from);
+  void MergeFrom(const Color3B& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -103,7 +103,7 @@ class Color3b : public ::google::protobuf::MessageLite {
   inline ::google::protobuf::int32 b() const;
   inline void set_b(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:Serializer.Color3b)
+  // @@protoc_insertion_point(class_scope:Serializer.Color3B)
  private:
   inline void set_has_r();
   inline void clear_has_r();
@@ -124,7 +124,7 @@ class Color3b : public ::google::protobuf::MessageLite {
   friend void protobuf_ShutdownFile_Color_2eproto();
   
   void InitAsDefaultInstance();
-  static Color3b* default_instance_;
+  static Color3B* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -507,70 +507,70 @@ class Color4f : public ::google::protobuf::MessageLite {
 
 // ===================================================================
 
-// Color3b
+// Color3B
 
 // required int32 r = 1;
-inline bool Color3b::has_r() const {
+inline bool Color3B::has_r() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Color3b::set_has_r() {
+inline void Color3B::set_has_r() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Color3b::clear_has_r() {
+inline void Color3B::clear_has_r() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Color3b::clear_r() {
+inline void Color3B::clear_r() {
   r_ = 0;
   clear_has_r();
 }
-inline ::google::protobuf::int32 Color3b::r() const {
+inline ::google::protobuf::int32 Color3B::r() const {
   return r_;
 }
-inline void Color3b::set_r(::google::protobuf::int32 value) {
+inline void Color3B::set_r(::google::protobuf::int32 value) {
   set_has_r();
   r_ = value;
 }
 
 // required int32 g = 2;
-inline bool Color3b::has_g() const {
+inline bool Color3B::has_g() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Color3b::set_has_g() {
+inline void Color3B::set_has_g() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Color3b::clear_has_g() {
+inline void Color3B::clear_has_g() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Color3b::clear_g() {
+inline void Color3B::clear_g() {
   g_ = 0;
   clear_has_g();
 }
-inline ::google::protobuf::int32 Color3b::g() const {
+inline ::google::protobuf::int32 Color3B::g() const {
   return g_;
 }
-inline void Color3b::set_g(::google::protobuf::int32 value) {
+inline void Color3B::set_g(::google::protobuf::int32 value) {
   set_has_g();
   g_ = value;
 }
 
 // required int32 b = 3;
-inline bool Color3b::has_b() const {
+inline bool Color3B::has_b() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Color3b::set_has_b() {
+inline void Color3B::set_has_b() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Color3b::clear_has_b() {
+inline void Color3B::clear_has_b() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Color3b::clear_b() {
+inline void Color3B::clear_b() {
   b_ = 0;
   clear_has_b();
 }
-inline ::google::protobuf::int32 Color3b::b() const {
+inline ::google::protobuf::int32 Color3B::b() const {
   return b_;
 }
-inline void Color3b::set_b(::google::protobuf::int32 value) {
+inline void Color3B::set_b(::google::protobuf::int32 value) {
   set_has_b();
   b_ = value;
 }

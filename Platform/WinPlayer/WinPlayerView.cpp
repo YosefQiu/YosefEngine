@@ -34,6 +34,8 @@ void WinPlayerView::Init(HWND parent)
 	GetSceneManager()->OnViewSizeChange(0, 0, 1280, 720);
 	GetSceneManager()->InitTestCamera();
 	GetSceneManager()->InitTestImageSprite();
+	GetSceneManager()->InitTestLabel();
+	GetSceneManager()->InitTest2DAnimation();
 }
 
 void WinPlayerView::PaintWindow() {
