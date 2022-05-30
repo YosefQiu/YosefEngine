@@ -100,18 +100,21 @@ namespace YOSEF {
 		GameObject* uiroot = new GameObject;
 		mRootObject->AddChild(uiroot);
 		uiroot->SetLocalPosition(0.0f, 0.0f, -1.0f);
+
 		GameObject* go = new GameObject;
 		uiroot->AddChild(go);
+
 		Material* material = new Material;
 		*material = *Material::mCachedMaterials["builtin/Material/Texture2D"];
 		material->mbSharedMaterial = false;
-		material->EnableCull(false);
+		Texture2D* texture = Texture2D::LoadTexture2D("Resource/alien.atlas");
+		material->SetTextureProperty("U_MainTexture", texture);
+
 		SpineAvatar* avatar = new SpineAvatar;
 		avatar->SetOwner(go);
-		Texture2D* texture = Texture2D::LoadTexture2D("Resource/powerup.atlas");
-		material->SetTextureProperty("U_MainTexture", texture);
 		avatar->mSharedMaterial = material;
-		Resource* avatar_resource = Resource::LoadAssetWithUserPath("Resource/powerup.avatar");
+
+		Resource* avatar_resource = Resource::LoadAssetWithUserPath("Resource/alien.avatar");
 		if (avatar_resource != nullptr) {
 			Serializer::SpineAvatar* avatar_data = new (kMemAnimationId)Serializer::SpineAvatar;
 			if (avatar_data->ParseFromArray(avatar_resource->mAssetBundle->rawdata().c_str(), avatar_resource->mAssetBundle->rawdata().size())) {
@@ -121,7 +124,7 @@ namespace YOSEF {
 				for (int animation_index = 0; animation_index < avatar_data->animations_size(); ++animation_index) {
 					avatar->AttachAnimation(avatar_data->animations(animation_index));
 				}
-				avatar->Play("bounce");
+				avatar->Play("run");
 				avatar->mAnimationMode = kAnimationModeLoop;
 			}
 		}

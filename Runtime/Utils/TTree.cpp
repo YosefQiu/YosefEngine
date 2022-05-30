@@ -23,7 +23,6 @@ namespace YOSEF
 		{
 			mChild = node;
 			node->mParent = this;
-			mLastChild = node;
 		}
 		else
 		{
@@ -103,8 +102,6 @@ namespace YOSEF
 				}
 				mLeftSibling = nullptr;
 				mRightSibling = nullptr;
-				mLastChild = nullptr;
-				mChild = nullptr;
 			}
 		}
 	}

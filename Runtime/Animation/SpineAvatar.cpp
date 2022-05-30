@@ -9,14 +9,14 @@
 #include "TwoColorAnimation.h"
 #include "Runtime/2D/ImageSprite9.h"
 #include "Runtime/Scene/GameObject.h"
-namespace YOSEF{
-	SpineAvatar::SpineAvatar():mCurrentAnimation(nullptr){
+namespace YOSEF {
+	SpineAvatar::SpineAvatar() :mCurrentAnimation(nullptr) {
 		mAnimationMode = kAnimationModeOnce;
 		mAnimationCallback = LUA_REFNIL;
 		mbNotifiedAnimationEndEvent = false;
 	}
 	SpineAvatar::~SpineAvatar() {
-		for (auto iter=mAnimations.begin();iter!=mAnimations.end();++iter){
+		for (auto iter = mAnimations.begin(); iter != mAnimations.end(); ++iter) {
 			delete iter->second;
 		}
 		mAnimations.clear();
@@ -25,10 +25,7 @@ namespace YOSEF{
 		}
 	}
 	void SpineAvatar::Update(float deltaTime) {
-		if (mbPositionChanged){
-			mbPositionChanged = false;
-		}
-		if (mCurrentAnimation !=nullptr){
+		if (mCurrentAnimation != nullptr) {
 			mCurrentAnimation->Update(deltaTime);
 			if (mCurrentAnimation->mAnimationTime >= mCurrentAnimation->mDuration) {
 				OnCurrentAnimationEnd();
@@ -37,7 +34,7 @@ namespace YOSEF{
 	}
 	void SpineAvatar::OnCurrentAnimationEnd() {
 		if (mAnimationMode == kAnimationModeOnce) {
-			if (false==mbNotifiedAnimationEndEvent){
+			if (false == mbNotifiedAnimationEndEvent) {
 				mbNotifiedAnimationEndEvent = true;
 				OnCurrentAnimationEndCallback();
 			}
@@ -49,14 +46,14 @@ namespace YOSEF{
 	}
 	void SpineAvatar::OnCurrentAnimationEndCallback() {
 		return;
-		if (Lua_GetFunction(mAnimationCallback)){
+		if (Lua_GetFunction(mAnimationCallback)) {
 			Lua_PushString("end");
-			Lua_PushLString(mCurrentAnimation->mName.mText,mCurrentAnimation->mName.mLen);
+			Lua_PushLString(mCurrentAnimation->mName.mText, mCurrentAnimation->mName.mLen);
 			Lua_Invoke("SpineAvatar::OnCurrentAnimationEndCallback %s");
 		}
 	}
-	void SpineAvatar::Play(const char*name) {
-		Animation *current = nullptr;
+	void SpineAvatar::Play(const char* name) {
+		Animation* current = nullptr;
 		auto iter = mAnimations.find(name);
 		if (iter != mAnimations.end()) {
 			current = iter->second;
@@ -65,151 +62,150 @@ namespace YOSEF{
 			current->mAnimationTime = 0.0f;
 			current->mLastAnimationTime = -1.0f;
 			mbNotifiedAnimationEndEvent = false;
-			if (mCurrentAnimation!=nullptr){
+			if (mCurrentAnimation != nullptr) {
 				ResetToTPose();
 			}
 			mCurrentAnimation = current;
 		}
 	}
-	AnimationUnit*SpineAvatar::InitTwoColorAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitTwoColorAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		if (animation_clip_data.target_component() == ImageSprite9::ClassID) {
 			char szBuffer[256] = { 0 };
 			sprintf(szBuffer, "a_%s", animation_clip_data.target().c_str());
-			GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-			TwoColorAnimation * wca = new TwoColorAnimation;
-			wca->mAnimateTarget = target_object;
+			GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+			TwoColorAnimation* two_colo_animation_clip = new TwoColorAnimation;//two color animation clip
+			two_colo_animation_clip->mAnimateTarget = target_object;
 			Serializer::TwoColorAnimationClip stcac;
 			if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 				for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-					TwoColorAnimationKeyFrame*key_frame = new TwoColorAnimationKeyFrame;
+					TwoColorAnimationKeyFrame* key_frame = new TwoColorAnimationKeyFrame;
 					key_frame->Init(stcac.key_frames(animation_key_frame_index));
-					wca->AddKeyFrame(key_frame);
+					two_colo_animation_clip->AddKeyFrame(key_frame);
 				}
 			}
-			return wca;
+			return two_colo_animation_clip;
 		}
 		return nullptr;
 	}
-	AnimationUnit*SpineAvatar::InitColorAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitColorAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		if (animation_clip_data.target_component() == ImageSprite9::ClassID) {
 			char szBuffer[256] = { 0 };
 			sprintf(szBuffer, "a_%s", animation_clip_data.target().c_str());
-			GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-			ColorAnimation * ca = new ColorAnimation;
-			ca->mAnimateTarget = target_object;
+			GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+			ColorAnimation* color_animation_clip = new ColorAnimation;
+			color_animation_clip->mAnimateTarget = target_object;
 			Serializer::ColorAnimationClip stcac;
 			if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 				for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-					ColorAnimationKeyFrame*key_frame = new ColorAnimationKeyFrame;
+					ColorAnimationKeyFrame* key_frame = new ColorAnimationKeyFrame;
 					key_frame->Init(stcac.key_frames(animation_key_frame_index));
-					ca->AddKeyFrame(key_frame);
+					color_animation_clip->AddKeyFrame(key_frame);
 				}
 			}
-			return ca;
+			return color_animation_clip;
 		}
 		return nullptr;
 	}
-	AnimationUnit*SpineAvatar::InitSpriteSequenceAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitSpriteSequenceAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		if (animation_clip_data.target_component() == ImageSprite9::ClassID) {
 			char szBuffer[256] = { 0 };
 			sprintf(szBuffer, "a_%s", animation_clip_data.target().c_str());
-			GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-			ImageSprite9 * is9 = target_object->GetComponent<ImageSprite9>();
-			SpriteSequenceAnimation * ca = new SpriteSequenceAnimation;
-			ca->mAnimateTarget = target_object;
-			ca->mAvatar = this;
+			GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+			SpriteSequenceAnimation* sprite_sequence_animation_clip = new SpriteSequenceAnimation;
+			sprite_sequence_animation_clip->mAnimateTarget = target_object;
+			sprite_sequence_animation_clip->mAvatar = this;
 			Serializer::SpriteSequenceAnimationClip stcac;
 			if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 				for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-					SpriteSequenceAnimationKeyFrame*key_frame = new SpriteSequenceAnimationKeyFrame;
+					SpriteSequenceAnimationKeyFrame* key_frame = new SpriteSequenceAnimationKeyFrame;
 					key_frame->Init(stcac.key_frames(animation_key_frame_index));
-					ca->AddKeyFrame(key_frame);
+					sprite_sequence_animation_clip->AddKeyFrame(key_frame);
 				}
 			}
-			return ca;
+			return sprite_sequence_animation_clip;
 		}
 		return nullptr;
 	}
-	AnimationUnit*SpineAvatar::InitTranslateAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitTranslateAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		char szBuffer[256] = { 0 };
 		sprintf(szBuffer, "b_%s", animation_clip_data.target().c_str());
-		GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-		TranslateAnimation * ca = new TranslateAnimation;
-		ca->mAnimateTarget = target_object;
+		GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+		TranslateAnimation* translate_animation_clip = new TranslateAnimation;
+		translate_animation_clip->mAnimateTarget = target_object;
 		Serializer::TranslateAnimationClip stcac;
 		if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 			for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-				TranslateAnimationKeyFrame*key_frame = new TranslateAnimationKeyFrame;
+				TranslateAnimationKeyFrame* key_frame = new TranslateAnimationKeyFrame;
 				key_frame->Init(stcac.key_frames(animation_key_frame_index));
-				ca->AddKeyFrame(key_frame);
+				translate_animation_clip->AddKeyFrame(key_frame);
 			}
 		}
-		return ca;
+		return translate_animation_clip;
 	}
-	AnimationUnit*SpineAvatar::InitRotateAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitRotateAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		char szBuffer[256] = { 0 };
 		sprintf(szBuffer, "b_%s", animation_clip_data.target().c_str());
-		GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-		RotateAnimation * ca = new RotateAnimation;
-		ca->mAnimateTarget = target_object;
+		GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+		RotateAnimation* rotate_animation_clip = new RotateAnimation;
+		rotate_animation_clip->mAnimateTarget = target_object;
 		Serializer::RotateAnimationClip stcac;
 		if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 			for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-				RotateAnimationKeyFrame*key_frame = new RotateAnimationKeyFrame;
+				RotateAnimationKeyFrame* key_frame = new RotateAnimationKeyFrame;
 				key_frame->Init(stcac.key_frames(animation_key_frame_index));
-				ca->AddKeyFrame(key_frame);
+				rotate_animation_clip->AddKeyFrame(key_frame);
 			}
 		}
-		return ca;
+		return rotate_animation_clip;
 	}
-	AnimationUnit*SpineAvatar::InitScaleAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitScaleAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		char szBuffer[256] = { 0 };
 		sprintf(szBuffer, "b_%s", animation_clip_data.target().c_str());
-		GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-		ScaleAnimation * ca = new ScaleAnimation;
-		ca->mAnimateTarget = target_object;
+		GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+		ScaleAnimation* scale_animation_clip = new ScaleAnimation;
+		scale_animation_clip->mAnimateTarget = target_object;
 		Serializer::ScaleAnimationClip stcac;
 		if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 			for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-				ScaleAnimationKeyFrame*key_frame = new ScaleAnimationKeyFrame;
+				ScaleAnimationKeyFrame* key_frame = new ScaleAnimationKeyFrame;
 				key_frame->Init(stcac.key_frames(animation_key_frame_index));
-				ca->AddKeyFrame(key_frame);
+				scale_animation_clip->AddKeyFrame(key_frame);
 			}
 		}
-		return ca;
+		return scale_animation_clip;
 	}
-	AnimationUnit*SpineAvatar::InitShearAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitShearAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		char szBuffer[256] = { 0 };
 		sprintf(szBuffer, "b_%s", animation_clip_data.target().c_str());
-		GameObject * target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
-		ShearAnimation * ca = new ShearAnimation;
-		ca->mAnimateTarget = target_object;
+		GameObject* target_object = ((GameObject*)mOwner)->FindChild(szBuffer);
+		ShearAnimation* shear_animation_clip = new ShearAnimation;
+		shear_animation_clip->mAnimateTarget = target_object;
 		Serializer::ShearAnimationClip stcac;
 		if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 			for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-				ShearAnimationKeyFrame*key_frame = new ShearAnimationKeyFrame;
+				ShearAnimationKeyFrame* key_frame = new ShearAnimationKeyFrame;
 				key_frame->Init(stcac.key_frames(animation_key_frame_index));
-				ca->AddKeyFrame(key_frame);
+				shear_animation_clip->AddKeyFrame(key_frame);
 			}
 		}
-		return ca;
+		return shear_animation_clip;
 	}
-	AnimationUnit*SpineAvatar::InitRenderOrderAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
-		RenderOrderAnimation * ca = new RenderOrderAnimation;
+	AnimationUnit* SpineAvatar::InitRenderOrderAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
+		RenderOrderAnimation* render_order_animation_clip = new RenderOrderAnimation;
 		Serializer::DrawOrderAnimationClip stcac;
-		ca->mAnimateTarget = mOwner;
+		render_order_animation_clip->mAnimateTarget = mOwner;
 		if (stcac.ParseFromArray(animation_clip_data.animation_clip_data().c_str(), animation_clip_data.animation_clip_data().length())) {
 			for (int animation_key_frame_index = 0; animation_key_frame_index < stcac.key_frames_size(); ++animation_key_frame_index) {
-				RenderOrderAnimationKeyFrame*key_frame = new RenderOrderAnimationKeyFrame;
-				key_frame->Init(mOwner,stcac.key_frames(animation_key_frame_index));
-				ca->AddKeyFrame(key_frame);
+				RenderOrderAnimationKeyFrame* key_frame = new RenderOrderAnimationKeyFrame;
+				key_frame->Init(mOwner, stcac.key_frames(animation_key_frame_index));
+				render_order_animation_clip->AddKeyFrame(key_frame);
 			}
 		}
-		return ca;
+		return render_order_animation_clip;
 	}
-	AnimationUnit*SpineAvatar::InitAnimationClip(const Serializer::AnimationClip&animation_clip_data) {
+	AnimationUnit* SpineAvatar::InitAnimationClip(const Serializer::AnimationClip& animation_clip_data) {
 		AnimationClipType animation_clip_type = (AnimationClipType)animation_clip_data.type();
-		switch (animation_clip_type){
+		switch (animation_clip_type) {
 		case YOSEF::kAnimationClipTypeTwoColor:
 			return InitTwoColorAnimationClip(animation_clip_data);
 		case YOSEF::kAnimationClipTypeTranslate:
@@ -229,14 +225,14 @@ namespace YOSEF{
 		}
 		return nullptr;
 	}
-	void SpineAvatar::AttachAnimation(const Serializer::Animation&animation_data) {
-		if (mAnimations.find(animation_data.name())!=mAnimations.end()){
-			Error("Attach Animation failed %s already exist",animation_data.name().c_str());
+	void SpineAvatar::AttachAnimation(const Serializer::Animation& animation_data) {
+		if (mAnimations.find(animation_data.name()) != mAnimations.end()) {
+			Error("Attach Animation failed %s already exist", animation_data.name().c_str());
 			return;
 		}
-		Animation*animation = new Animation;
+		Animation* animation = new Animation;
 		for (int animation_clip_index = 0; animation_clip_index < animation_data.animation_clips_size(); ++animation_clip_index) {
-			AnimationUnit*animation_clip = InitAnimationClip(animation_data.animation_clips(animation_clip_index));
+			AnimationUnit* animation_clip = InitAnimationClip(animation_data.animation_clips(animation_clip_index));
 			if (animation_clip != nullptr) {
 				if (animation->mAnimationUnits == nullptr) {
 					animation->mAnimationUnits = animation_clip;
@@ -248,19 +244,19 @@ namespace YOSEF{
 		}
 		animation->mDuration = animation_data.duration();
 		animation->mName = animation_data.name().c_str();
-		mAnimations.insert(std::pair<std::string, Animation*>(animation_data.name(), animation)); 
+		mAnimations.insert(std::pair<std::string, Animation*>(animation_data.name(), animation));
 	}
-	void SpineAvatar::SetSpineAttchment(GameObject * gameobject, const char * attachment_name) {
-		const Serializer::Attachment*attachment = GetSpineSlotAttachment(gameobject->Parent<GameObject>()->mName.mText, attachment_name);
+	void SpineAvatar::SetSpineAttchment(GameObject* gameobject, const char* attachment_name) {
+		const Serializer::Attachment* attachment = GetSpineSlotAttachment(gameobject->Parent<GameObject>()->mName.mText, attachment_name);
 		if (attachment != nullptr) {
 			if (attachment->type() == 0) {//region
-				ImageSprite9*is = gameobject->GetComponent<ImageSprite9>();
+				ImageSprite9* is = gameobject->GetComponent<ImageSprite9>();
 				if (is == nullptr) {
 					is = new ImageSprite9;
 					is->SetOwner(gameobject);
 				}
 				is->SetMaterial(mSharedMaterial.mPtr);
-				const Serializer::Slot*setup_slot = GetSpineSetupSlot(gameobject->Parent<GameObject>()->mName.mText);
+				const Serializer::Slot* setup_slot = GetSpineSetupSlot(gameobject->Parent<GameObject>()->mName.mText);
 				is->BlendFunc(setup_slot->blend_func_src(), setup_slot->blend_func_dst());
 				Serializer::RegionAttachment spine_region_attachment;
 				if (spine_region_attachment.ParseFromString(attachment->data())) {
@@ -292,17 +288,17 @@ namespace YOSEF{
 			}
 		}
 	}
-	const Serializer::Attachment*SpineAvatar::GetSpineSlotAttachment(const char * slot_name, const char * attachment_name) {
+	const Serializer::Attachment* SpineAvatar::GetSpineSlotAttachment(const char* slot_name, const char* attachment_name) {
 		if (mSpineAvatarData == nullptr) {
 			return nullptr;
 		}
-		for (int skin_index=0;skin_index< mSpineAvatarData->skins_size();++skin_index){
-			const Serializer::Skin&spine_skin = mSpineAvatarData->skins(skin_index);
-			for (int slot_index=0;slot_index<spine_skin.slot_available_attachments_info_size();++slot_index){
-				const Serializer::SlotAvailableAttachmentsInfo&slot_attachments = spine_skin.slot_available_attachments_info(slot_index);
-				if (strcmp(slot_name,slot_attachments.name().c_str())==0){
+		for (int skin_index = 0; skin_index < mSpineAvatarData->skins_size(); ++skin_index) {
+			const Serializer::Skin& spine_skin = mSpineAvatarData->skins(skin_index);
+			for (int slot_index = 0; slot_index < spine_skin.slot_available_attachments_info_size(); ++slot_index) {
+				const Serializer::SlotAvailableAttachmentsInfo& slot_attachments = spine_skin.slot_available_attachments_info(slot_index);
+				if (strcmp(slot_name, slot_attachments.name().c_str()) == 0) {
 					for (int slot_attachment_index = 0; slot_attachment_index < slot_attachments.available_attachments_size(); ++slot_attachment_index) {
-						const Serializer::Attachment*attachment = &slot_attachments.available_attachments(slot_attachment_index);
+						const Serializer::Attachment* attachment = &slot_attachments.available_attachments(slot_attachment_index);
 						if (strcmp(attachment->name().c_str(), attachment_name) == 0) {
 							return attachment;
 						}
@@ -312,7 +308,7 @@ namespace YOSEF{
 		}
 		return nullptr;
 	}
-	const Serializer::Slot*SpineAvatar::GetSpineSetupSlot(const char * slot_name) {
+	const Serializer::Slot* SpineAvatar::GetSpineSetupSlot(const char* slot_name) {
 		if (mSpineAvatarData == nullptr) {
 			return nullptr;
 		}
@@ -329,8 +325,8 @@ namespace YOSEF{
 			bool first_time_to_init = mRenderTargets.empty();
 			for (int setup_bone_index = 0; setup_bone_index < mSpineAvatarData->bones_size(); ++setup_bone_index) {
 				const Serializer::Bone& setup_bone = mSpineAvatarData->bones(setup_bone_index);
-				GameObject*bone_game_object = nullptr;
-				if (strcmp(setup_bone.name().c_str(),"b_root")==0){
+				GameObject* bone_game_object = nullptr;
+				if (strcmp(setup_bone.name().c_str(), "b_root") == 0) {
 				}
 				else {
 					bone_game_object = mOwner->FindChild(setup_bone.name().c_str());
@@ -342,8 +338,8 @@ namespace YOSEF{
 			}
 			for (int setup_slot_index = 0; setup_slot_index < mSpineAvatarData->slots_size(); ++setup_slot_index) {
 				const Serializer::Slot& setup_slot = mSpineAvatarData->slots(setup_slot_index);
-				GameObject*slot_game_object = mOwner->FindChild(setup_slot.name().c_str());
-				GameObject*attachment_object = slot_game_object->Child<GameObject>();
+				GameObject* slot_game_object = mOwner->FindChild(setup_slot.name().c_str());
+				GameObject* attachment_object = slot_game_object->Child<GameObject>();
 				if (first_time_to_init) {
 					mRenderTargets.push_back(attachment_object);
 				}
@@ -351,7 +347,7 @@ namespace YOSEF{
 				attachment_object->SetLocalRotation(0.0f, 0.0f, 0.0f);
 				attachment_object->SetLocalScale(1.0f, 1.0f, 1.0f);
 				attachment_object->mLocalTransform.SetLocalShearing(0.0f, 0.0f, 0.0f);
-				if (setup_slot.has_attachment()){
+				if (setup_slot.has_attachment()) {
 					attachment_object->mbEnable = true;
 					SetSpineAttchment(attachment_object, setup_slot.attachment().c_str());
 				}

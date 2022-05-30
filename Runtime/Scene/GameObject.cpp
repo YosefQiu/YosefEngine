@@ -673,7 +673,7 @@ namespace YOSEF {
 		mLocalTransform.SetLocalScale(transformData.scale(0), transformData.scale(1), transformData.scale(2));
 		mLocalTransform.SetLocalShearing(transformData.shear(0), transformData.shear(1), transformData.shear(2));
 		if (mName.StartWith("b_")) {
-			mWorldTransform = mLocalTransform;
+			mTPoseTransform = mLocalTransform;
 		}
 		if (goData->has_imagesprite9()) {
 			InitImageSprite9(goData->imagesprite9(), material);

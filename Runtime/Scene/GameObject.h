@@ -147,7 +147,7 @@ namespace YOSEF {
 		Component* mComponents;
 		ScriptObject* mScripts;
 		//world matrix
-		Transform mWorldTransform;
+		Transform mTPoseTransform;
 		Matrix4x4 mWorldMatrix;
 		//local matrix
 		Transform mLocalTransform;
